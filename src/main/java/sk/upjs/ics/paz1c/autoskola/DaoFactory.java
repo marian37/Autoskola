@@ -33,7 +33,7 @@ public enum DaoFactory {
 
     public StudentiDao getStudentiDao() {
         if (studentiDao == null) {
-            studentiDao = new DatabazoveStudentiDao();
+            studentiDao = new DatabazoveStudentiDao(jdbcTemplate());
         }
         return this.studentiDao;
     }

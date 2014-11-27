@@ -1,12 +1,16 @@
 package sk.upjs.ics.paz1c.databazoveDao;
 
 import java.util.List;
+import org.springframework.jdbc.core.JdbcTemplate;
 import sk.upjs.ics.paz1c.entity.Student;
 import sk.upjs.ics.paz1c.dao.StudentiDao;
 
 public class DatabazoveStudentiDao implements StudentiDao {
 
-    public DatabazoveStudentiDao() {
+    private JdbcTemplate jdbcTemplate;
+
+    public DatabazoveStudentiDao(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
