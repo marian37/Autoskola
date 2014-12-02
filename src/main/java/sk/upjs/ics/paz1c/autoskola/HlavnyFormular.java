@@ -9,9 +9,6 @@ public class HlavnyFormular extends javax.swing.JFrame {
      */
     public HlavnyFormular() {
         initComponents();
-        VozidlaDao vozidlaDao = DaoFactory.INSTANCE.getVozidlaDao();
-        vozidlaDao.uloz(null);
-        System.out.println("Hotovo?");
     }
 
     /**
