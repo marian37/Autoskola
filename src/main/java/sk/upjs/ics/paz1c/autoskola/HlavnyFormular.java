@@ -8,7 +8,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
      * Creates new form HlavnyFormular
      */
     public HlavnyFormular() {
-        initComponents();
+        initComponents(); // hovadiny
     }
 
     /**
