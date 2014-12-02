@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import sk.upjs.ics.paz1c.dao.*;
 import sk.upjs.ics.paz1c.databazoveDao.*;
 
-public enum DaoFactory {
+public enum BeanFactory {
 
     INSTANCE;
 
@@ -89,7 +89,7 @@ public enum DaoFactory {
                 scanner = new Scanner(new File(PASSWORD_FILE));
                 password = scanner.next();
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(DaoFactory.class.getName()).log(Level.SEVERE, "Zlyhalo nacitanie hesla zo suboru", ex);
+                Logger.getLogger(BeanFactory.class.getName()).log(Level.SEVERE, "Zlyhalo nacitanie hesla zo suboru", ex);
             } finally {
                 if (scanner != null) {
                     scanner.close();
