@@ -5,6 +5,7 @@ public class Jazda {
     private Long id;
     private Student student;
     private Instruktor instruktor;
+    private Vozidlo vozidlo;
     private String datum;
     private String cas;
     private int km;
@@ -34,6 +35,14 @@ public class Jazda {
 
     public void setInstruktor(Instruktor instruktor) {
         this.instruktor = instruktor;
+    }
+
+    public Vozidlo getVozidlo() {
+        return vozidlo;
+    }
+
+    public void setVozidlo(Vozidlo vozidlo) {
+        this.vozidlo = vozidlo;
     }
 
     public String getDatum() {

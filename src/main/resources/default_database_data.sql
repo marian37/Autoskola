@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS Vozidlo;
 
 CREATE TABLE Vozidlo (
     spz VARCHAR(7) NOT NULL PRIMARY KEY,
-    znacka VARCHAR(50),
+    znacka VARCHAR(50) NOT NULL,
     typ VARCHAR(50),
     farba VARCHAR(50),
     kategoria VARCHAR(10)
@@ -21,9 +21,9 @@ SELECT * FROM Vozidlo;
 DROP TABLE IF EXISTS Instruktor;
 
 CREATE TABLE Instruktor (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     meno VARCHAR(50),
-    priezvisko VARCHAR(50),
+    priezvisko VARCHAR(50) NOT NULL,
     kontakt VARCHAR(50)
 );
 
@@ -40,9 +40,9 @@ SELECT * FROM Instruktor;
 DROP TABLE IF EXISTS Student;
 
 CREATE TABLE Student (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     meno VARCHAR(50),
-    priezvisko VARCHAR(50),
+    priezvisko VARCHAR(50) NOT NULL,
     datumNarodenia DATE,
     bydlisko VARCHAR(127),
     kontakt VARCHAR(50),
@@ -66,11 +66,11 @@ SELECT * FROM Student;
 DROP TABLE IF EXISTS Skuska;
 
 CREATE TABLE Skuska (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     datum DATE,
     cas TIME,
-    studentId BIGINT REFERENCES Student(id), 
-    instruktorId BIGINT REFERENCES Instruktor(id),
+    studentId BIGINT NOT NULL REFERENCES Student(id), 
+    instruktorId BIGINT NOT NULL REFERENCES Instruktor(id),
     policajt VARCHAR(50)
 );
 
@@ -87,9 +87,10 @@ SELECT * FROM Skuska;
 DROP TABLE IF EXISTS Jazda;
 
 CREATE TABLE Jazda (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    studentId BIGINT REFERENCES Student(id),
-    instruktorId BIGINT REFERENCES Instruktor(id),
+    id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    studentId BIGINT NOT NULL REFERENCES Student(id),
+    instruktorId BIGINT NOT NULL REFERENCES Instruktor(id),
+    vozidloSpz VARCHAR(7) NOT NULL REFERENCES Vozidlo(spz),
     datum DATE,
     cas TIME, 
     km INT,
@@ -98,12 +99,12 @@ CREATE TABLE Jazda (
     sVozikom BOOLEAN
 );
 
-INSERT INTO Jazda (studentId, instruktorId, datum, cas, km, vPremavke, naCvicisku, sVozikom)
+INSERT INTO Jazda (studentId, instruktorId, vozidloSpz, datum, cas, km, vPremavke, naCvicisku, sVozikom)
 VALUES
-(1, 3, '20141125', '093000', 31, 1, 0, 0),
-(1, 3, '20141123', '110000', 20, 1, 0, 1),
-(2, 3, '20141122', '123000', 33, 1, 0, 0),
-(4, 1, '20141120', '150000', 18, 1, 1, 0),
-(3, 2, '20141019', '101500', 15, 1, 1, 0);
+(1, 3, 'PO000AA', '20141125', '093000', 31, 1, 0, 0),
+(1, 3, 'PO000AA', '20141123', '110000', 20, 1, 0, 1),
+(2, 3, 'PO123BC', '20141122', '123000', 33, 1, 0, 0),
+(4, 1, 'PO000AA', '20141120', '150000', 18, 1, 1, 0),
+(3, 2, 'PO235CX', '20141019', '101500', 15, 1, 1, 0);
 
 SELECT * FROM Jazda;

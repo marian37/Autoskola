@@ -9,13 +9,15 @@ public class DatabazoveVozidlaDao implements VozidlaDao {
 
     private JdbcTemplate jdbcTemplate;
 
+    private VozidloRowMapper vozidloRowMapper = new VozidloRowMapper();
+
     public DatabazoveVozidlaDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
     public List<Vozidlo> dajVsetky() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return jdbcTemplate.query("SELECT * FROM Vozidlo", vozidloRowMapper);
     }
 
     @Override
