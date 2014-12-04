@@ -47,21 +47,21 @@ public enum BeanFactory {
 
     public InstruktoriDao getInstruktoriDao() {
         if (instruktoriDao == null) {
-            instruktoriDao = new DatabazoveInstruktoriDao();
+            instruktoriDao = new DatabazoveInstruktoriDao(jdbcTemplate());
         }
         return this.instruktoriDao;
     }
 
     public JazdyDao getJazdyDao() {
         if (jazdyDao == null) {
-            jazdyDao = new DatabazoveJazdyDao();
+            jazdyDao = new DatabazoveJazdyDao(jdbcTemplate());
         }
         return this.jazdyDao;
     }
 
     public SkuskyDao getSkuskyDao() {
         if (skuskyDao == null) {
-            skuskyDao = new DatabazoveSkuskyDao();
+            skuskyDao = new DatabazoveSkuskyDao(jdbcTemplate());
         }
         return this.skuskyDao;
     }

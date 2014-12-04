@@ -1,13 +1,16 @@
 package sk.upjs.ics.paz1c.entity;
 
+import java.sql.Date;
+import java.sql.Time;
+
 public class Jazda {
 
     private Long id;
     private Student student;
     private Instruktor instruktor;
     private Vozidlo vozidlo;
-    private String datum;
-    private String cas;
+    private Date datum;
+    private Time cas;
     private int km;
     private boolean vPremavke;
     private boolean naCvicisku;
@@ -45,19 +48,19 @@ public class Jazda {
         this.vozidlo = vozidlo;
     }
 
-    public String getDatum() {
+    public Date getDatum() {
         return datum;
     }
 
-    public void setDatum(String datum) {
+    public void setDatum(Date datum) {
         this.datum = datum;
     }
 
-    public String getCas() {
+    public Time getCas() {
         return cas;
     }
 
-    public void setCas(String cas) {
+    public void setCas(Time cas) {
         this.cas = cas;
     }
 
@@ -91,6 +94,11 @@ public class Jazda {
 
     public void setsVozikom(boolean sVozikom) {
         this.sVozikom = sVozikom;
+    }
+
+    @Override
+    public String toString() {
+        return "Jazda{" + "id=" + id + ", student=" + student + ", instruktor=" + instruktor + ", vozidlo=" + vozidlo + ", datum=" + datum + ", cas=" + cas + ", km=" + km + ", vPremavke=" + vPremavke + ", naCvicisku=" + naCvicisku + ", sVozikom=" + sVozikom + '}';
     }
 
 }

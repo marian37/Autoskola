@@ -1,11 +1,13 @@
 package sk.upjs.ics.paz1c.entity;
 
+import java.sql.Date;
+
 public class Student {
 
     private Long id;
     private String meno;
     private String priezvisko;
-    private String datumNarodenia;
+    private Date datumNarodenia;
     private String bydlisko;
     private String kontakt;
     private boolean prvaPomoc;
@@ -38,11 +40,11 @@ public class Student {
         this.priezvisko = priezvisko;
     }
 
-    public String getDatumNarodenia() {
+    public Date getDatumNarodenia() {
         return datumNarodenia;
     }
 
-    public void setDatumNarodenia(String datumNarodenia) {
+    public void setDatumNarodenia(Date datumNarodenia) {
         this.datumNarodenia = datumNarodenia;
     }
 
@@ -100,6 +102,11 @@ public class Student {
 
     public void setJazda(boolean jazda) {
         this.jazda = jazda;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" + "id=" + id + ", meno=" + meno + ", priezvisko=" + priezvisko + ", datumNarodenia=" + datumNarodenia + ", bydlisko=" + bydlisko + ", kontakt=" + kontakt + ", prvaPomoc=" + prvaPomoc + ", pocetPokusov=" + pocetPokusov + ", pocetBodov=" + pocetBodov + ", cvicisko=" + cvicisko + ", jazda=" + jazda + '}';
     }
 
 }

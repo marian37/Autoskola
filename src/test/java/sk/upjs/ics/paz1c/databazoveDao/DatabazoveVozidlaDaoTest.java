@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sk.upjs.ics.paz1c.databazoveDao;
 
 import java.util.List;
@@ -12,11 +7,9 @@ import sk.upjs.ics.paz1c.autoskola.BeanFactory;
 import sk.upjs.ics.paz1c.dao.VozidlaDao;
 import sk.upjs.ics.paz1c.entity.Vozidlo;
 
-/**
- *
- * @author marian
- */
 public class DatabazoveVozidlaDaoTest {
+
+    private static final int POCET_VOZIDIEL_V_DB = 5;
 
     private VozidlaDao vozidlaDao = BeanFactory.INSTANCE.getVozidlaDao();
 
@@ -26,37 +19,60 @@ public class DatabazoveVozidlaDaoTest {
     @Test
     public void testDajVsetky() {
         List<Vozidlo> vozidla = vozidlaDao.dajVsetky();
-        assertEquals(5, vozidla.size());
+        assertEquals(POCET_VOZIDIEL_V_DB, vozidla.size());
     }
 
     @Test
     public void testUloz() {
-        System.out.println("uloz");
-        Vozidlo vozidlo = null;
-        DatabazoveVozidlaDao instance = null;
-        instance.uloz(vozidlo);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        testUlozAVymaz();
     }
 
     @Test
     public void testUprav() {
-        System.out.println("uprav");
-        Vozidlo vozidlo = null;
-        DatabazoveVozidlaDao instance = null;
-        instance.uprav(vozidlo);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<Vozidlo> vozidla = vozidlaDao.dajVsetky();
+        Vozidlo vozidlo = vozidla.get(0);
+        String staraFarba = vozidlo.getFarba();
+
+        vozidlo.setFarba("abc");
+        vozidlaDao.uprav(vozidlo);
+        vozidla = vozidlaDao.dajVsetky();
+        assertEquals("abc", vozidla.get(0).getFarba());
+
+        // Vrati povodnu hodnotu
+        vozidlo.setFarba(staraFarba);
+        vozidlaDao.uprav(vozidlo);
     }
 
     @Test
     public void testVymaz() {
-        System.out.println("vymaz");
-        Vozidlo vozidlo = null;
-        DatabazoveVozidlaDao instance = null;
-        instance.vymaz(vozidlo);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        testUlozAVymaz();
+    }
+
+    @Test
+    public void testUlozAVymaz() {
+        List<Vozidlo> vozidla = vozidlaDao.dajVsetky();
+        int staraVelkost = vozidla.size();
+
+        Vozidlo vozidlo = new Vozidlo();
+        vozidlo.setSpz("PO999ZZ");
+        vozidlo.setZnacka("Ford");
+        vozidlo.setTyp("Mondeo");
+        vozidlo.setFarba("čierna");
+        vozidlo.setKategoria("B");
+
+        // Ulozi vozidlo
+        vozidlaDao.uloz(vozidlo);
+
+        vozidla = vozidlaDao.dajVsetky();
+
+        assertEquals(staraVelkost + 1, vozidla.size());
+
+        // Vrati povodny stav - vymaze ulozene vozidlo        
+        vozidlaDao.vymaz(vozidlo);
+
+        vozidla = vozidlaDao.dajVsetky();
+
+        assertEquals(staraVelkost, vozidla.size());
     }
 
 }
