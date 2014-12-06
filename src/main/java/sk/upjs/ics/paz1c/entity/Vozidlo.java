@@ -48,4 +48,9 @@ public class Vozidlo {
         this.kategoria = kategoria;
     }
 
+    @Override
+    public String toString() {
+        return "Vozidlo{" + "spz=" + spz + ", znacka=" + znacka + ", typ=" + typ + ", farba=" + farba + ", kategoria=" + kategoria + '}';
+    }
+
 }

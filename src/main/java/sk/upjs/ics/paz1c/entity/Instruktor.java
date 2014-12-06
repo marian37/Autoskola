@@ -39,4 +39,9 @@ public class Instruktor {
         this.kontakt = kontakt;
     }
 
+    @Override
+    public String toString() {
+        return "Instruktor{" + "id=" + id + ", meno=" + meno + ", priezvisko=" + priezvisko + ", kontakt=" + kontakt + '}';
+    }
+
 }

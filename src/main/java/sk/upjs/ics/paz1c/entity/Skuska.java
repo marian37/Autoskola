@@ -1,10 +1,13 @@
 package sk.upjs.ics.paz1c.entity;
 
+import java.sql.Date;
+import java.sql.Time;
+
 public class Skuska {
 
     private Long id;
-    private String datum;
-    private String cas;
+    private Date datum;
+    private Time cas;
     private Student student;
     private Instruktor instruktor;
     private String policajt;
@@ -17,19 +20,19 @@ public class Skuska {
         this.id = id;
     }
 
-    public String getDatum() {
+    public Date getDatum() {
         return datum;
     }
 
-    public void setDatum(String datum) {
+    public void setDatum(Date datum) {
         this.datum = datum;
     }
 
-    public String getCas() {
+    public Time getCas() {
         return cas;
     }
 
-    public void setCas(String cas) {
+    public void setCas(Time cas) {
         this.cas = cas;
     }
 
@@ -55,6 +58,11 @@ public class Skuska {
 
     public void setPolicajt(String policajt) {
         this.policajt = policajt;
+    }
+
+    @Override
+    public String toString() {
+        return "Skuska{" + "id=" + id + ", datum=" + datum + ", cas=" + cas + ", student=" + student + ", instruktor=" + instruktor + ", policajt=" + policajt + '}';
     }
 
 }
