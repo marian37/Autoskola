@@ -24,13 +24,7 @@ public class DatabazoveVozidlaDao implements VozidlaDao {
 
     @Override
     public List<Vozidlo> dajVsetky() {
-        return jdbcTemplate.query("SELECT\n"
-                + "    Vozidlo.spz AS VozidloSpz,\n"
-                + "    Vozidlo.znacka AS VozidloZnacka,    \n"
-                + "    Vozidlo.typ AS VozidloTyp,\n"
-                + "    Vozidlo.farba AS VozidloFarba,\n"
-                + "    Vozidlo.kategoria AS VozidloKategoria\n"
-                + "FROM Vozidlo", vozidloRowMapper);
+        return jdbcTemplate.query(SqlQueries.SELECT_ALL_VOZIDLO, vozidloRowMapper);
     }
 
     @Override

@@ -68,19 +68,18 @@ DROP TABLE IF EXISTS Skuska;
 CREATE TABLE Skuska (
     id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     datum DATE,
-    cas TIME,
-    studentId BIGINT NOT NULL REFERENCES Student(id), 
+    cas TIME,     
     instruktorId BIGINT NOT NULL REFERENCES Instruktor(id),
     policajt VARCHAR(50)
 );
 
-INSERT INTO Skuska (datum, cas, studentId, instruktorId, policajt)
+INSERT INTO Skuska (datum, cas, instruktorId, policajt)
 VALUES
-('20140212', '080000', 1, 3, 'pplk. Jarmila Miháľová'),
-('20140212', '080000', 2, 3, 'pplk. Jarmila Miháľová'),
-('20140212', '090000', 3, 2, 'mjr. Igor Roth'),
-('20140212', '090000', 4, 1, 'mjr. Igor Roth'),
-('20141128', '073000', 5, 4, 'kpt. Richard Oľha');
+('20140212', '070000', 2, 'mjr. Igor Roth'),
+('20140212', '080000', 3, 'pplk. Jarmila Miháľová'),
+('20140212', '090000', 2, 'pplk. Jarmila Miháľová'),
+('20140212', '100000', 1, 'mjr. Igor Roth'),
+('20141128', '073000', 4, 'kpt. Richard Oľha');
 
 SELECT * FROM Skuska;
 
@@ -108,3 +107,21 @@ VALUES
 (3, 2, 'PO235CX', '20141019', '101500', 15, 1, 1, 0);
 
 SELECT * FROM Jazda;
+
+DROP TABLE IF EXISTS SkuskaStudent;
+
+CREATE TABLE SkuskaStudent (
+    id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    skuskaId BIGINT NOT NULL REFERENCES Skuska(id),
+    studentId BIGINT NOT NULL REFERENCES Student(id)
+);
+
+INSERT INTO SkuskaStudent (skuskaId, studentId)
+VALUES
+(1, 2),
+(1, 3),
+(2, 4),
+(4, 1),
+(5, 3);
+
+SELECT * FROM SkuskaStudent;

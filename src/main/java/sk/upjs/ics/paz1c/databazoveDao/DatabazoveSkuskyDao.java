@@ -21,31 +21,7 @@ public class DatabazoveSkuskyDao implements SkuskyDao {
 
     @Override
     public List<Skuska> dajVsetky() {
-        return jdbcTemplate.query("SELECT \n"
-                + "    Skuska.id AS SkuskaId,\n"
-                + "    Skuska.datum AS SkuskaDatum,\n"
-                + "    Skuska.cas AS SkuskaCas,\n"
-                + "    Skuska.studentId AS SkuskaStudentId,\n"
-                + "    Skuska.instruktorId AS SkuskaInstruktorId,\n"
-                + "    Skuska.policajt AS SkuskaPolicajt,\n"
-                + "    Student.id AS StudentId,\n"
-                + "    Student.meno AS StudentMeno,\n"
-                + "    Student.priezvisko AS StudentPriezvisko,\n"
-                + "    Student.datumNarodenia AS StudentDatumNarodenia,\n"
-                + "    Student.bydlisko AS StudentBydlisko,\n"
-                + "    Student.kontakt AS StudentKontakt,\n"
-                + "    Student.prvaPomoc AS StudentPrvaPomoc,\n"
-                + "    Student.pocetPokusov AS StudentPocetPokusov,\n"
-                + "    Student.pocetBodov AS StudentPocetBodov,\n"
-                + "    Student.cvicisko AS StudentCvicisko,\n"
-                + "    Student.jazda AS StudentJazda,\n"
-                + "    Instruktor.id AS InstruktorId,\n"
-                + "    Instruktor.meno AS InstruktorMeno,\n"
-                + "    Instruktor.priezvisko AS InstruktorPriezvisko,\n"
-                + "    Instruktor.kontakt AS InstruktorKontakt\n"
-                + "FROM Skuska \n"
-                + "JOIN Student ON Skuska.studentId = Student.id\n"
-                + "JOIN Instruktor ON Skuska.instruktorId = Instruktor.id", skuskaRowMapper);
+        return jdbcTemplate.query(SqlQueries.SELECT_ALL_SKUSKA, skuskaRowMapper);
     }
 
     @Override

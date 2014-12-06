@@ -1,10 +1,16 @@
 package sk.upjs.ics.paz1c.databazoveDao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import sk.upjs.ics.paz1c.entity.Student;
 import sk.upjs.ics.paz1c.dao.StudentiDao;
+import sk.upjs.ics.paz1c.entity.Skuska;
 
 public class DatabazoveStudentiDao implements StudentiDao {
 
@@ -21,34 +27,60 @@ public class DatabazoveStudentiDao implements StudentiDao {
 
     @Override
     public List<Student> dajVsetky() {
-        return jdbcTemplate.query("SELECT     \n"
-                + "    Student.id AS StudentId,\n"
-                + "    Student.meno AS StudentMeno,\n"
-                + "    Student.priezvisko AS StudentPriezvisko,\n"
-                + "    Student.datumNarodenia AS StudentDatumNarodenia,\n"
-                + "    Student.bydlisko AS StudentBydlisko,\n"
-                + "    Student.kontakt AS StudentKontakt,\n"
-                + "    Student.prvaPomoc AS StudentPrvaPomoc,\n"
-                + "    Student.pocetPokusov AS StudentPocetPokusov,\n"
-                + "    Student.pocetBodov AS StudentPocetBodov,\n"
-                + "    Student.cvicisko AS StudentCvicisko,\n"
-                + "    Student.jazda AS StudentJazda    \n"
-                + "FROM Student", studentRowMapper);
+        return jdbcTemplate.query(SqlQueries.SELECT_ALL_STUDENT, studentRowMapper);
+    }
+
+    @Override
+    public List<Student> dajPodlaSkusky(Skuska skuska) {
+        return jdbcTemplate.query(SqlQueries.SELECT_STUDENT_BY_SKUSKA, studentRowMapper, skuska.getId());
     }
 
     @Override
     public void uloz(Student student) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Map<String, Object> insertMap = new HashMap<String, Object>();
+        insertMap.put("meno", student.getMeno());
+        insertMap.put("priezvisko", student.getPriezvisko());
+        insertMap.put("datumNarodenia", student.getDatumNarodenia());
+        insertMap.put("bydlisko", student.getBydlisko());
+        insertMap.put("kontakt", student.getKontakt());
+        insertMap.put("prvaPomoc", student.isPrvaPomoc());
+        insertMap.put("pocetPokusov", student.getPocetPokusov());
+        insertMap.put("pocetBodov", student.getPocetBodov());
+        insertMap.put("cvicisko", student.isCvicisko());
+        insertMap.put("jazda", student.isJazda());
+
+        String sql = "INSERT INTO Student (meno, priezvisko, datumNarodenia, bydlisko, kontakt, prvaPomoc, pocetPokusov, pocetBodov, cvicisko, jazda)\n"
+                + "VALUES (:meno, :priezvisko, :datumNarodenia, :bydlisko, :kontakt, :prvaPomoc, :pocetPokusov, :pocetBodov, :cvicisko, :jazda)";
+
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(insertMap), keyHolder);
+        Long id = keyHolder.getKey().longValue();
+        student.setId(id);
     }
 
     @Override
     public void uprav(Student student) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Map<String, Object> updateMap = new HashMap<String, Object>();
+        updateMap.put("meno", student.getMeno());
+        updateMap.put("priezvisko", student.getPriezvisko());
+        updateMap.put("datumNarodenia", student.getDatumNarodenia());
+        updateMap.put("bydlisko", student.getBydlisko());
+        updateMap.put("kontakt", student.getKontakt());
+        updateMap.put("prvaPomoc", student.isPrvaPomoc());
+        updateMap.put("pocetPokusov", student.getPocetPokusov());
+        updateMap.put("pocetBodov", student.getPocetBodov());
+        updateMap.put("cvicisko", student.isCvicisko());
+        updateMap.put("jazda", student.isJazda());
+
+        String sql = "UPDATE Student SET meno = :meno, priezvisko = :priezvisko, datumNarodenia = :datumNarodenia, bydlisko = :bydlisko, kontakt = :kontakt, prvaPomoc = :prvaPomoc, pocetPokusov = :pocetPokusov, pocetBodov = :pocetBodov, cvicisko = :cvicisko, jazda = :jazda";
+
+        namedParameterJdbcTemplate.update(sql, updateMap);
     }
 
     @Override
     public void vymaz(Student student) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "DELETE FROM Student WHERE id = ?";
+        jdbcTemplate.update(sql, student.getId());
     }
 
 }

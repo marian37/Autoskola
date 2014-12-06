@@ -21,12 +21,7 @@ public class DatabazoveInstruktoriDao implements InstruktoriDao {
 
     @Override
     public List<Instruktor> dajVsetky() {
-        return jdbcTemplate.query("SELECT     \n"
-                + "    Instruktor.id AS InstruktorId,\n"
-                + "    Instruktor.meno AS InstruktorMeno,\n"
-                + "    Instruktor.priezvisko AS InstruktorPriezvisko,\n"
-                + "    Instruktor.kontakt AS InstruktorKontakt\n"
-                + "FROM Instruktor", instruktorRowMapper);
+        return jdbcTemplate.query(SqlQueries.SELECT_ALL_INSTRUKTOR, instruktorRowMapper);
     }
 
     @Override

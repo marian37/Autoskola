@@ -2,13 +2,14 @@ package sk.upjs.ics.paz1c.entity;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
 
 public class Skuska {
 
     private Long id;
     private Date datum;
     private Time cas;
-    private Student student;
+    private List<Student> studenti;
     private Instruktor instruktor;
     private String policajt;
 
@@ -36,12 +37,12 @@ public class Skuska {
         this.cas = cas;
     }
 
-    public Student getStudent() {
-        return student;
+    public List<Student> getStudenti() {
+        return studenti;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudenti(List<Student> studenti) {
+        this.studenti = studenti;
     }
 
     public Instruktor getInstruktor() {
@@ -62,7 +63,7 @@ public class Skuska {
 
     @Override
     public String toString() {
-        return "Skuska{" + "id=" + id + ", datum=" + datum + ", cas=" + cas + ", student=" + student + ", instruktor=" + instruktor + ", policajt=" + policajt + '}';
+        return "Skuska{" + "id=" + id + ", datum=" + datum + ", cas=" + cas + ", studenti=" + studenti + ", instruktor=" + instruktor + ", policajt=" + policajt + '}';
     }
 
 }
