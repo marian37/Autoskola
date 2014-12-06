@@ -315,6 +315,11 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         btnStudentiRozsireneVyhladavanie.setText("Rozsirene vyhladavanie");
         btnStudentiRozsireneVyhladavanie.setPreferredSize(new java.awt.Dimension(145, 25));
+        btnStudentiRozsireneVyhladavanie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStudentiRozsireneVyhladavanieActionPerformed(evt);
+            }
+        });
 
         btnStudentiVymaz.setText("Vymaz");
         btnStudentiVymaz.setPreferredSize(new java.awt.Dimension(70, 25));
@@ -583,6 +588,10 @@ public class HlavnyFormular extends javax.swing.JFrame {
         RozsireneVyhladavanieJazdyFormular rozsireneVyhladavanieJazdyFormular = new RozsireneVyhladavanieJazdyFormular();
         rozsireneVyhladavanieJazdyFormular.setVisible(true);
     }//GEN-LAST:event_btnJazdyRozsireneVyhladavanieActionPerformed
+
+    private void btnStudentiRozsireneVyhladavanieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentiRozsireneVyhladavanieActionPerformed
+        // TODO add your handling code here: zmena aby som mohol premiestnit formular do GUI
+    }//GEN-LAST:event_btnStudentiRozsireneVyhladavanieActionPerformed
 
     /**
      * @param args the command line arguments
