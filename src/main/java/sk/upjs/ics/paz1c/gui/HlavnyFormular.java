@@ -87,7 +87,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Autoskola");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setName("formHlavny"); // NOI18N
+        setName("hlavnyFrame"); // NOI18N
         setResizable(false);
 
         btnJazdyHladaj.setText("Hladaj");
@@ -590,7 +590,8 @@ public class HlavnyFormular extends javax.swing.JFrame {
     }//GEN-LAST:event_btnJazdyRozsireneVyhladavanieActionPerformed
 
     private void btnStudentiRozsireneVyhladavanieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentiRozsireneVyhladavanieActionPerformed
-        // TODO add your handling code here: zmena aby som mohol premiestnit formular do GUI
+        RozsireneVyhladavanieStudentiFormular rozsireneVyhladavanieStudentiFormular = new RozsireneVyhladavanieStudentiFormular();
+        rozsireneVyhladavanieStudentiFormular.setVisible(true);
     }//GEN-LAST:event_btnStudentiRozsireneVyhladavanieActionPerformed
 
     /**

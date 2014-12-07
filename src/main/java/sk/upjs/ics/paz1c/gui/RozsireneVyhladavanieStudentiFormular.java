@@ -1,9 +1,9 @@
 package sk.upjs.ics.paz1c.gui;
 
-public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
+public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
 
     /** Creates new form RozsireneVyhladavanieJazdyFormular */
-    public RozsireneVyhladavanieJazdyFormular() {
+    public RozsireneVyhladavanieStudentiFormular() {
         initComponents();
     }
 
@@ -17,38 +17,38 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlNazov = new javax.swing.JPanel();
-        chBoxStudent = new javax.swing.JCheckBox();
-        txtStudent = new javax.swing.JTextField();
-        chBoxInstruktor = new javax.swing.JCheckBox();
-        txtInstruktor = new javax.swing.JTextField();
-        chBoxVozidlo = new javax.swing.JCheckBox();
-        txtVozidlo = new javax.swing.JTextField();
+        chBoxMeno = new javax.swing.JCheckBox();
+        txtMeno = new javax.swing.JTextField();
+        chBoxPriezvisko = new javax.swing.JCheckBox();
+        txtPriezvisko = new javax.swing.JTextField();
+        chBoxBydlisko = new javax.swing.JCheckBox();
+        txtBydlisko = new javax.swing.JTextField();
         pnlInterval = new javax.swing.JPanel();
-        chBoxDatum = new javax.swing.JCheckBox();
-        lblDatumOd = new javax.swing.JLabel();
-        txtDatumOd = new javax.swing.JTextField();
-        lblDatumDo = new javax.swing.JLabel();
-        txtDatumDo = new javax.swing.JTextField();
-        chBoxCas = new javax.swing.JCheckBox();
-        lblCasOd = new javax.swing.JLabel();
-        txtCasOd = new javax.swing.JTextField();
-        lblCasDo = new javax.swing.JLabel();
-        txtCasDo = new javax.swing.JTextField();
-        chBoxKm = new javax.swing.JCheckBox();
-        lblKmOd = new javax.swing.JLabel();
-        txtKmOd = new javax.swing.JTextField();
-        lblKmDo = new javax.swing.JLabel();
-        txtKmDo = new javax.swing.JTextField();
+        chBoxDatumNarodenia = new javax.swing.JCheckBox();
+        lblDatumNarodeniaOd = new javax.swing.JLabel();
+        txtDatumNarodeniaOd = new javax.swing.JTextField();
+        lblDatumNarodeniaDo = new javax.swing.JLabel();
+        txtDatumNarodeniaDo = new javax.swing.JTextField();
+        chBoxPocetJazd = new javax.swing.JCheckBox();
+        lblPocetJazdOd = new javax.swing.JLabel();
+        txtPocetJazdOd = new javax.swing.JTextField();
+        lblPocetJazdDo = new javax.swing.JLabel();
+        txtPocetJazdDo = new javax.swing.JTextField();
+        chBoxPrejdeneKm = new javax.swing.JCheckBox();
+        lblPrejdeneKmOd = new javax.swing.JLabel();
+        txtPrejdeneKmOd = new javax.swing.JTextField();
+        lblPrejdeneKmDo = new javax.swing.JLabel();
+        txtPrejdeneKmDo = new javax.swing.JTextField();
         pnlBoolean = new javax.swing.JPanel();
-        chBoxVpremavke = new javax.swing.JCheckBox();
-        rbtnVpremavkeAno = new javax.swing.JRadioButton();
-        rbtnVpremavkeNie = new javax.swing.JRadioButton();
-        chBoxNacvicisku = new javax.swing.JCheckBox();
-        rbtnNacviciskuAno = new javax.swing.JRadioButton();
-        rbtnNacviciskuNie = new javax.swing.JRadioButton();
-        chBoxSvozikom = new javax.swing.JCheckBox();
-        rbtnSvozikomAno = new javax.swing.JRadioButton();
-        rbtnSvozikomNie = new javax.swing.JRadioButton();
+        chBoxPrvaPomoc = new javax.swing.JCheckBox();
+        rbtnPrvaPomocAno = new javax.swing.JRadioButton();
+        rbtnPrvaPomocNie = new javax.swing.JRadioButton();
+        chBoxTest = new javax.swing.JCheckBox();
+        rbtnTestAno = new javax.swing.JRadioButton();
+        rbtnTestNie = new javax.swing.JRadioButton();
+        chBoxCvicisko = new javax.swing.JCheckBox();
+        rbtnCviciskoAno = new javax.swing.JRadioButton();
+        rbtnCviciskoNie = new javax.swing.JRadioButton();
         lblZarovnanieBooleanPanel1 = new javax.swing.JLabel();
         lblZarovnanieBooleanPanel2 = new javax.swing.JLabel();
         pnlKategoria = new javax.swing.JPanel();
@@ -61,21 +61,21 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
         btnVynuluj = new javax.swing.JToggleButton();
         lblNespravnyFormat = new javax.swing.JLabel();
         scrollPane = new javax.swing.JScrollPane();
-        tblJazdy = new javax.swing.JTable();
+        tblStudenti = new javax.swing.JTable();
         btnVymaz = new javax.swing.JButton();
         btnUprav = new javax.swing.JButton();
         btnDetail = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Jazdy");
-        setName("rozsireneVyhladavanieJazdyFrame"); // NOI18N
+        setTitle("Studenti");
+        setName("rozsireneVyhladavanieStudentiFrame"); // NOI18N
         setResizable(false);
 
-        chBoxStudent.setText("Student");
+        chBoxMeno.setText("Meno");
 
-        chBoxInstruktor.setText("Instruktor");
+        chBoxPriezvisko.setText("Priezvisko");
 
-        chBoxVozidlo.setText("Vozidlo");
+        chBoxBydlisko.setText("Bydlisko");
 
         javax.swing.GroupLayout pnlNazovLayout = new javax.swing.GroupLayout(pnlNazov);
         pnlNazov.setLayout(pnlNazovLayout);
@@ -84,52 +84,52 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
             .addGroup(pnlNazovLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlNazovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chBoxStudent)
-                    .addComponent(chBoxInstruktor)
-                    .addComponent(chBoxVozidlo)
+                    .addComponent(chBoxMeno)
+                    .addComponent(chBoxPriezvisko)
+                    .addComponent(chBoxBydlisko)
                     .addGroup(pnlNazovLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(pnlNazovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtVozidlo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtBydlisko, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPriezvisko, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMeno, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         pnlNazovLayout.setVerticalGroup(
             pnlNazovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlNazovLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(chBoxStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(chBoxMeno, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtMeno, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chBoxInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(chBoxPriezvisko, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPriezvisko, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chBoxVozidlo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(chBoxBydlisko, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtVozidlo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtBydlisko, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        chBoxDatum.setText("Datum");
+        chBoxDatumNarodenia.setText("Datum narodenia");
 
-        lblDatumOd.setText("od:");
+        lblDatumNarodeniaOd.setText("od:");
 
-        lblDatumDo.setText("do:");
+        lblDatumNarodeniaDo.setText("do:");
 
-        chBoxCas.setText("Cas");
+        chBoxPocetJazd.setText("Pocet jazd");
 
-        lblCasOd.setText("od:");
+        lblPocetJazdOd.setText("od:");
 
-        lblCasDo.setText("do:");
+        lblPocetJazdDo.setText("do:");
 
-        chBoxKm.setText("KM");
+        chBoxPrejdeneKm.setText("Prejdene KM");
 
-        lblKmOd.setText("od:");
+        lblPrejdeneKmOd.setText("od:");
 
-        lblKmDo.setText("do:");
+        lblPrejdeneKmDo.setText("do:");
 
         javax.swing.GroupLayout pnlIntervalLayout = new javax.swing.GroupLayout(pnlInterval);
         pnlInterval.setLayout(pnlIntervalLayout);
@@ -138,87 +138,87 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
             .addGroup(pnlIntervalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlIntervalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chBoxDatum)
-                    .addComponent(chBoxCas)
-                    .addComponent(chBoxKm)
+                    .addComponent(chBoxDatumNarodenia)
+                    .addComponent(chBoxPocetJazd)
+                    .addComponent(chBoxPrejdeneKm)
                     .addGroup(pnlIntervalLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(pnlIntervalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlIntervalLayout.createSequentialGroup()
-                                .addComponent(lblKmOd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblPrejdeneKmOd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtKmOd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtPrejdeneKmOd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblKmDo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblPrejdeneKmDo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtKmDo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtPrejdeneKmDo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnlIntervalLayout.createSequentialGroup()
-                                .addComponent(lblCasOd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblPocetJazdOd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCasOd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtPocetJazdOd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblCasDo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblPocetJazdDo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCasDo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtPocetJazdDo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnlIntervalLayout.createSequentialGroup()
-                                .addComponent(lblDatumOd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblDatumNarodeniaOd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDatumOd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtDatumNarodeniaOd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblDatumDo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblDatumNarodeniaDo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDatumDo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtDatumNarodeniaDo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
         pnlIntervalLayout.setVerticalGroup(
             pnlIntervalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlIntervalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(chBoxDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(chBoxDatumNarodenia, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlIntervalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDatumOd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDatumOd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDatumDo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDatumDo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblDatumNarodeniaOd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDatumNarodeniaOd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDatumNarodeniaDo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDatumNarodeniaDo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chBoxCas, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(chBoxPocetJazd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlIntervalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCasOd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCasOd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCasDo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCasDo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblPocetJazdOd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPocetJazdOd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPocetJazdDo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPocetJazdDo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chBoxKm, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(chBoxPrejdeneKm, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlIntervalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblKmOd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtKmOd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblKmDo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtKmDo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblPrejdeneKmOd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrejdeneKmOd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPrejdeneKmDo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrejdeneKmDo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pnlBoolean.setPreferredSize(new java.awt.Dimension(200, 200));
 
-        chBoxVpremavke.setText("V premavke");
+        chBoxPrvaPomoc.setText("Prva pomoc");
 
-        rbtnVpremavkeAno.setText("ano");
+        rbtnPrvaPomocAno.setText("ano");
 
-        rbtnVpremavkeNie.setText("nie");
+        rbtnPrvaPomocNie.setText("nie");
 
-        chBoxNacvicisku.setText("Na cvicisku");
+        chBoxTest.setText("Test");
 
-        rbtnNacviciskuAno.setText("ano");
+        rbtnTestAno.setText("ano");
 
-        rbtnNacviciskuNie.setText("nie");
+        rbtnTestNie.setText("nie");
 
-        chBoxSvozikom.setText("S vozikom");
+        chBoxCvicisko.setText("Cvicisko");
 
-        rbtnSvozikomAno.setText("ano");
+        rbtnCviciskoAno.setText("ano");
 
-        rbtnSvozikomNie.setText("nie");
+        rbtnCviciskoNie.setText("nie");
 
         lblZarovnanieBooleanPanel1.setText("   ");
 
@@ -231,53 +231,53 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
             .addGroup(pnlBooleanLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlBooleanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chBoxVpremavke)
-                    .addComponent(chBoxNacvicisku)
-                    .addComponent(chBoxSvozikom)
+                    .addComponent(chBoxPrvaPomoc)
+                    .addComponent(chBoxTest)
+                    .addComponent(chBoxCvicisko)
                     .addGroup(pnlBooleanLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(pnlBooleanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlBooleanLayout.createSequentialGroup()
-                                .addComponent(rbtnNacviciskuAno)
+                                .addComponent(rbtnTestAno)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rbtnNacviciskuNie)
+                                .addComponent(rbtnTestNie)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblZarovnanieBooleanPanel2))
                             .addGroup(pnlBooleanLayout.createSequentialGroup()
-                                .addComponent(rbtnVpremavkeAno)
+                                .addComponent(rbtnPrvaPomocAno)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rbtnVpremavkeNie)
+                                .addComponent(rbtnPrvaPomocNie)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblZarovnanieBooleanPanel1))
                             .addGroup(pnlBooleanLayout.createSequentialGroup()
-                                .addComponent(rbtnSvozikomAno)
+                                .addComponent(rbtnCviciskoAno)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rbtnSvozikomNie)))))
+                                .addComponent(rbtnCviciskoNie)))))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
         pnlBooleanLayout.setVerticalGroup(
             pnlBooleanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBooleanLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(chBoxVpremavke, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(chBoxPrvaPomoc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlBooleanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbtnVpremavkeAno, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbtnVpremavkeNie, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbtnPrvaPomocAno, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbtnPrvaPomocNie, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblZarovnanieBooleanPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chBoxNacvicisku, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(chBoxTest, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlBooleanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbtnNacviciskuAno, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbtnNacviciskuNie, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbtnTestAno, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbtnTestNie, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblZarovnanieBooleanPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chBoxSvozikom, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(chBoxCvicisko, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlBooleanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbtnSvozikomAno)
-                    .addComponent(rbtnSvozikomNie))
+                    .addComponent(rbtnCviciskoAno)
+                    .addComponent(rbtnCviciskoNie))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -330,7 +330,7 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
 
         lblNespravnyFormat.setText("NESPRAVNY FORMAT");
 
-        tblJazdy.setModel(new javax.swing.table.DefaultTableModel(
+        tblStudenti.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -341,7 +341,7 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        scrollPane.setViewportView(tblJazdy);
+        scrollPane.setViewportView(tblStudenti);
 
         btnVymaz.setText("Vymaz");
         btnVymaz.setPreferredSize(new java.awt.Dimension(70, 25));
@@ -430,20 +430,21 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RozsireneVyhladavanieJazdyFormular.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RozsireneVyhladavanieStudentiFormular.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RozsireneVyhladavanieJazdyFormular.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RozsireneVyhladavanieStudentiFormular.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RozsireneVyhladavanieJazdyFormular.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RozsireneVyhladavanieStudentiFormular.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RozsireneVyhladavanieJazdyFormular.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RozsireneVyhladavanieStudentiFormular.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RozsireneVyhladavanieJazdyFormular().setVisible(true);
+                new RozsireneVyhladavanieStudentiFormular().setVisible(true);
             }
         });
     }
@@ -454,50 +455,50 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
     private javax.swing.JButton btnUprav;
     private javax.swing.JButton btnVymaz;
     private javax.swing.JToggleButton btnVynuluj;
-    private javax.swing.JCheckBox chBoxCas;
-    private javax.swing.JCheckBox chBoxDatum;
-    private javax.swing.JCheckBox chBoxInstruktor;
+    private javax.swing.JCheckBox chBoxBydlisko;
+    private javax.swing.JCheckBox chBoxCvicisko;
+    private javax.swing.JCheckBox chBoxDatumNarodenia;
     private javax.swing.JCheckBox chBoxKategoria;
-    private javax.swing.JCheckBox chBoxKm;
-    private javax.swing.JCheckBox chBoxNacvicisku;
-    private javax.swing.JCheckBox chBoxStudent;
-    private javax.swing.JCheckBox chBoxSvozikom;
-    private javax.swing.JCheckBox chBoxVozidlo;
-    private javax.swing.JCheckBox chBoxVpremavke;
-    private javax.swing.JLabel lblCasDo;
-    private javax.swing.JLabel lblCasOd;
-    private javax.swing.JLabel lblDatumDo;
-    private javax.swing.JLabel lblDatumOd;
-    private javax.swing.JLabel lblKmDo;
-    private javax.swing.JLabel lblKmOd;
+    private javax.swing.JCheckBox chBoxMeno;
+    private javax.swing.JCheckBox chBoxPocetJazd;
+    private javax.swing.JCheckBox chBoxPrejdeneKm;
+    private javax.swing.JCheckBox chBoxPriezvisko;
+    private javax.swing.JCheckBox chBoxPrvaPomoc;
+    private javax.swing.JCheckBox chBoxTest;
+    private javax.swing.JLabel lblDatumNarodeniaDo;
+    private javax.swing.JLabel lblDatumNarodeniaOd;
     private javax.swing.JLabel lblNespravnyFormat;
+    private javax.swing.JLabel lblPocetJazdDo;
+    private javax.swing.JLabel lblPocetJazdOd;
+    private javax.swing.JLabel lblPrejdeneKmDo;
+    private javax.swing.JLabel lblPrejdeneKmOd;
     private javax.swing.JLabel lblZarovnanieBooleanPanel1;
     private javax.swing.JLabel lblZarovnanieBooleanPanel2;
     private javax.swing.JPanel pnlBoolean;
     private javax.swing.JPanel pnlInterval;
     private javax.swing.JPanel pnlKategoria;
     private javax.swing.JPanel pnlNazov;
+    private javax.swing.JRadioButton rbtnCviciskoAno;
+    private javax.swing.JRadioButton rbtnCviciskoNie;
     private javax.swing.JRadioButton rbtnKategoriaA;
     private javax.swing.JRadioButton rbtnKategoriaB;
     private javax.swing.JRadioButton rbtnKategoriaC;
     private javax.swing.JRadioButton rbtnKategoriaD;
-    private javax.swing.JRadioButton rbtnNacviciskuAno;
-    private javax.swing.JRadioButton rbtnNacviciskuNie;
-    private javax.swing.JRadioButton rbtnSvozikomAno;
-    private javax.swing.JRadioButton rbtnSvozikomNie;
-    private javax.swing.JRadioButton rbtnVpremavkeAno;
-    private javax.swing.JRadioButton rbtnVpremavkeNie;
+    private javax.swing.JRadioButton rbtnPrvaPomocAno;
+    private javax.swing.JRadioButton rbtnPrvaPomocNie;
+    private javax.swing.JRadioButton rbtnTestAno;
+    private javax.swing.JRadioButton rbtnTestNie;
     private javax.swing.JScrollPane scrollPane;
-    private javax.swing.JTable tblJazdy;
-    private javax.swing.JTextField txtCasDo;
-    private javax.swing.JTextField txtCasOd;
-    private javax.swing.JTextField txtDatumDo;
-    private javax.swing.JTextField txtDatumOd;
-    private javax.swing.JTextField txtInstruktor;
-    private javax.swing.JTextField txtKmDo;
-    private javax.swing.JTextField txtKmOd;
-    private javax.swing.JTextField txtStudent;
-    private javax.swing.JTextField txtVozidlo;
+    private javax.swing.JTable tblStudenti;
+    private javax.swing.JTextField txtBydlisko;
+    private javax.swing.JTextField txtDatumNarodeniaDo;
+    private javax.swing.JTextField txtDatumNarodeniaOd;
+    private javax.swing.JTextField txtMeno;
+    private javax.swing.JTextField txtPocetJazdDo;
+    private javax.swing.JTextField txtPocetJazdOd;
+    private javax.swing.JTextField txtPrejdeneKmDo;
+    private javax.swing.JTextField txtPrejdeneKmOd;
+    private javax.swing.JTextField txtPriezvisko;
     // End of variables declaration//GEN-END:variables
 
 }
