@@ -1,12 +1,5 @@
 package sk.upjs.ics.paz1c.gui;
 
-import java.awt.Dimension;
-import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import net.miginfocom.swing.MigLayout;
-
 public class UpravaJazdyFormular extends javax.swing.JFrame {
 
         /**
