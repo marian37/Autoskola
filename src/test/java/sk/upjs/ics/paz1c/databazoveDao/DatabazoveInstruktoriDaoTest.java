@@ -1,5 +1,6 @@
 package sk.upjs.ics.paz1c.databazoveDao;
 
+import java.sql.Date;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -18,38 +19,59 @@ public class DatabazoveInstruktoriDaoTest {
 
     @Test
     public void testDajVsetky() {
-        List<Instruktor> instruktori = instruktoriDao.dajVsetky();        
+        List<Instruktor> instruktori = instruktoriDao.dajVsetky();
         assertEquals(POCET_INSTRUKTOROV_V_DB, instruktori.size());
     }
 
     @Test
     public void testUloz() {
-        System.out.println("uloz");
-        Instruktor instruktor = null;
-        DatabazoveInstruktoriDao instance = null;
-        instance.uloz(instruktor);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        testUlozAVymaz();
     }
 
     @Test
     public void testUprav() {
-        System.out.println("uprav");
-        Instruktor instruktor = null;
-        DatabazoveInstruktoriDao instance = null;
-        instance.uprav(instruktor);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<Instruktor> instruktori = instruktoriDao.dajVsetky();
+        Instruktor instruktor = instruktori.get(0);
+        String staryKontakt = instruktor.getKontakt();
+
+        instruktor.setKontakt("abc");
+        instruktoriDao.uprav(instruktor);
+        instruktori = instruktoriDao.dajVsetky();
+        assertEquals("abc", instruktori.get(0).getKontakt());
+
+        // Vrati povodnu hodnotu
+        instruktor.setKontakt(staryKontakt);
+        instruktoriDao.uprav(instruktor);
     }
 
     @Test
     public void testVymaz() {
-        System.out.println("vymaz");
-        Instruktor instruktor = null;
-        DatabazoveInstruktoriDao instance = null;
-        instance.vymaz(instruktor);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        testUlozAVymaz();
+    }
+
+    @Test
+    public void testUlozAVymaz() {
+        List<Instruktor> instruktori = instruktoriDao.dajVsetky();
+        int staraVelkost = instruktori.size();
+
+        Instruktor instruktor = new Instruktor();
+        instruktor.setMeno("Artur");
+        instruktor.setPriezvisko("VeÄ¾kÃ½");
+        instruktor.setKontakt("0902345789");
+
+        // Ulozi instruktora
+        instruktoriDao.uloz(instruktor);
+
+        instruktori = instruktoriDao.dajVsetky();
+
+        assertEquals(staraVelkost + 1, instruktori.size());
+
+        // Vrati povodny stav - vymaze ulozeneho instruktora        
+        instruktoriDao.vymaz(instruktor);
+
+        instruktori = instruktoriDao.dajVsetky();
+
+        assertEquals(staraVelkost, instruktori.size());
     }
 
 }

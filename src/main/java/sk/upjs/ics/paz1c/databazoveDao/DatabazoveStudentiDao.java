@@ -61,6 +61,7 @@ public class DatabazoveStudentiDao implements StudentiDao {
     @Override
     public void uprav(Student student) {
         Map<String, Object> updateMap = new HashMap<String, Object>();
+        updateMap.put("id", student.getId());
         updateMap.put("meno", student.getMeno());
         updateMap.put("priezvisko", student.getPriezvisko());
         updateMap.put("datumNarodenia", student.getDatumNarodenia());
@@ -72,7 +73,7 @@ public class DatabazoveStudentiDao implements StudentiDao {
         updateMap.put("cvicisko", student.isCvicisko());
         updateMap.put("jazda", student.isJazda());
 
-        String sql = "UPDATE Student SET meno = :meno, priezvisko = :priezvisko, datumNarodenia = :datumNarodenia, bydlisko = :bydlisko, kontakt = :kontakt, prvaPomoc = :prvaPomoc, pocetPokusov = :pocetPokusov, pocetBodov = :pocetBodov, cvicisko = :cvicisko, jazda = :jazda";
+        String sql = "UPDATE Student SET meno = :meno, priezvisko = :priezvisko, datumNarodenia = :datumNarodenia, bydlisko = :bydlisko, kontakt = :kontakt, prvaPomoc = :prvaPomoc, pocetPokusov = :pocetPokusov, pocetBodov = :pocetBodov, cvicisko = :cvicisko, jazda = :jazda WHERE id = :id";
 
         namedParameterJdbcTemplate.update(sql, updateMap);
     }
