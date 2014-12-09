@@ -17,6 +17,11 @@ public class HlavnyFormular extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btngJazdy = new javax.swing.ButtonGroup();
+        btngSkusky = new javax.swing.ButtonGroup();
+        btngStudenti = new javax.swing.ButtonGroup();
+        btngInstruktori = new javax.swing.ButtonGroup();
+        btngVozidla = new javax.swing.ButtonGroup();
         tabbedPaneHlavny = new javax.swing.JTabbedPane();
         paneJazdy = new javax.swing.JPanel();
         txtJazdyHladaj = new javax.swing.JTextField();
@@ -95,10 +100,13 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         lblJazdyHladajPodla.setText("Hladaj podla:");
 
+        btngJazdy.add(rbtnJazdyStudent);
         rbtnJazdyStudent.setText("Studenta");
 
+        btngJazdy.add(rbtnJazdyInstruktor);
         rbtnJazdyInstruktor.setText("Instruktora");
 
+        btngJazdy.add(rbtnJazdyDatum);
         rbtnJazdyDatum.setText("Datumu");
 
         btnJazdyVynuluj.setText("Vynuluj");
@@ -202,10 +210,13 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         lblSkuskyHladajPodla.setText("Hladaj podla:");
 
+        btngSkusky.add(rbtnSkuskyDatum);
         rbtnSkuskyDatum.setText("Datumu");
 
+        btngSkusky.add(rbtnSkuskyStudent);
         rbtnSkuskyStudent.setText("Studenta");
 
+        btngSkusky.add(rbtnSkuskyInstruktor);
         rbtnSkuskyInstruktor.setText("Instruktora");
 
         tblSkusky.setModel(new javax.swing.table.DefaultTableModel(
@@ -296,8 +307,10 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         lblStudentiHladajPodla.setText("Hladaj podla:");
 
+        btngStudenti.add(rbtnStudentiMeno);
         rbtnStudentiMeno.setText("Mena");
 
+        btngStudenti.add(rbtnStudentiPriezvisko);
         rbtnStudentiPriezvisko.setText("Priezviska");
 
         tblStudenti.setModel(new javax.swing.table.DefaultTableModel(
@@ -395,8 +408,10 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         lblInstruktoriHladajPodla.setText("Hladaj podla:");
 
+        btngInstruktori.add(rbtnInstruktoriMeno);
         rbtnInstruktoriMeno.setText("Mena");
 
+        btngInstruktori.add(rbtnInstruktoriPriezvisko);
         rbtnInstruktoriPriezvisko.setText("Priezviska");
 
         tblInstruktori.setModel(new javax.swing.table.DefaultTableModel(
@@ -484,10 +499,13 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         lblVozidlaHladajPodla.setText("Hladaj podla:");
 
+        btngVozidla.add(rbtnVozidlaSpz);
         rbtnVozidlaSpz.setText("SPZ");
 
+        btngVozidla.add(rbtnVozidlaZnacka);
         rbtnVozidlaZnacka.setText("Znacky");
 
+        btngVozidla.add(rbtnVozidlaKategoria);
         rbtnVozidlaKategoria.setText("Kategorie");
 
         tblVozidla.setModel(new javax.swing.table.DefaultTableModel(
@@ -657,6 +675,11 @@ public class HlavnyFormular extends javax.swing.JFrame {
     private javax.swing.JButton btnVozidlaUprav;
     private javax.swing.JButton btnVozidlaVymaz;
     private javax.swing.JButton btnVozidlaVynuluj;
+    private javax.swing.ButtonGroup btngInstruktori;
+    private javax.swing.ButtonGroup btngJazdy;
+    private javax.swing.ButtonGroup btngSkusky;
+    private javax.swing.ButtonGroup btngStudenti;
+    private javax.swing.ButtonGroup btngVozidla;
     private javax.swing.JLabel lblInstruktoriHladajPodla;
     private javax.swing.JLabel lblJazdyHladajPodla;
     private javax.swing.JLabel lblSkuskyHladajPodla;

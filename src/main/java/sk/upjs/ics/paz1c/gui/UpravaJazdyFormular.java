@@ -19,17 +19,17 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
     private void initComponents() {
 
         lblStudent = new javax.swing.JLabel();
-        txtInstruktor = new javax.swing.JTextField();
-        lblStudentPomoc = new javax.swing.JLabel();
         lblInstruktor = new javax.swing.JLabel();
-        txtStudent = new javax.swing.JTextField();
-        btnNovyStudent = new javax.swing.JToggleButton();
-        lblInstuktorPomoc = new javax.swing.JLabel();
-        btnNovyInstruktor = new javax.swing.JToggleButton();
-        txtVozidlo = new javax.swing.JTextField();
         lblVozidlo = new javax.swing.JLabel();
+        txtStudent = new javax.swing.JTextField();
+        txtInstruktor = new javax.swing.JTextField();
+        txtVozidlo = new javax.swing.JTextField();
+        lblStudentPomoc = new javax.swing.JLabel();
+        btnNovyStudent = new javax.swing.JButton();
+        lblInstuktorPomoc = new javax.swing.JLabel();
+        btnNovyInstruktor = new javax.swing.JButton();
         lblVozidloPomoc = new javax.swing.JLabel();
-        btnNoveVozidlo = new javax.swing.JToggleButton();
+        btnNoveVozidlo = new javax.swing.JButton();
         txtDatum = new javax.swing.JTextField();
         txtCas = new javax.swing.JTextField();
         txtKm = new javax.swing.JTextField();
@@ -39,8 +39,8 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
         chBoxVpremavke = new javax.swing.JCheckBox();
         chBoxNacvicisku = new javax.swing.JCheckBox();
         chBoxSvozikom = new javax.swing.JCheckBox();
-        btnOk = new javax.swing.JToggleButton();
-        btnVynuluj = new javax.swing.JToggleButton();
+        btnVynuluj = new javax.swing.JButton();
+        btnOk = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Jazda");
@@ -49,24 +49,27 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
 
         lblStudent.setText("Student:");
 
+        lblInstruktor.setText("Instruktor:");
+
+        lblVozidlo.setText("Vozidlo:");
+
         lblStudentPomoc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblStudentPomoc.setText("?");
+        lblStudentPomoc.setToolTipText("<html>\nZadajte meno, priezvisko a datum narodenia existujuceho studenta v tvare:\n<br>\"meno priezvisko den.mesiac.rok\"\n<br>Ak student este nie je zaevidovany v databaze, mozete tak spravit kliknutim na tlacidlo\n<br><b>Novy student</b>\n</html>");
         lblStudentPomoc.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        lblInstruktor.setText("Instruktor:");
 
         btnNovyStudent.setText("Novy student");
 
         lblInstuktorPomoc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblInstuktorPomoc.setText("?");
+        lblInstuktorPomoc.setToolTipText("<html>\nZadajte meno a priezvisko existujuceho instruktora v tvare:\n<br>\"meno priezvisko\"\n<br>Ak instruktor este nie je zaevidovany v databaze, mozete tak spravit kliknutim na tlacidlo\n<br><b>Novy instruktor</b>\n</html>");
         lblInstuktorPomoc.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         btnNovyInstruktor.setText("Novy instruktor");
 
-        lblVozidlo.setText("Vozidlo:");
-
         lblVozidloPomoc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVozidloPomoc.setText("?");
+        lblVozidloPomoc.setToolTipText("<html>\nZadajte SPZ vozidla. \n<br>Ak vozidlo este nie je zaevidovane v databaze,  mozete tak spravit kliknutim na tlacidlo \n<br><b>Nove vozidlo</b>\n</html>");
         lblVozidloPomoc.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         btnNoveVozidlo.setText("Nove vozidlo");
@@ -83,9 +86,9 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
 
         chBoxSvozikom.setText("S vozikom");
 
-        btnOk.setText("OK");
-
         btnVynuluj.setText("Vynuluj");
+
+        btnOk.setText("OK");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,58 +98,58 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(btnNoveVozidlo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnNovyInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnNovyStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(lblStudent)
+                                            .addGap(20, 20, 20))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(lblInstruktor)
-                                                        .addComponent(lblStudent))
-                                                    .addComponent(lblVozidlo, javax.swing.GroupLayout.Alignment.LEADING))
-                                                .addComponent(lblDatum, javax.swing.GroupLayout.Alignment.LEADING))
-                                            .addComponent(lblCas, javax.swing.GroupLayout.Alignment.LEADING))
-                                        .addComponent(lblKm, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(lblInstruktor, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lblVozidlo, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lblDatum, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lblCas, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lblKm, javax.swing.GroupLayout.Alignment.LEADING))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addComponent(txtStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtVozidlo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblStudentPomoc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(lblVozidloPomoc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(txtInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(lblInstuktorPomoc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
-                                            .addComponent(txtVozidlo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblVozidloPomoc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(lblStudentPomoc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtCas, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtKm, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(txtKm, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnNovyInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(chBoxVpremavke)
                             .addComponent(chBoxNacvicisku)
-                            .addComponent(chBoxSvozikom)
-                            .addComponent(chBoxVpremavke))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                            .addComponent(chBoxSvozikom))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblStudentPomoc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNovyStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,12 +160,12 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
                     .addComponent(lblInstuktorPomoc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNovyInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtVozidlo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblVozidlo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblVozidloPomoc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNoveVozidlo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -184,8 +187,8 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
                 .addComponent(chBoxSvozikom, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -228,11 +231,11 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnNoveVozidlo;
-    private javax.swing.JToggleButton btnNovyInstruktor;
-    private javax.swing.JToggleButton btnNovyStudent;
-    private javax.swing.JToggleButton btnOk;
-    private javax.swing.JToggleButton btnVynuluj;
+    private javax.swing.JButton btnNoveVozidlo;
+    private javax.swing.JButton btnNovyInstruktor;
+    private javax.swing.JButton btnNovyStudent;
+    private javax.swing.JButton btnOk;
+    private javax.swing.JButton btnVynuluj;
     private javax.swing.JCheckBox chBoxNacvicisku;
     private javax.swing.JCheckBox chBoxSvozikom;
     private javax.swing.JCheckBox chBoxVpremavke;

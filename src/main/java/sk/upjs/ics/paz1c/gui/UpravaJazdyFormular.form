@@ -29,76 +29,75 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="btnVynuluj" min="-2" pref="70" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnOk" min="-2" pref="70" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="btnNoveVozidlo" min="-2" pref="110" max="-2" attributes="0"/>
-                              <Component id="btnNovyInstruktor" min="-2" pref="110" max="-2" attributes="0"/>
                               <Component id="btnNovyStudent" min="-2" pref="110" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="lblInstruktor" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="lblStudent" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="lblVozidlo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="lblDatum" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="lblCas" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="lblStudent" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="lblKm" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="lblInstruktor" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblVozidlo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblDatum" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblCas" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblKm" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="txtStudent" min="-2" pref="190" max="-2" attributes="0"/>
+                                          <Component id="txtVozidlo" min="-2" pref="190" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="lblStudentPomoc" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="lblVozidloPomoc" min="-2" pref="30" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Component id="txtInstruktor" min="-2" pref="190" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="lblInstuktorPomoc" min="-2" pref="30" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="txtVozidlo" min="-2" pref="190" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="txtStudent" min="-2" pref="190" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="lblVozidloPomoc" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="lblStudentPomoc" min="-2" pref="30" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="txtDatum" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
                                       <Component id="txtCas" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
                                       <Component id="txtKm" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Component id="btnNovyInstruktor" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="chBoxVpremavke" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="chBoxNacvicisku" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="chBoxSvozikom" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="chBoxVpremavke" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnVynuluj" min="-2" pref="70" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnOk" min="-2" pref="70" max="-2" attributes="0"/>
-                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtStudent" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="lblStudent" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="txtStudent" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="lblStudentPomoc" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -111,13 +110,13 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnNovyInstruktor" min="-2" pref="25" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtVozidlo" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="lblVozidlo" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="lblVozidloPomoc" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="btnNoveVozidlo" min="-2" pref="25" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -142,8 +141,8 @@
               <Component id="chBoxSvozikom" min="-2" pref="25" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnOk" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="btnVynuluj" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="btnOk" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -156,12 +155,27 @@
         <Property name="text" type="java.lang.String" value="Student:"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JLabel" name="lblInstruktor">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Instruktor:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblVozidlo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Vozidlo:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtStudent">
+    </Component>
     <Component class="javax.swing.JTextField" name="txtInstruktor">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtVozidlo">
     </Component>
     <Component class="javax.swing.JLabel" name="lblStudentPomoc">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="?"/>
+        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;Zadajte meno, priezvisko a datum narodenia existujuceho studenta v tvare:&#xa;&lt;br&gt;&quot;meno priezvisko den.mesiac.rok&quot;&#xa;&lt;br&gt;Ak student este nie je zaevidovany v databaze, mozete tak spravit kliknutim na tlacidlo&#xa;&lt;br&gt;&lt;b&gt;Novy student&lt;/b&gt;&#xa;&lt;/html&gt;"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder/>
@@ -169,14 +183,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblInstruktor">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Instruktor:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtStudent">
-    </Component>
-    <Component class="javax.swing.JToggleButton" name="btnNovyStudent">
+    <Component class="javax.swing.JButton" name="btnNovyStudent">
       <Properties>
         <Property name="text" type="java.lang.String" value="Novy student"/>
       </Properties>
@@ -185,6 +192,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="?"/>
+        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;Zadajte meno a priezvisko existujuceho instruktora v tvare:&#xa;&lt;br&gt;&quot;meno priezvisko&quot;&#xa;&lt;br&gt;Ak instruktor este nie je zaevidovany v databaze, mozete tak spravit kliknutim na tlacidlo&#xa;&lt;br&gt;&lt;b&gt;Novy instruktor&lt;/b&gt;&#xa;&lt;/html&gt;"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder/>
@@ -192,22 +200,16 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="btnNovyInstruktor">
+    <Component class="javax.swing.JButton" name="btnNovyInstruktor">
       <Properties>
         <Property name="text" type="java.lang.String" value="Novy instruktor"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtVozidlo">
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblVozidlo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Vozidlo:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblVozidloPomoc">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="?"/>
+        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;Zadajte SPZ vozidla. &#xa;&lt;br&gt;Ak vozidlo este nie je zaevidovane v databaze,  mozete tak spravit kliknutim na tlacidlo &#xa;&lt;br&gt;&lt;b&gt;Nove vozidlo&lt;/b&gt;&#xa;&lt;/html&gt;"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder/>
@@ -215,7 +217,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="btnNoveVozidlo">
+    <Component class="javax.swing.JButton" name="btnNoveVozidlo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nove vozidlo"/>
       </Properties>
@@ -256,14 +258,14 @@
         <Property name="text" type="java.lang.String" value="S vozikom"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="btnOk">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="OK"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JToggleButton" name="btnVynuluj">
+    <Component class="javax.swing.JButton" name="btnVynuluj">
       <Properties>
         <Property name="text" type="java.lang.String" value="Vynuluj"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnOk">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="OK"/>
       </Properties>
     </Component>
   </SubComponents>

@@ -21,11 +21,8 @@ public class UpravaStudentiFormular extends javax.swing.JFrame {
         lblBydlisko = new javax.swing.JLabel();
         lblDatumNarodenia = new javax.swing.JLabel();
         lblKontakt = new javax.swing.JLabel();
-        lblPvaPomoc = new javax.swing.JLabel();
         lblPocetBodov = new javax.swing.JLabel();
         lblPocetPokusov = new javax.swing.JLabel();
-        lblCvicisko = new javax.swing.JLabel();
-        lblJazda = new javax.swing.JLabel();
         txtPocetBodov = new javax.swing.JTextField();
         txtDatumNarodenia = new javax.swing.JTextField();
         txtPriezvisko = new javax.swing.JTextField();
@@ -33,14 +30,11 @@ public class UpravaStudentiFormular extends javax.swing.JFrame {
         txtBydlisko = new javax.swing.JTextField();
         txtKontakt = new javax.swing.JTextField();
         txtPocetPokusov = new javax.swing.JTextField();
-        rbtnPrvaPomocAno = new javax.swing.JRadioButton();
-        rbtnPrvaPomocNie = new javax.swing.JRadioButton();
-        rbtnCviciskoAno = new javax.swing.JRadioButton();
-        rbtnCviciskoNie = new javax.swing.JRadioButton();
-        rbtnJazdaAno = new javax.swing.JRadioButton();
-        rbtnJazdaNie = new javax.swing.JRadioButton();
-        btnOk = new javax.swing.JToggleButton();
-        btnVynuluj = new javax.swing.JToggleButton();
+        chBoxPrvaPomoc = new javax.swing.JCheckBox();
+        chBoxCvicisko = new javax.swing.JCheckBox();
+        chBoxJazda = new javax.swing.JCheckBox();
+        btnVynuluj = new javax.swing.JButton();
+        btnOk = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Student");
@@ -57,31 +51,19 @@ public class UpravaStudentiFormular extends javax.swing.JFrame {
 
         lblKontakt.setText("Kontakt:");
 
-        lblPvaPomoc.setText("Prva pomoc:");
-
         lblPocetBodov.setText("Pocet bodov:");
 
         lblPocetPokusov.setText("Pocet pokusov:");
 
-        lblCvicisko.setText("Cvicisko:");
+        chBoxPrvaPomoc.setText("Prva pomoc");
 
-        lblJazda.setText("Jazda:");
+        chBoxCvicisko.setText("Cvicisko");
 
-        rbtnPrvaPomocAno.setText("ano");
-
-        rbtnPrvaPomocNie.setText("nie");
-
-        rbtnCviciskoAno.setText("ano");
-
-        rbtnCviciskoNie.setText("nie");
-
-        rbtnJazdaAno.setText("ano");
-
-        rbtnJazdaNie.setText("nie");
-
-        btnOk.setText("OK");
+        chBoxJazda.setText("Jazda");
 
         btnVynuluj.setText("Vynuluj");
+
+        btnOk.setText("OK");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,37 +72,27 @@ public class UpravaStudentiFormular extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPocetBodov)
-                    .addComponent(lblDatumNarodenia)
-                    .addComponent(lblPriezvisko)
-                    .addComponent(lblMeno)
-                    .addComponent(lblBydlisko)
-                    .addComponent(lblKontakt)
-                    .addComponent(lblPocetPokusov)
-                    .addComponent(lblPvaPomoc)
-                    .addComponent(lblCvicisko)
-                    .addComponent(lblJazda))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chBoxJazda)
+                    .addComponent(chBoxCvicisko)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(rbtnPrvaPomocAno)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbtnPrvaPomocNie))
-                    .addComponent(txtPocetPokusov, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtKontakt, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBydlisko, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMeno, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPriezvisko, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDatumNarodenia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPocetBodov, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(rbtnCviciskoAno)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbtnCviciskoNie))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(rbtnJazdaAno)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbtnJazdaNie)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPocetBodov)
+                            .addComponent(lblDatumNarodenia)
+                            .addComponent(lblPriezvisko)
+                            .addComponent(lblMeno)
+                            .addComponent(lblBydlisko)
+                            .addComponent(lblKontakt)
+                            .addComponent(lblPocetPokusov))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPocetPokusov, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtKontakt, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBydlisko, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMeno, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPriezvisko, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDatumNarodenia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPocetBodov, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(chBoxPrvaPomoc))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -160,25 +132,16 @@ public class UpravaStudentiFormular extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPocetBodov, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPocetBodov, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(chBoxPrvaPomoc)
+                .addGap(18, 18, 18)
+                .addComponent(chBoxCvicisko)
+                .addGap(18, 18, 18)
+                .addComponent(chBoxJazda)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPvaPomoc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbtnPrvaPomocAno)
-                    .addComponent(rbtnPrvaPomocNie))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbtnCviciskoAno)
-                    .addComponent(rbtnCviciskoNie)
-                    .addComponent(lblCvicisko, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbtnJazdaAno)
-                    .addComponent(rbtnJazdaNie)
-                    .addComponent(lblJazda, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -221,24 +184,18 @@ public class UpravaStudentiFormular extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnOk;
-    private javax.swing.JToggleButton btnVynuluj;
+    private javax.swing.JButton btnOk;
+    private javax.swing.JButton btnVynuluj;
+    private javax.swing.JCheckBox chBoxCvicisko;
+    private javax.swing.JCheckBox chBoxJazda;
+    private javax.swing.JCheckBox chBoxPrvaPomoc;
     private javax.swing.JLabel lblBydlisko;
-    private javax.swing.JLabel lblCvicisko;
     private javax.swing.JLabel lblDatumNarodenia;
-    private javax.swing.JLabel lblJazda;
     private javax.swing.JLabel lblKontakt;
     private javax.swing.JLabel lblMeno;
     private javax.swing.JLabel lblPocetBodov;
     private javax.swing.JLabel lblPocetPokusov;
     private javax.swing.JLabel lblPriezvisko;
-    private javax.swing.JLabel lblPvaPomoc;
-    private javax.swing.JRadioButton rbtnCviciskoAno;
-    private javax.swing.JRadioButton rbtnCviciskoNie;
-    private javax.swing.JRadioButton rbtnJazdaAno;
-    private javax.swing.JRadioButton rbtnJazdaNie;
-    private javax.swing.JRadioButton rbtnPrvaPomocAno;
-    private javax.swing.JRadioButton rbtnPrvaPomocNie;
     private javax.swing.JTextField txtBydlisko;
     private javax.swing.JTextField txtDatumNarodenia;
     private javax.swing.JTextField txtKontakt;

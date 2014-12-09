@@ -26,44 +26,33 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblPocetBodov" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblDatumNarodenia" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblPriezvisko" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblMeno" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblBydlisko" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblKontakt" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblPocetPokusov" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblPvaPomoc" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblCvicisko" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblJazda" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="chBoxJazda" min="-2" max="-2" attributes="0"/>
+                  <Component id="chBoxCvicisko" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="rbtnPrvaPomocAno" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="rbtnPrvaPomocNie" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblPocetBodov" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDatumNarodenia" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblPriezvisko" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMeno" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblBydlisko" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblKontakt" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblPocetPokusov" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtPocetPokusov" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="txtKontakt" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="txtBydlisko" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="txtMeno" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="txtPriezvisko" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="txtDatumNarodenia" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="txtPocetBodov" min="-2" pref="50" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <Component id="txtPocetPokusov" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="txtKontakt" min="-2" pref="200" max="-2" attributes="0"/>
-                  <Component id="txtBydlisko" min="-2" pref="200" max="-2" attributes="0"/>
-                  <Component id="txtMeno" min="-2" pref="200" max="-2" attributes="0"/>
-                  <Component id="txtPriezvisko" min="-2" pref="200" max="-2" attributes="0"/>
-                  <Component id="txtDatumNarodenia" min="-2" pref="200" max="-2" attributes="0"/>
-                  <Component id="txtPocetBodov" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="rbtnCviciskoAno" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="rbtnCviciskoNie" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="rbtnJazdaAno" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="rbtnJazdaNie" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="chBoxPrvaPomoc" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -114,28 +103,16 @@
                   <Component id="txtPocetBodov" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="lblPocetBodov" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="chBoxPrvaPomoc" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="chBoxCvicisko" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="chBoxJazda" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblPvaPomoc" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  <Component id="rbtnPrvaPomocAno" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbtnPrvaPomocNie" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="rbtnCviciskoAno" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbtnCviciskoNie" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblCvicisko" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="rbtnJazdaAno" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbtnJazdaNie" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblJazda" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnOk" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="btnVynuluj" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="btnOk" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -168,11 +145,6 @@
         <Property name="text" type="java.lang.String" value="Kontakt:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblPvaPomoc">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Prva pomoc:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblPocetBodov">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pocet bodov:"/>
@@ -181,16 +153,6 @@
     <Component class="javax.swing.JLabel" name="lblPocetPokusov">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pocet pokusov:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblCvicisko">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Cvicisko:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblJazda">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Jazda:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtPocetBodov">
@@ -207,44 +169,29 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtPocetPokusov">
     </Component>
-    <Component class="javax.swing.JRadioButton" name="rbtnPrvaPomocAno">
+    <Component class="javax.swing.JCheckBox" name="chBoxPrvaPomoc">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ano"/>
+        <Property name="text" type="java.lang.String" value="Prva pomoc"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="rbtnPrvaPomocNie">
+    <Component class="javax.swing.JCheckBox" name="chBoxCvicisko">
       <Properties>
-        <Property name="text" type="java.lang.String" value="nie"/>
+        <Property name="text" type="java.lang.String" value="Cvicisko"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="rbtnCviciskoAno">
+    <Component class="javax.swing.JCheckBox" name="chBoxJazda">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ano"/>
+        <Property name="text" type="java.lang.String" value="Jazda"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="rbtnCviciskoNie">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="nie"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="rbtnJazdaAno">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="ano"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="rbtnJazdaNie">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="nie"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JToggleButton" name="btnOk">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="OK"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JToggleButton" name="btnVynuluj">
+    <Component class="javax.swing.JButton" name="btnVynuluj">
       <Properties>
         <Property name="text" type="java.lang.String" value="Vynuluj"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnOk">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="OK"/>
       </Properties>
     </Component>
   </SubComponents>

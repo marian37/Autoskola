@@ -16,6 +16,10 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btngPrvaPomoc = new javax.swing.ButtonGroup();
+        btngTest = new javax.swing.ButtonGroup();
+        btngCvicisko = new javax.swing.ButtonGroup();
+        btngKategoria = new javax.swing.ButtonGroup();
         pnlNazov = new javax.swing.JPanel();
         chBoxMeno = new javax.swing.JCheckBox();
         txtMeno = new javax.swing.JTextField();
@@ -204,20 +208,26 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
 
         chBoxPrvaPomoc.setText("Prva pomoc");
 
+        btngPrvaPomoc.add(rbtnPrvaPomocAno);
         rbtnPrvaPomocAno.setText("ano");
 
+        btngPrvaPomoc.add(rbtnPrvaPomocNie);
         rbtnPrvaPomocNie.setText("nie");
 
         chBoxTest.setText("Test");
 
+        btngTest.add(rbtnTestAno);
         rbtnTestAno.setText("ano");
 
+        btngTest.add(rbtnTestNie);
         rbtnTestNie.setText("nie");
 
         chBoxCvicisko.setText("Cvicisko");
 
+        btngCvicisko.add(rbtnCviciskoAno);
         rbtnCviciskoAno.setText("ano");
 
+        btngCvicisko.add(rbtnCviciskoNie);
         rbtnCviciskoNie.setText("nie");
 
         lblZarovnanieBooleanPanel1.setText("   ");
@@ -283,12 +293,16 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
 
         chBoxKategoria.setText("Kategoria");
 
+        btngKategoria.add(rbtnKategoriaA);
         rbtnKategoriaA.setText("A");
 
+        btngKategoria.add(rbtnKategoriaB);
         rbtnKategoriaB.setText("B");
 
+        btngKategoria.add(rbtnKategoriaC);
         rbtnKategoriaC.setText("C");
 
+        btngKategoria.add(rbtnKategoriaD);
         rbtnKategoriaD.setText("D");
 
         javax.swing.GroupLayout pnlKategoriaLayout = new javax.swing.GroupLayout(pnlKategoria);
@@ -455,6 +469,10 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
     private javax.swing.JButton btnUprav;
     private javax.swing.JButton btnVymaz;
     private javax.swing.JToggleButton btnVynuluj;
+    private javax.swing.ButtonGroup btngCvicisko;
+    private javax.swing.ButtonGroup btngKategoria;
+    private javax.swing.ButtonGroup btngPrvaPomoc;
+    private javax.swing.ButtonGroup btngTest;
     private javax.swing.JCheckBox chBoxBydlisko;
     private javax.swing.JCheckBox chBoxCvicisko;
     private javax.swing.JCheckBox chBoxDatumNarodenia;

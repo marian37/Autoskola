@@ -16,6 +16,10 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btngVpremavke = new javax.swing.ButtonGroup();
+        btngNacvicisku = new javax.swing.ButtonGroup();
+        btngSvozikom = new javax.swing.ButtonGroup();
+        btngKategoria = new javax.swing.ButtonGroup();
         pnlNazov = new javax.swing.JPanel();
         chBoxStudent = new javax.swing.JCheckBox();
         txtStudent = new javax.swing.JTextField();
@@ -204,20 +208,26 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
 
         chBoxVpremavke.setText("V premavke");
 
+        btngVpremavke.add(rbtnVpremavkeAno);
         rbtnVpremavkeAno.setText("ano");
 
+        btngVpremavke.add(rbtnVpremavkeNie);
         rbtnVpremavkeNie.setText("nie");
 
         chBoxNacvicisku.setText("Na cvicisku");
 
+        btngNacvicisku.add(rbtnNacviciskuAno);
         rbtnNacviciskuAno.setText("ano");
 
+        btngNacvicisku.add(rbtnNacviciskuNie);
         rbtnNacviciskuNie.setText("nie");
 
         chBoxSvozikom.setText("S vozikom");
 
+        btngSvozikom.add(rbtnSvozikomAno);
         rbtnSvozikomAno.setText("ano");
 
+        btngSvozikom.add(rbtnSvozikomNie);
         rbtnSvozikomNie.setText("nie");
 
         lblZarovnanieBooleanPanel1.setText("   ");
@@ -283,12 +293,16 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
 
         chBoxKategoria.setText("Kategoria");
 
+        btngKategoria.add(rbtnKategoriaA);
         rbtnKategoriaA.setText("A");
 
+        btngKategoria.add(rbtnKategoriaB);
         rbtnKategoriaB.setText("B");
 
+        btngKategoria.add(rbtnKategoriaC);
         rbtnKategoriaC.setText("C");
 
+        btngKategoria.add(rbtnKategoriaD);
         rbtnKategoriaD.setText("D");
 
         javax.swing.GroupLayout pnlKategoriaLayout = new javax.swing.GroupLayout(pnlKategoria);
@@ -454,6 +468,10 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
     private javax.swing.JButton btnUprav;
     private javax.swing.JButton btnVymaz;
     private javax.swing.JToggleButton btnVynuluj;
+    private javax.swing.ButtonGroup btngKategoria;
+    private javax.swing.ButtonGroup btngNacvicisku;
+    private javax.swing.ButtonGroup btngSvozikom;
+    private javax.swing.ButtonGroup btngVpremavke;
     private javax.swing.JCheckBox chBoxCas;
     private javax.swing.JCheckBox chBoxDatum;
     private javax.swing.JCheckBox chBoxInstruktor;
