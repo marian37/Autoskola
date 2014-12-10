@@ -1,9 +1,9 @@
 package sk.upjs.ics.paz1c.databazoveDao;
 
-import java.sql.Date;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.BeforeClass;
 import sk.upjs.ics.paz1c.autoskola.BeanFactory;
 import sk.upjs.ics.paz1c.dao.InstruktoriDao;
 import sk.upjs.ics.paz1c.entity.Instruktor;
@@ -12,20 +12,20 @@ public class DatabazoveInstruktoriDaoTest {
 
     private static final int POCET_INSTRUKTOROV_V_DB = 5;
 
-    private InstruktoriDao instruktoriDao = BeanFactory.INSTANCE.getInstruktoriDao();
+    private final InstruktoriDao instruktoriDao = BeanFactory.INSTANCE.getInstruktoriDao();
 
     public DatabazoveInstruktoriDaoTest() {
+    }
+
+    @BeforeClass
+    public static void setUpTests() {
+        System.setProperty("testovaciRezim", "true");
     }
 
     @Test
     public void testDajVsetky() {
         List<Instruktor> instruktori = instruktoriDao.dajVsetky();
         assertEquals(POCET_INSTRUKTOROV_V_DB, instruktori.size());
-    }
-
-    @Test
-    public void testUloz() {
-        testUlozAVymaz();
     }
 
     @Test
@@ -45,18 +45,13 @@ public class DatabazoveInstruktoriDaoTest {
     }
 
     @Test
-    public void testVymaz() {
-        testUlozAVymaz();
-    }
-
-    @Test
     public void testUlozAVymaz() {
         List<Instruktor> instruktori = instruktoriDao.dajVsetky();
         int staraVelkost = instruktori.size();
 
         Instruktor instruktor = new Instruktor();
         instruktor.setMeno("Artur");
-        instruktor.setPriezvisko("VeÄ¾kÃ½");
+        instruktor.setPriezvisko("Veľký");
         instruktor.setKontakt("0902345789");
 
         // Ulozi instruktora

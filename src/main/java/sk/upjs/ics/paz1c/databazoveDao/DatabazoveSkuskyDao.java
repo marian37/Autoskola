@@ -46,17 +46,25 @@ public class DatabazoveSkuskyDao implements SkuskyDao {
         String sql = "INSERT INTO Skuska (datum, cas, instruktorId, policajt)\n"
                 + "VALUES (:datum, :cas, :instruktorId, :policajt)";
 
-        String sql2 = "INSERT INTO SkuskaStudent (skuskaId, studentId) VALUES";
+        StringBuilder sql2 = new StringBuilder("INSERT INTO SkuskaStudent (skuskaId, studentId) VALUES");
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(insertMap), keyHolder);
         Long id = keyHolder.getKey().longValue();
         skuska.setId(id);
         for (int i = 0; i < studenti.size() - 1; i++) {
-            sql2 += "(" + skuska.getId() + ", :" + i + "),";
+            sql2.append("(")
+                    .append(skuska.getId())
+                    .append(", :")
+                    .append(i)
+                    .append("),");
         }
-        sql2 += "(" + skuska.getId() + ", :" + (studenti.size() - 1) + ")";
-        namedParameterJdbcTemplate.update(sql2, new MapSqlParameterSource(insertMap));
+        sql2.append("(")
+                .append(skuska.getId())
+                .append(", :")
+                .append(studenti.size() - 1)
+                .append(")");
+        namedParameterJdbcTemplate.update(sql2.toString(), new MapSqlParameterSource(insertMap));
     }
 
     @Override
@@ -75,15 +83,23 @@ public class DatabazoveSkuskyDao implements SkuskyDao {
 
         String sql = "UPDATE Skuska SET datum = :datum, cas = :cas, instruktorId = :instruktorId, policajt = :policajt WHERE id = :id";
         String sql2 = "DELETE FROM SkuskaStudent WHERE skuskaId = ?";
-        String sql3 = "INSERT INTO SkuskaStudent (skuskaId, studentId) VALUES";
+        StringBuilder sql3 = new StringBuilder("INSERT INTO SkuskaStudent (skuskaId, studentId) VALUES");
         for (int i = 0; i < studenti.size() - 1; i++) {
-            sql3 += "(" + skuska.getId() + ", :" + i + "),";
+            sql3.append("(")
+                    .append(skuska.getId())
+                    .append(", :")
+                    .append(i)
+                    .append("),");
         }
-        sql3 += "(" + skuska.getId() + ", :" + (studenti.size() - 1) + ")";
+        sql3.append("(")
+                .append(skuska.getId())
+                .append(", :")
+                .append(studenti.size() - 1)
+                .append(")");
 
         namedParameterJdbcTemplate.update(sql, updateMap);
         jdbcTemplate.update(sql2, skuska.getId());
-        namedParameterJdbcTemplate.update(sql3, updateMap);
+        namedParameterJdbcTemplate.update(sql3.toString(), updateMap);
     }
 
     @Override

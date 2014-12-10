@@ -1,7 +1,5 @@
 package sk.upjs.ics.paz1c.gui;
 
-import sk.upjs.ics.paz1c.dao.VozidlaDao;
-
 public class HlavnyFormular extends javax.swing.JFrame {
 
     public HlavnyFormular() {

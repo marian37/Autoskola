@@ -3,6 +3,9 @@ package sk.upjs.ics.paz1c.autoskola;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,8 +18,6 @@ public enum BeanFactory {
 
     INSTANCE;
 
-    private final String PASSWORD_FILE = "password.txt";
-
     private StudentiDao studentiDao;
 
     private VozidlaDao vozidlaDao;
@@ -28,6 +29,8 @@ public enum BeanFactory {
     private SkuskyDao skuskyDao;
 
     private JdbcTemplate jdbcTemplate;
+
+    private DataSource dataSource;
 
     private String password;
 
@@ -74,29 +77,42 @@ public enum BeanFactory {
     }
 
     private DataSource dataSource() {
-        MysqlDataSource dataSource = new MysqlDataSource();
-        dataSource.setUrl("jdbc:mysql://db4free.net:3306/autoskolapaz1c?zeroDateTimeBehavior=convertToNull");
-        dataSource.setUser("autoskolapaz1c");
-        dataSource.setPassword(password());
+        if (this.dataSource == null) {
+            MysqlDataSource dataSource = new MysqlDataSource();
+            Properties properties = getProperties();
+            if ("test".equals(properties.get("rezim"))) {
+                dataSource.setUrl("jdbc:mysql://db4free.net:3306/autoskolapaztest?zeroDateTimeBehavior=convertToNull");
+                dataSource.setUser("autoskolapaztest");
+            } else {
+                dataSource.setUrl("jdbc:mysql://db4free.net:3306/autoskolapaz1c?zeroDateTimeBehavior=convertToNull");
+                dataSource.setUser("autoskolapaz1c");
+            }
+            dataSource.setPassword(properties.getProperty("heslo"));
+            this.dataSource = dataSource;
+        }
 
-        return dataSource;
+        return this.dataSource;
     }
 
-    private String password() {
-        if (password == null) {
-            Scanner scanner = null;
-            try {
-                scanner = new Scanner(new File(PASSWORD_FILE));
-                password = scanner.next();
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(BeanFactory.class.getName()).log(Level.SEVERE, "Zlyhalo nacitanie hesla zo suboru", ex);
-            } finally {
-                if (scanner != null) {
-                    scanner.close();
-                }
+    private Properties getProperties() {
+        try {
+            String propertiesFile;
+
+            if ("true".equals(System.getProperty("testovaciRezim"))) {
+                propertiesFile = "/autoskola-test.properties";
+            } else {
+                propertiesFile = "/autoskola.properties";
             }
+
+            InputStream in = BeanFactory.class.getResourceAsStream(propertiesFile);
+
+            Properties properties = new Properties();
+            properties.load(in);
+
+            return properties;
+        } catch (IOException e) {
+            throw new IllegalStateException("Nenasiel sa konfiguracny subor");
         }
-        return password;
     }
 
 }

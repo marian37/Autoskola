@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.BeforeClass;
 import sk.upjs.ics.paz1c.autoskola.BeanFactory;
 import sk.upjs.ics.paz1c.dao.SkuskyDao;
 import sk.upjs.ics.paz1c.dao.StudentiDao;
@@ -16,11 +17,16 @@ public class DatabazoveStudentiDaoTest {
 
     private static final int POCET_STUDENTOV_NA_SKUSKE = 2;
 
-    private StudentiDao studentiDao = BeanFactory.INSTANCE.getStudentiDao();
+    private final StudentiDao studentiDao = BeanFactory.INSTANCE.getStudentiDao();
 
-    private SkuskyDao skuskyDao = BeanFactory.INSTANCE.getSkuskyDao();
+    private final SkuskyDao skuskyDao = BeanFactory.INSTANCE.getSkuskyDao();
 
     public DatabazoveStudentiDaoTest() {
+    }
+
+    @BeforeClass
+    public static void setUpTests() {
+        System.setProperty("testovaciRezim", "true");
     }
 
     @Test
@@ -37,11 +43,6 @@ public class DatabazoveStudentiDaoTest {
     }
 
     @Test
-    public void testUloz() {
-        testUlozAVymaz();
-    }
-
-    @Test
     public void testUprav() {
         List<Student> studenti = studentiDao.dajVsetky();
         Student student = studenti.get(0);
@@ -55,11 +56,6 @@ public class DatabazoveStudentiDaoTest {
         // Vrati povodnu hodnotu
         student.setBydlisko(stareBydlisko);
         studentiDao.uprav(student);
-    }
-
-    @Test
-    public void testVymaz() {
-        testUlozAVymaz();
     }
 
     @Test

@@ -3,6 +3,7 @@ package sk.upjs.ics.paz1c.databazoveDao;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.BeforeClass;
 import sk.upjs.ics.paz1c.autoskola.BeanFactory;
 import sk.upjs.ics.paz1c.dao.VozidlaDao;
 import sk.upjs.ics.paz1c.entity.Vozidlo;
@@ -11,20 +12,20 @@ public class DatabazoveVozidlaDaoTest {
 
     private static final int POCET_VOZIDIEL_V_DB = 5;
 
-    private VozidlaDao vozidlaDao = BeanFactory.INSTANCE.getVozidlaDao();
+    private final VozidlaDao vozidlaDao = BeanFactory.INSTANCE.getVozidlaDao();
 
     public DatabazoveVozidlaDaoTest() {
+    }
+
+    @BeforeClass
+    public static void setUpTests() {
+        System.setProperty("testovaciRezim", "true");
     }
 
     @Test
     public void testDajVsetky() {
         List<Vozidlo> vozidla = vozidlaDao.dajVsetky();
         assertEquals(POCET_VOZIDIEL_V_DB, vozidla.size());
-    }
-
-    @Test
-    public void testUloz() {
-        testUlozAVymaz();
     }
 
     @Test
@@ -41,11 +42,6 @@ public class DatabazoveVozidlaDaoTest {
         // Vrati povodnu hodnotu
         vozidlo.setFarba(staraFarba);
         vozidlaDao.uprav(vozidlo);
-    }
-
-    @Test
-    public void testVymaz() {
-        testUlozAVymaz();
     }
 
     @Test
