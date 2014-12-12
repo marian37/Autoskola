@@ -1,9 +1,206 @@
 package sk.upjs.ics.paz1c.gui;
 
+import sk.upjs.ics.paz1c.gui.rowFilters.*;
+import sk.upjs.ics.paz1c.gui.tabelModels.*;
+import java.util.Arrays;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.TableRowSorter;
+import sk.upjs.ics.paz1c.autoskola.BeanFactory;
+import sk.upjs.ics.paz1c.dao.*;
+
 public class HlavnyFormular extends javax.swing.JFrame {
+
+    private JazdyDao jazdyDao = BeanFactory.INSTANCE.getJazdyDao();
+    private JazdyTableModel jazdyTableModel = new JazdyTableModel();
+    private TableRowSorter jazdyRowSorter = new TableRowSorter(jazdyTableModel);
+    private JazdyPodlaDatumuRowFilter jazdyPodlaDatumuRowFilter = new JazdyPodlaDatumuRowFilter();
+    private JazdyPodlaStudentaRowFilter jazdyPodlaStudentaRowFilter = new JazdyPodlaStudentaRowFilter();
+    private JazdyPodlaInstruktoraRowFilter jazdyPodlaInstruktoraRowFilter = new JazdyPodlaInstruktoraRowFilter();
+
+    private SkuskyDao skuskyDao = BeanFactory.INSTANCE.getSkuskyDao();
+    private SkuskyTableModel skuskyTableModel = new SkuskyTableModel();
+    private TableRowSorter skuskyRowSorter = new TableRowSorter(skuskyTableModel);
+    private SkuskyPodlaDatumuRowFilter skuskyPodlaDatumuRowFilter = new SkuskyPodlaDatumuRowFilter();
+    private SkuskyPodlaStudentaRowFilter skuskyPodlaStudentaRowFilter = new SkuskyPodlaStudentaRowFilter();
+    private SkuskyPodlaInstruktoraRowFilter skuskyPodlaInstruktoraRowFilter = new SkuskyPodlaInstruktoraRowFilter();
+
+    private StudentiDao studentiDao = BeanFactory.INSTANCE.getStudentiDao();
+    private StudentiTableModel studentiTableModel = new StudentiTableModel();
+    private TableRowSorter studentiRowSorter = new TableRowSorter(studentiTableModel);
+    private StudentiPodlaMenaRowFilter studentiPodlaMenaRowFilter = new StudentiPodlaMenaRowFilter();
+    private StudentiPodlaPriezviskaRowFilter studentiPodlaPriezviskaRowFilter = new StudentiPodlaPriezviskaRowFilter();
+
+    private InstruktoriDao instruktoriDao = BeanFactory.INSTANCE.getInstruktoriDao();
+    private InstruktoriTableModel instruktoriTableModel = new InstruktoriTableModel();
+    private TableRowSorter instruktoriRowSorter = new TableRowSorter(instruktoriTableModel);
+    private InstruktoriPodlaMenaRowFilter instruktoriPodlaMenaRowFilter = new InstruktoriPodlaMenaRowFilter();
+    private InstruktoriPodlaPriezviskaRowFilter instruktoriPodlaPriezviskaRowFilter = new InstruktoriPodlaPriezviskaRowFilter();
+
+    private VozidlaDao vozidlaDao = BeanFactory.INSTANCE.getVozidlaDao();
+    private VozidlaTableModel vozidlaTableModel = new VozidlaTableModel();
+    private TableRowSorter vozidlaRowSorter = new TableRowSorter(vozidlaTableModel);
+    private VozidlaPodlaSpzRowFilter vozidlaPodlaSpzRowFilter = new VozidlaPodlaSpzRowFilter();
+    private VozidlaPodlaZnackyRowFilter vozidlaPodlaZnackyRowFilter = new VozidlaPodlaZnackyRowFilter();
+    private VozidlaPodlaKategorieRowFilter vozidlaPodlaKategorieRowFilter = new VozidlaPodlaKategorieRowFilter();
 
     public HlavnyFormular() {
         initComponents();
+        nastavJazdy();
+        nastavSkusky();
+        nastavStudenti();
+        nastavInstruktori();
+        nastavVozidla();
+    }
+
+    private void nastavJazdy() {
+        jazdyRowSorter.setRowFilter(jazdyPodlaDatumuRowFilter);
+        tblJazdy.setModel(jazdyTableModel);
+
+        tblJazdy.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                tblJazdySelectionValueChanged(e);
+            }
+        });
+
+        aktualizujZoznamJazd();
+    }
+
+    private void tblJazdySelectionValueChanged(ListSelectionEvent e) {
+        if (!e.getValueIsAdjusting()) {
+            if (!tblJazdy.getSelectionModel().isSelectionEmpty()) {
+                btnJazdyUprav.setEnabled(true);
+                btnJazdyVymaz.setEnabled(true);
+            } else {
+                btnJazdyUprav.setEnabled(false);
+                btnJazdyVymaz.setEnabled(false);
+            }
+        }
+    }
+
+    private void aktualizujZoznamJazd() {
+        jazdyTableModel.obnov();
+    }
+
+    private void nastavSkusky() {
+        skuskyRowSorter.setRowFilter(skuskyPodlaDatumuRowFilter);
+        tblSkusky.setModel(skuskyTableModel);
+
+        tblSkusky.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                tblSkuskySelectionValueChanged(e);
+            }
+        });
+
+        aktualizujZoznamSkusok();
+    }
+
+    private void tblSkuskySelectionValueChanged(ListSelectionEvent e) {
+        if (!e.getValueIsAdjusting()) {
+            if (!tblSkusky.getSelectionModel().isSelectionEmpty()) {
+                btnSkuskyUprav.setEnabled(true);
+                btnSkuskyVymaz.setEnabled(true);
+            } else {
+                btnSkuskyUprav.setEnabled(false);
+                btnSkuskyVymaz.setEnabled(false);
+            }
+        }
+    }
+
+    private void aktualizujZoznamSkusok() {
+        skuskyTableModel.obnov();
+    }
+
+    private void nastavStudenti() {
+        studentiRowSorter.setRowFilter(studentiPodlaMenaRowFilter);
+        tblStudenti.setModel(studentiTableModel);
+
+        tblStudenti.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                tblStudentiSelectionValueChanged(e);
+            }
+        });
+
+        aktualizujZoznamStudentov();
+    }
+
+    private void tblStudentiSelectionValueChanged(ListSelectionEvent e) {
+        if (!e.getValueIsAdjusting()) {
+            if (!tblStudenti.getSelectionModel().isSelectionEmpty()) {
+                btnStudentiUprav.setEnabled(true);
+                btnStudentiVymaz.setEnabled(true);
+            } else {
+                btnStudentiUprav.setEnabled(false);
+                btnStudentiVymaz.setEnabled(false);
+            }
+        }
+    }
+
+    private void aktualizujZoznamStudentov() {
+        studentiTableModel.obnov();
+    }
+
+    private void nastavInstruktori() {
+        instruktoriRowSorter.setRowFilter(instruktoriPodlaMenaRowFilter);
+        tblInstruktori.setModel(instruktoriTableModel);
+
+        tblInstruktori.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                tblInstruktoriSelectionValueChanged(e);
+            }
+        });
+
+        aktualizujZoznamInstruktorov();
+    }
+
+    private void tblInstruktoriSelectionValueChanged(ListSelectionEvent e) {
+        if (!e.getValueIsAdjusting()) {
+            if (!tblInstruktori.getSelectionModel().isSelectionEmpty()) {
+                btnInstruktoriUprav.setEnabled(true);
+                btnInstruktoriVymaz.setEnabled(true);
+            } else {
+                btnInstruktoriUprav.setEnabled(false);
+                btnInstruktoriVymaz.setEnabled(false);
+            }
+        }
+    }
+
+    private void aktualizujZoznamInstruktorov() {
+        instruktoriTableModel.obnov();
+    }
+
+    private void nastavVozidla() {
+        vozidlaRowSorter.setRowFilter(vozidlaPodlaSpzRowFilter);
+        tblVozidla.setModel(vozidlaTableModel);
+
+        tblVozidla.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                tblVozidlaSelectionValueChanged(e);
+            }
+        });
+
+        aktualizujZoznamVozidiel();
+    }
+    
+    private void tblVozidlaSelectionValueChanged(ListSelectionEvent e) {
+        if (!e.getValueIsAdjusting()) {
+            if (!tblVozidla.getSelectionModel().isSelectionEmpty()) {
+                btnVozidlaUprav.setEnabled(true);
+                btnVozidlaVymaz.setEnabled(true);
+            } else {
+                btnVozidlaUprav.setEnabled(false);
+                btnVozidlaVymaz.setEnabled(false);
+            }
+        }
+    }
+
+    private void aktualizujZoznamVozidiel() {
+        vozidlaTableModel.obnov();
     }
 
     /**
@@ -718,4 +915,5 @@ public class HlavnyFormular extends javax.swing.JFrame {
     private javax.swing.JTextField txtStudentiHladaj;
     private javax.swing.JTextField txtVozidlaHladaj;
     // End of variables declaration//GEN-END:variables
+
 }
