@@ -17,6 +17,12 @@ public class DatabazoveJazdyDaoTest {
 
     private static final int POCET_JAZD_V_DB = 5;
 
+    private static final int POCET_JAZD_V_DB_PODLA_DATUMU = 1;
+
+    private static final int POCET_JAZD_V_DB_PODLA_STUDENTA = 2;
+
+    private static final int POCET_JAZD_V_DB_PODLA_INSTRUKTORA = 3;
+
     private final JazdyDao jazdyDao = BeanFactory.INSTANCE.getJazdyDao();
 
     private final StudentiDao studentiDao = BeanFactory.INSTANCE.getStudentiDao();
@@ -37,6 +43,24 @@ public class DatabazoveJazdyDaoTest {
     public void testDajVsetky() {
         List<Jazda> jazdy = jazdyDao.dajVsetky();
         assertEquals(POCET_JAZD_V_DB, jazdy.size());
+    }
+
+    @Test
+    public void testHladajPodlaDatumu() {
+        List<Jazda> jazdy = jazdyDao.hladajPodlaDatumu("2014-11-20");
+        assertEquals(POCET_JAZD_V_DB_PODLA_DATUMU, jazdy.size());
+    }
+
+    @Test
+    public void testHladajPodlaStudenta() {
+        List<Jazda> jazdy = jazdyDao.hladajPodlaStudenta("Múdry");
+        assertEquals(POCET_JAZD_V_DB_PODLA_STUDENTA, jazdy.size());
+    }
+
+    @Test
+    public void testHladajPodlaInstraktora() {
+        List<Jazda> jazdy = jazdyDao.hladajPodlaInstruktora("Jozef");
+        assertEquals(POCET_JAZD_V_DB_PODLA_INSTRUKTORA, jazdy.size());
     }
 
     @Test

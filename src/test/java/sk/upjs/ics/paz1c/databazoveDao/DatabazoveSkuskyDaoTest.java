@@ -16,6 +16,12 @@ public class DatabazoveSkuskyDaoTest {
 
     private static final int POCET_SKUSOK_V_DB = 5;
 
+    private static final int POCET_SKUSOK_V_DB_PODLA_DATUMU = 4;
+
+    private static final int POCET_SKUSOK_V_DB_PODLA_STUDENTA = 2;
+
+    private static final int POCET_SKUSOK_V_DB_PODLA_INSTRUKTORA = 1;
+
     private final SkuskyDao skuskyDao = BeanFactory.INSTANCE.getSkuskyDao();
 
     private final InstruktoriDao instruktoriDao = BeanFactory.INSTANCE.getInstruktoriDao();
@@ -34,6 +40,24 @@ public class DatabazoveSkuskyDaoTest {
     public void testDajVsetky() {
         List<Skuska> skusky = skuskyDao.dajVsetky();
         assertEquals(POCET_SKUSOK_V_DB, skusky.size());
+    }
+
+    @Test
+    public void testHladajPodlaDatumu() {
+        List<Skuska> skusky = skuskyDao.hladajPodlaDatumu("2014-02-12");
+        assertEquals(POCET_SKUSOK_V_DB_PODLA_DATUMU, skusky.size());
+    }
+
+    @Test
+    public void testHladajPodlaStudenta() {
+        List<Skuska> skusky = skuskyDao.hladajPodlaStudenta("Tomáš");
+        assertEquals(POCET_SKUSOK_V_DB_PODLA_STUDENTA, skusky.size());
+    }
+
+    @Test
+    public void testHladajPodlaInstruktora() {
+        List<Skuska> skusky = skuskyDao.hladajPodlaInstruktora("Jozef Krajňák");
+        assertEquals(POCET_SKUSOK_V_DB_PODLA_INSTRUKTORA, skusky.size());
     }
 
     @Test

@@ -31,11 +31,47 @@ public class DatabazoveJazdyDao implements JazdyDao {
     }
 
     @Override
+    public List<Jazda> hladajPodlaDatumu(String datum) {
+        datum = datum.trim();
+        return jdbcTemplate.query(SqlQueries.SELECT_JAZDA_BY_DATUM, jazdaRowMapper, datum);
+    }
+
+    @Override
+    public List<Jazda> hladajPodlaStudenta(String student) {
+        student = student.trim();
+        String[] studentTokens = student.split(" ");
+        String studentMeno = studentTokens[0];
+        studentMeno = "%" + studentMeno + "%";
+        if (studentTokens.length == 1) {
+            return jdbcTemplate.query(SqlQueries.SELECT_JAZDA_BY_STUDENT, jazdaRowMapper, studentMeno, studentMeno);
+        } else {
+            String studentPriezvisko = studentTokens[1];
+            studentPriezvisko = "%" + studentPriezvisko + "%";
+            return jdbcTemplate.query(SqlQueries.SELECT_JAZDA_BY_STUDENT, jazdaRowMapper, studentMeno, studentPriezvisko);
+        }
+    }
+
+    @Override
+    public List<Jazda> hladajPodlaInstruktora(String instruktor) {
+        instruktor = instruktor.trim();
+        String[] instruktorTokens = instruktor.split(" ");
+        String instruktorMeno = instruktorTokens[0];
+        instruktorMeno = "%" + instruktorMeno + "%";
+        if (instruktorTokens.length == 1) {
+            return jdbcTemplate.query(SqlQueries.SELECT_JAZDA_BY_INSTRUKTOR, jazdaRowMapper, instruktorMeno, instruktorMeno);
+        } else {
+            String instruktorPriezvisko = instruktorTokens[1];
+            instruktorPriezvisko = "%" + instruktorPriezvisko + "%";
+            return jdbcTemplate.query(SqlQueries.SELECT_JAZDA_BY_INSTRUKTOR, jazdaRowMapper, instruktorMeno, instruktorPriezvisko);
+        }
+    }
+
+    @Override
     public void uloz(Jazda jazda) {
         Map<String, Object> insertMap = new HashMap<String, Object>();
         insertMap.put("studentId", jazda.getStudent().getId());
         insertMap.put("instruktorId", jazda.getInstruktor().getId());
-        insertMap.put("vozidloSpz", jazda.getVozidlo().getSpz());
+        insertMap.put("vozidloId", jazda.getVozidlo().getId());
         insertMap.put("datum", jazda.getDatum());
         insertMap.put("cas", jazda.getCas());
         insertMap.put("km", jazda.getKm());
@@ -43,8 +79,8 @@ public class DatabazoveJazdyDao implements JazdyDao {
         insertMap.put("naCvicisku", jazda.isNaCvicisku());
         insertMap.put("sVozikom", jazda.issVozikom());
 
-        String sql = "INSERT INTO Jazda (studentId, instruktorId, vozidloSpz, datum, cas, km, vPremavke, naCvicisku, sVozikom)\n"
-                + "VALUES (:studentId, :instruktorId, :vozidloSpz, :datum, :cas, :km, :vPremavke, :naCvicisku, :sVozikom)";
+        String sql = "INSERT INTO Jazda (studentId, instruktorId, vozidloId, datum, cas, km, vPremavke, naCvicisku, sVozikom)\n"
+                + "VALUES (:studentId, :instruktorId, :vozidloId, :datum, :cas, :km, :vPremavke, :naCvicisku, :sVozikom)";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(insertMap), keyHolder);
@@ -58,7 +94,7 @@ public class DatabazoveJazdyDao implements JazdyDao {
         updateMap.put("id", jazda.getId());
         updateMap.put("studentId", jazda.getStudent().getId());
         updateMap.put("instruktorId", jazda.getInstruktor().getId());
-        updateMap.put("vozidloSpz", jazda.getVozidlo().getSpz());
+        updateMap.put("vozidloId", jazda.getVozidlo().getId());
         updateMap.put("datum", jazda.getDatum());
         updateMap.put("cas", jazda.getCas());
         updateMap.put("km", jazda.getKm());
@@ -66,7 +102,7 @@ public class DatabazoveJazdyDao implements JazdyDao {
         updateMap.put("naCvicisku", jazda.isNaCvicisku());
         updateMap.put("sVozikom", jazda.issVozikom());
 
-        String sql = "UPDATE Jazda SET studentId = :studentId, instruktorId = :instruktorId, vozidloSpz = :vozidloSpz, datum = :datum, cas = :cas, km = :km, vPremavke = :vPremavke, naCvicisku = :naCvicisku, sVozikom = :sVozikom WHERE id = :id";
+        String sql = "UPDATE Jazda SET studentId = :studentId, instruktorId = :instruktorId, vozidloId = :vozidloId, datum = :datum, cas = :cas, km = :km, vPremavke = :vPremavke, naCvicisku = :naCvicisku, sVozikom = :sVozikom WHERE id = :id";
 
         namedParameterJdbcTemplate.update(sql, updateMap);
     }

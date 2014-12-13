@@ -91,7 +91,7 @@ CREATE TABLE Jazda (
     id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     studentId BIGINT NOT NULL REFERENCES Student(id),
     instruktorId BIGINT NOT NULL REFERENCES Instruktor(id),
-    vozidloSpz VARCHAR(7) NOT NULL REFERENCES Vozidlo(spz),
+    vozidloId BIGINT NOT NULL REFERENCES Vozidlo(id),
     datum DATE,
     cas TIME, 
     km INT,
@@ -100,13 +100,13 @@ CREATE TABLE Jazda (
     sVozikom BOOLEAN
 );
 
-INSERT INTO Jazda (studentId, instruktorId, vozidloSpz, datum, cas, km, vPremavke, naCvicisku, sVozikom)
+INSERT INTO Jazda (studentId, instruktorId, vozidloId, datum, cas, km, vPremavke, naCvicisku, sVozikom)
 VALUES
-(1, 3, 'PO000AA', '20141125', '093000', 31, 1, 0, 0),
-(1, 3, 'PO000AA', '20141123', '110000', 20, 1, 0, 1),
-(2, 3, 'PO123BC', '20141122', '123000', 33, 1, 0, 0),
-(4, 1, 'PO000AA', '20141120', '150000', 18, 1, 1, 0),
-(3, 2, 'PO235CX', '20141019', '101500', 15, 1, 1, 0);
+(1, 3, 1, '20141125', '093000', 31, 1, 0, 0),
+(1, 3, 1, '20141123', '110000', 20, 1, 0, 1),
+(2, 3, 2, '20141122', '123000', 33, 1, 0, 0),
+(4, 1, 1, '20141120', '150000', 18, 1, 1, 0),
+(3, 2, 5, '20141019', '101500', 15, 1, 1, 0);
 
 SELECT * FROM Jazda;
 

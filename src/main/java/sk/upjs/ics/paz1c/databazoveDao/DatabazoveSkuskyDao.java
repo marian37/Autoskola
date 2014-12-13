@@ -32,6 +32,42 @@ public class DatabazoveSkuskyDao implements SkuskyDao {
     }
 
     @Override
+    public List<Skuska> hladajPodlaDatumu(String datum) {
+        datum = datum.trim();
+        return jdbcTemplate.query(SqlQueries.SELECT_SKUSKA_BY_DATUM, skuskaRowMapper, datum);
+    }
+
+    @Override
+    public List<Skuska> hladajPodlaStudenta(String student) {
+        student = student.trim();
+        String[] studentTokens = student.split(" ");
+        String studentMeno = studentTokens[0];
+        studentMeno = "%" + studentMeno + "%";
+        if (studentTokens.length == 1) {
+            return jdbcTemplate.query(SqlQueries.SELECT_SKUSKA_BY_STUDENT, skuskaRowMapper, studentMeno, studentMeno);
+        } else {
+            String studentPriezvisko = studentTokens[1];
+            studentPriezvisko = "%" + studentPriezvisko + "%";
+            return jdbcTemplate.query(SqlQueries.SELECT_SKUSKA_BY_STUDENT, skuskaRowMapper, studentMeno, studentPriezvisko);
+        }
+    }
+
+    @Override
+    public List<Skuska> hladajPodlaInstruktora(String instruktor) {
+        instruktor = instruktor.trim();
+        String[] instruktorTokens = instruktor.split(" ");
+        String instruktorMeno = instruktorTokens[0];
+        instruktorMeno = "%" + instruktorMeno + "%";
+        if (instruktorTokens.length == 1) {
+            return jdbcTemplate.query(SqlQueries.SELECT_SKUSKA_BY_INSTRUKTOR, skuskaRowMapper, instruktorMeno, instruktorMeno);
+        } else {
+            String instruktorPriezvisko = instruktorTokens[1];
+            instruktorPriezvisko = "%" + instruktorPriezvisko + "%";
+            return jdbcTemplate.query(SqlQueries.SELECT_SKUSKA_BY_INSTRUKTOR, skuskaRowMapper, instruktorMeno, instruktorPriezvisko);
+        }
+    }
+
+    @Override
     public void uloz(Skuska skuska) {
         Map<String, Object> insertMap = new HashMap<String, Object>();
         insertMap.put("datum", skuska.getDatum());
