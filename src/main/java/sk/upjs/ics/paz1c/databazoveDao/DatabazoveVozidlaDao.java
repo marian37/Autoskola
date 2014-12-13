@@ -28,6 +28,27 @@ public class DatabazoveVozidlaDao implements VozidlaDao {
     }
 
     @Override
+    public List<Vozidlo> hladajPodlaSpz(String spz) {
+        spz = spz.trim();
+        spz = "%" + spz + "%";
+        return jdbcTemplate.query(SqlQueries.SELECT_VOZIDLO_BY_SPZ, vozidloRowMapper, spz);
+    }    
+
+    @Override
+    public List<Vozidlo> hladajPodlaZnacky(String znacka) {
+        znacka = znacka.trim();
+        znacka = "%" + znacka + "%";
+        return jdbcTemplate.query(SqlQueries.SELECT_VOZIDLO_BY_ZNACKA, vozidloRowMapper, znacka);
+    }    
+
+    @Override
+    public List<Vozidlo> hladajPodlaKategorie(String kategoria) {
+        kategoria = kategoria.trim();
+        kategoria = "%" + kategoria + "%";
+        return jdbcTemplate.query(SqlQueries.SELECT_VOZIDLO_BY_KATEGORIA, vozidloRowMapper, kategoria);
+    }
+
+    @Override
     public void uloz(Vozidlo vozidlo) {
         Map<String, Object> insertMap = new HashMap<String, Object>();
         insertMap.put("spz", vozidlo.getSpz());

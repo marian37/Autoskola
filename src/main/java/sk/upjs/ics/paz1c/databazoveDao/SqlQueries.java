@@ -80,6 +80,22 @@ public class SqlQueries {
             + "    Vozidlo.kategoria AS VozidloKategoria\n"
             + "FROM Vozidlo";
 
+    public static final String SELECT_INSTRUKTOR_BY_MENO = "SELECT \n"
+            + "    Instruktor.id AS InstruktorId,\n"
+            + "    Instruktor.meno AS InstruktorMeno,\n"
+            + "    Instruktor.priezvisko AS InstruktorPriezvisko,\n"
+            + "    Instruktor.kontakt AS InstruktorKontakt\n"
+            + "FROM Instruktor\n"
+            + "WHERE Instruktor.meno LIKE ?;";
+
+    public static final String SELECT_INSTRUKTOR_BY_PRIEZVISKO = "SELECT \n"
+            + "    Instruktor.id AS InstruktorId,\n"
+            + "    Instruktor.meno AS InstruktorMeno,\n"
+            + "    Instruktor.priezvisko AS InstruktorPriezvisko,\n"
+            + "    Instruktor.kontakt AS InstruktorKontakt\n"
+            + "FROM Instruktor\n"
+            + "WHERE Instruktor.priezvisko LIKE ?;";
+
     public static final String SELECT_STUDENT_BY_SKUSKA = "SELECT \n"
             + "    Student.id AS StudentId,\n"
             + "    Student.meno AS StudentMeno,\n"
@@ -98,4 +114,31 @@ public class SqlQueries {
             + "FROM Student\n"
             + "JOIN SkuskaStudent ON Student.id = SkuskaStudent.studentId\n"
             + "WHERE SkuskaStudent.skuskaId = ?;";
+
+    public static final String SELECT_VOZIDLO_BY_SPZ = "SELECT \n"
+            + "    Vozidlo.spz AS VozidloSpz,\n"
+            + "    Vozidlo.znacka AS VozidloZnacka,\n"
+            + "    Vozidlo.typ AS VozidloTyp,\n"
+            + "    Vozidlo.farba AS VozidloFarba,\n"
+            + "    Vozidlo.kategoria AS VozidloKategoria\n"
+            + "FROM Vozidlo\n"
+            + "WHERE Vozidlo.spz LIKE ?;";
+
+    public static final String SELECT_VOZIDLO_BY_ZNACKA = "SELECT \n"
+            + "    Vozidlo.spz AS VozidloSpz,\n"
+            + "    Vozidlo.znacka AS VozidloZnacka,\n"
+            + "    Vozidlo.typ AS VozidloTyp,\n"
+            + "    Vozidlo.farba AS VozidloFarba,\n"
+            + "    Vozidlo.kategoria AS VozidloKategoria\n"
+            + "FROM Vozidlo\n"
+            + "WHERE Vozidlo.znacka LIKE ?;";
+
+    public static final String SELECT_VOZIDLO_BY_KATEGORIA = "SELECT \n"
+            + "    Vozidlo.spz AS VozidloSpz,\n"
+            + "    Vozidlo.znacka AS VozidloZnacka,\n"
+            + "    Vozidlo.typ AS VozidloTyp,\n"
+            + "    Vozidlo.farba AS VozidloFarba,\n"
+            + "    Vozidlo.kategoria AS VozidloKategoria\n"
+            + "FROM Vozidlo\n"
+            + "WHERE Vozidlo.kategoria LIKE ?;";
 }

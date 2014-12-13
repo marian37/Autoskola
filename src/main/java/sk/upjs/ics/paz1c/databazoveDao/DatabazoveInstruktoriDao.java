@@ -30,6 +30,20 @@ public class DatabazoveInstruktoriDao implements InstruktoriDao {
     }
 
     @Override
+    public List<Instruktor> hladajPodlaMena(String meno) {
+        meno = meno.trim();
+        meno = "%" + meno + "%";
+        return jdbcTemplate.query(SqlQueries.SELECT_INSTRUKTOR_BY_MENO, instruktorRowMapper, meno);
+    }
+
+    @Override
+    public List<Instruktor> hladajPodlaPriezviska(String priezvisko) {
+        priezvisko = priezvisko.trim();
+        priezvisko = "%" + priezvisko + "%";
+        return jdbcTemplate.query(SqlQueries.SELECT_INSTRUKTOR_BY_PRIEZVISKO, instruktorRowMapper, priezvisko);
+    }
+
+    @Override
     public void uloz(Instruktor instruktor) {
         Map<String, Object> insertMap = new HashMap<String, Object>();
         insertMap.put("meno", instruktor.getMeno());

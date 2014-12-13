@@ -12,6 +12,12 @@ public class DatabazoveVozidlaDaoTest {
 
     private static final int POCET_VOZIDIEL_V_DB = 5;
 
+    private static final int POCET_VOZIDIEL_V_DB_PODLA_SPZ = 1;
+
+    private static final int POCET_VOZIDIEL_V_DB_PODLA_ZNACKY = 1;
+
+    private static final int POCET_VOZIDIEL_V_DB_PODLA_KATEGORIE = 3;
+
     private final VozidlaDao vozidlaDao = BeanFactory.INSTANCE.getVozidlaDao();
 
     public DatabazoveVozidlaDaoTest() {
@@ -26,6 +32,24 @@ public class DatabazoveVozidlaDaoTest {
     public void testDajVsetky() {
         List<Vozidlo> vozidla = vozidlaDao.dajVsetky();
         assertEquals(POCET_VOZIDIEL_V_DB, vozidla.size());
+    }
+
+    @Test
+    public void testHladajPodlaSpz() {
+        List<Vozidlo> vozidla = vozidlaDao.hladajPodlaSpz("CX");
+        assertEquals(POCET_VOZIDIEL_V_DB_PODLA_SPZ, vozidla.size());
+    }
+
+    @Test
+    public void testHladajPodlaZnacky() {
+        List<Vozidlo> vozidla = vozidlaDao.hladajPodlaZnacky("Java ");
+        assertEquals(POCET_VOZIDIEL_V_DB_PODLA_ZNACKY, vozidla.size());
+    }
+
+    @Test
+    public void testHladajPodlaKategorie() {
+        List<Vozidlo> vozidla = vozidlaDao.hladajPodlaKategorie("B");
+        assertEquals(POCET_VOZIDIEL_V_DB_PODLA_KATEGORIE, vozidla.size());
     }
 
     @Test

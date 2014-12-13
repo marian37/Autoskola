@@ -1,14 +1,9 @@
 package sk.upjs.ics.paz1c.autoskola;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import sk.upjs.ics.paz1c.dao.*;

@@ -12,7 +12,7 @@ INSERT INTO Vozidlo (spz, znacka, typ, farba, kategoria)
 VALUES 
 ('PO000AA', 'Škoda', 'Fabia', 'zelená', 'B'),
 ('PO123BC', 'Toyota', 'Auris', 'čierna', 'B'),
-('PO734DE', 'Java', 'Babetta', 'červená', 'AM'),
+('PO734DE', 'Java', 'Babetta', 'červená', 'A'),
 ('PO898FA', 'Zetor', 'Proxima', 'červená', 'T'),
 ('PO235CX', 'Renault', 'Thalia', 'strieborná', 'B');
 

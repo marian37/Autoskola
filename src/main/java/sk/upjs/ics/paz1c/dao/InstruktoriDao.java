@@ -7,6 +7,10 @@ public interface InstruktoriDao {
 
     public List<Instruktor> dajVsetky();
 
+    public List<Instruktor> hladajPodlaMena(String meno);
+
+    public List<Instruktor> hladajPodlaPriezviska(String priezvisko);
+
     public void uloz(Instruktor instruktor);
 
     public void uprav(Instruktor instruktor);

@@ -12,6 +12,10 @@ public class DatabazoveInstruktoriDaoTest {
 
     private static final int POCET_INSTRUKTOROV_V_DB = 5;
 
+    private static final int POCET_INSTUKTOROV_V_DB_PODLA_MENA = 2;
+
+    private static final int POCET_INSTUKTOROV_V_DB_PODLA_PRIEZVISKA = 1;
+
     private final InstruktoriDao instruktoriDao = BeanFactory.INSTANCE.getInstruktoriDao();
 
     public DatabazoveInstruktoriDaoTest() {
@@ -26,6 +30,18 @@ public class DatabazoveInstruktoriDaoTest {
     public void testDajVsetky() {
         List<Instruktor> instruktori = instruktoriDao.dajVsetky();
         assertEquals(POCET_INSTRUKTOROV_V_DB, instruktori.size());
+    }
+
+    @Test
+    public void testHladajPodlaMena() {
+        List<Instruktor> instruktori = instruktoriDao.hladajPodlaMena("ant");
+        assertEquals(POCET_INSTUKTOROV_V_DB_PODLA_MENA, instruktori.size());
+    }
+
+    @Test
+    public void testHladajPodlaPriezviska() {
+        List<Instruktor> instruktori = instruktoriDao.hladajPodlaPriezviska(" Tra  ");
+        assertEquals(POCET_INSTUKTOROV_V_DB_PODLA_PRIEZVISKA, instruktori.size());
     }
 
     @Test
