@@ -2,12 +2,13 @@ package sk.upjs.ics.paz1c.gui;
 
 import sk.upjs.ics.paz1c.gui.rowFilters.*;
 import sk.upjs.ics.paz1c.gui.tabelModels.*;
+import sk.upjs.ics.paz1c.dao.*;
+import sk.upjs.ics.paz1c.entity.*;
 import java.util.Arrays;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableRowSorter;
 import sk.upjs.ics.paz1c.autoskola.BeanFactory;
-import sk.upjs.ics.paz1c.dao.*;
 
 public class HlavnyFormular extends javax.swing.JFrame {
 
@@ -64,6 +65,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
             }
         });
 
+        rbtnJazdyDatum.doClick();
         aktualizujZoznamJazd();
     }
 
@@ -94,6 +96,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
             }
         });
 
+        rbtnSkuskyDatum.doClick();
         aktualizujZoznamSkusok();
     }
 
@@ -124,6 +127,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
             }
         });
 
+        rbtnStudentiMeno.doClick();
         aktualizujZoznamStudentov();
     }
 
@@ -154,6 +158,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
             }
         });
 
+        rbtnInstruktoriMeno.doClick();
         aktualizujZoznamInstruktorov();
     }
 
@@ -184,9 +189,10 @@ public class HlavnyFormular extends javax.swing.JFrame {
             }
         });
 
+        rbtnVozidlaSpz.doClick();
         aktualizujZoznamVozidiel();
     }
-    
+
     private void tblVozidlaSelectionValueChanged(ListSelectionEvent e) {
         if (!e.getValueIsAdjusting()) {
             if (!tblVozidla.getSelectionModel().isSelectionEmpty()) {
@@ -318,6 +324,11 @@ public class HlavnyFormular extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblJazdy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblJazdyMouseClicked(evt);
+            }
+        });
         scrollPaneJazdy.setViewportView(tblJazdy);
 
         btnJazdyRozsireneVyhladavanie.setText("Rozsirene vyhladavanie");
@@ -330,6 +341,11 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         btnJazdyDetail.setText("Detail");
         btnJazdyDetail.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnJazdyDetail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJazdyDetailActionPerformed(evt);
+            }
+        });
 
         btnJazdyUprav.setText("Uprav");
         btnJazdyUprav.setPreferredSize(new java.awt.Dimension(70, 25));
@@ -425,6 +441,11 @@ public class HlavnyFormular extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblSkusky.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblSkuskyMouseClicked(evt);
+            }
+        });
         scrollPaneSkusky.setViewportView(tblSkusky);
 
         btnSkuskyVymaz.setText("Vymaz");
@@ -435,6 +456,11 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         btnSkuskyDetail.setText("Detail");
         btnSkuskyDetail.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnSkuskyDetail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSkuskyDetailActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout paneSkuskyLayout = new javax.swing.GroupLayout(paneSkusky);
         paneSkusky.setLayout(paneSkuskyLayout);
@@ -519,6 +545,11 @@ public class HlavnyFormular extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblStudenti.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblStudentiMouseClicked(evt);
+            }
+        });
         scrollPaneStudenti.setViewportView(tblStudenti);
 
         btnStudentiRozsireneVyhladavanie.setText("Rozsirene vyhladavanie");
@@ -537,6 +568,11 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         btnStudentiDetail.setText("Detail");
         btnStudentiDetail.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnStudentiDetail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStudentiDetailActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout paneStudentiLayout = new javax.swing.GroupLayout(paneStudenti);
         paneStudenti.setLayout(paneStudentiLayout);
@@ -620,6 +656,11 @@ public class HlavnyFormular extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblInstruktori.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblInstruktoriMouseClicked(evt);
+            }
+        });
         scrollPaneInstruktori.setViewportView(tblInstruktori);
 
         btnInstruktoriVymaz.setText("Vymaz");
@@ -630,6 +671,11 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         btnInstruktoriDetail.setText("Detail");
         btnInstruktoriDetail.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnInstruktoriDetail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInstruktoriDetailActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout paneInstruktoriLayout = new javax.swing.GroupLayout(paneInstruktori);
         paneInstruktori.setLayout(paneInstruktoriLayout);
@@ -714,6 +760,11 @@ public class HlavnyFormular extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblVozidla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblVozidlaMouseClicked(evt);
+            }
+        });
         scrollPaneVozidla.setViewportView(tblVozidla);
 
         btnVozidlaVymaz.setText("Vymaz");
@@ -724,6 +775,11 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         btnVozidlaDetail.setText("Detail");
         btnVozidlaDetail.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnVozidlaDetail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVozidlaDetailActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout paneVozidlaLayout = new javax.swing.GroupLayout(paneVozidla);
         paneVozidla.setLayout(paneVozidlaLayout);
@@ -806,6 +862,86 @@ public class HlavnyFormular extends javax.swing.JFrame {
         RozsireneVyhladavanieStudentiFormular rozsireneVyhladavanieStudentiFormular = new RozsireneVyhladavanieStudentiFormular();
         rozsireneVyhladavanieStudentiFormular.setVisible(true);
     }//GEN-LAST:event_btnStudentiRozsireneVyhladavanieActionPerformed
+
+    private void tblJazdyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblJazdyMouseClicked
+        if (evt.getClickCount() == 2) {
+            btnJazdyDetail.doClick();
+        }
+    }//GEN-LAST:event_tblJazdyMouseClicked
+
+    private void tblSkuskyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSkuskyMouseClicked
+        if (evt.getClickCount() == 2) {
+            btnSkuskyDetail.doClick();
+        }
+    }//GEN-LAST:event_tblSkuskyMouseClicked
+
+    private void tblStudentiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblStudentiMouseClicked
+        if (evt.getClickCount() == 2) {
+            btnStudentiDetail.doClick();
+        }
+    }//GEN-LAST:event_tblStudentiMouseClicked
+
+    private void tblInstruktoriMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblInstruktoriMouseClicked
+        if (evt.getClickCount() == 2) {
+            btnInstruktoriDetail.doClick();
+        }
+    }//GEN-LAST:event_tblInstruktoriMouseClicked
+
+    private void tblVozidlaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVozidlaMouseClicked
+        if (evt.getClickCount() == 2) {
+            btnVozidlaDetail.doClick();
+        }
+    }//GEN-LAST:event_tblVozidlaMouseClicked
+
+    private void btnJazdyDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJazdyDetailActionPerformed
+        int vybranyRiadok = tblJazdy.getSelectedRow();
+        int vybratyIndexVModeli = tblJazdy.convertRowIndexToModel(vybranyRiadok);
+
+        Jazda vybranaJazda = jazdyTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
+
+        DetailJazdyFormular detailJazdyFormular = new DetailJazdyFormular(vybranaJazda);
+        detailJazdyFormular.setVisible(true);
+    }//GEN-LAST:event_btnJazdyDetailActionPerformed
+
+    private void btnSkuskyDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkuskyDetailActionPerformed
+        int vybranyRiadok = tblSkusky.getSelectedRow();
+        int vybratyIndexVModeli = tblSkusky.convertRowIndexToModel(vybranyRiadok);
+
+        Skuska vybranaSkuska = skuskyTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
+
+        DetailSkuskyFormular detailSkuskyFormular = new DetailSkuskyFormular(vybranaSkuska);
+        detailSkuskyFormular.setVisible(true);
+    }//GEN-LAST:event_btnSkuskyDetailActionPerformed
+
+    private void btnStudentiDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentiDetailActionPerformed
+        int vybranyRiadok = tblStudenti.getSelectedRow();
+        int vybratyIndexVModeli = tblStudenti.convertRowIndexToModel(vybranyRiadok);
+
+        Student vybranyStudent = studentiTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
+
+        DetailStudentiFormular detailStudentiFormular = new DetailStudentiFormular(vybranyStudent);
+        detailStudentiFormular.setVisible(true);
+    }//GEN-LAST:event_btnStudentiDetailActionPerformed
+
+    private void btnInstruktoriDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInstruktoriDetailActionPerformed
+        int vybranyRiadok = tblInstruktori.getSelectedRow();
+        int vybratyIndexVModeli = tblInstruktori.convertRowIndexToModel(vybranyRiadok);
+
+        Instruktor vybratyInstruktor = instruktoriTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
+
+        DetailInstruktoriFormular detailInstruktoriFormular = new DetailInstruktoriFormular(vybratyInstruktor);
+        detailInstruktoriFormular.setVisible(true);
+    }//GEN-LAST:event_btnInstruktoriDetailActionPerformed
+
+    private void btnVozidlaDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVozidlaDetailActionPerformed
+        int vybranyRiadok = tblVozidla.getSelectedRow();
+        int vybratyIndexVModeli = tblVozidla.convertRowIndexToModel(vybranyRiadok);
+
+        Vozidlo vybraneVozidlo = vozidlaTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
+
+        DetailVozidlaFormular detailVozidlaFormular = new DetailVozidlaFormular(vybraneVozidlo);
+        detailVozidlaFormular.setVisible(true);
+    }//GEN-LAST:event_btnVozidlaDetailActionPerformed
 
     /**
      * @param args the command line arguments

@@ -195,6 +195,9 @@
                       </Table>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblJazdyMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -216,6 +219,9 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnJazdyDetailActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnJazdyUprav">
               <Properties>
@@ -373,6 +379,9 @@
                       </Table>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblSkuskyMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -399,6 +408,9 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSkuskyDetailActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -531,6 +543,9 @@
                       </Table>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblStudentiMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -568,6 +583,9 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStudentiDetailActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -698,6 +716,9 @@
                       </Table>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblInstruktoriMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -724,6 +745,9 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInstruktoriDetailActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -865,6 +889,9 @@
                       </Table>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblVozidlaMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -891,6 +918,9 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVozidlaDetailActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

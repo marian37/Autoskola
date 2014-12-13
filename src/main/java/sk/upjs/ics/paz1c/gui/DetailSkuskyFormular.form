@@ -35,14 +35,12 @@
                   <Component id="lblPolicajt" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="txtPolicajt" min="-2" pref="200" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtDatum" pref="200" max="32767" attributes="0"/>
-                      <Component id="txtInstruktor" pref="200" max="32767" attributes="0"/>
-                      <Component id="txtCas" alignment="0" pref="200" max="32767" attributes="0"/>
-                      <Component id="scrollPane" alignment="0" max="32767" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="txtDatum" max="32767" attributes="0"/>
+                  <Component id="txtInstruktor" max="32767" attributes="0"/>
+                  <Component id="txtCas" alignment="0" max="32767" attributes="0"/>
+                  <Component id="scrollPane" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtPolicajt" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -132,7 +130,6 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="erhrfgh&#xa;ghfhreherh&#xa;ehdfhdh&#xa;fdhdherhbdgjne&#xa;jarj&#xa;artjtgjng&#xa;ngngrfnjsrtjng&#xa;dngth&#xa;trjrdhnjdggtr&#xa;trjstrdndgtjtrs&#xa;ngd&#xa;tjrdjtdjdsr&#xa;jn&#xa;jtsrnsrdtgnjs&#xa;rtgdn&#xa;k&#xa;ryskr&#xa;krya&#xa;atjtrj&#xa;atj&#xa;ate&#xa;jeadzanjtdj&#xa;yrj&#xa;ytr&#xa;shrthtr&#xa;aeth&#xa;artjt"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
         </Component>

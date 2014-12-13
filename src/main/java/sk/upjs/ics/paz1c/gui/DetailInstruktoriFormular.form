@@ -36,9 +36,9 @@
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtKontakt" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="txtPriezvisko" min="-2" pref="200" max="-2" attributes="0"/>
                           <Component id="txtMeno" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="txtPriezvisko" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="txtKontakt" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -56,12 +56,12 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtKontakt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="txtPriezvisko" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="lblPriezvisko" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtPriezvisko" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="txtKontakt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="lblKontakt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -91,13 +91,13 @@
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtKontakt">
+    <Component class="javax.swing.JTextField" name="txtPriezvisko">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtPriezvisko">
+    <Component class="javax.swing.JTextField" name="txtKontakt">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="focusable" type="boolean" value="false"/>
