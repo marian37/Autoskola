@@ -96,7 +96,7 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
 
         lblStudentPomoc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblStudentPomoc.setText("?");
-        lblStudentPomoc.setToolTipText("<html>\nZadajte meno, priezvisko a datum narodenia existujuceho studenta v tvare:\n<br>\"meno priezvisko den.mesiac.rok\"\n<br>Ak student este nie je zaevidovany v databaze, mozete tak spravit kliknutim na tlacidlo\n<br><b>Novy student</b>\n</html>");
+        lblStudentPomoc.setToolTipText("<html>\nZadajte meno a priezvisko existujuceho studenta.\n<br>Ak student este nie je zaevidovany v databaze, mozete tak spravit kliknutim na tlacidlo:\n<br><b>Novy student</b>\n</html>");
         lblStudentPomoc.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         btnNovyStudent.setText("Novy student");
@@ -108,7 +108,7 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
 
         lblInstuktorPomoc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblInstuktorPomoc.setText("?");
-        lblInstuktorPomoc.setToolTipText("<html>\nZadajte meno a priezvisko existujuceho instruktora v tvare:\n<br>\"meno priezvisko\"\n<br>Ak instruktor este nie je zaevidovany v databaze, mozete tak spravit kliknutim na tlacidlo\n<br><b>Novy instruktor</b>\n</html>");
+        lblInstuktorPomoc.setToolTipText("<html>\nZadajte meno a priezvisko existujuceho instruktora.\n<br>Ak instruktor este nie je zaevidovany v databaze, mozete tak spravit kliknutim na tlacidlo:\n<br><b>Novy instruktor</b>\n</html>");
         lblInstuktorPomoc.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         btnNovyInstruktor.setText("Novy instruktor");
@@ -120,7 +120,7 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
 
         lblVozidloPomoc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVozidloPomoc.setText("?");
-        lblVozidloPomoc.setToolTipText("<html>\nZadajte SPZ vozidla. \n<br>Ak vozidlo este nie je zaevidovane v databaze,  mozete tak spravit kliknutim na tlacidlo \n<br><b>Nove vozidlo</b>\n</html>");
+        lblVozidloPomoc.setToolTipText("<html>\nZadajte SPZ vozidla. \n<br>Ak vozidlo este nie je zaevidovane v databaze,  mozete tak spravit kliknutim na tlacidlo:\n<br><b>Nove vozidlo</b>\n</html>");
         lblVozidloPomoc.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         btnNoveVozidlo.setText("Nove vozidlo");

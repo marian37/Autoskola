@@ -175,7 +175,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="?"/>
-        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;Zadajte meno, priezvisko a datum narodenia existujuceho studenta v tvare:&#xa;&lt;br&gt;&quot;meno priezvisko den.mesiac.rok&quot;&#xa;&lt;br&gt;Ak student este nie je zaevidovany v databaze, mozete tak spravit kliknutim na tlacidlo&#xa;&lt;br&gt;&lt;b&gt;Novy student&lt;/b&gt;&#xa;&lt;/html&gt;"/>
+        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;Zadajte meno a priezvisko existujuceho studenta.&#xa;&lt;br&gt;Ak student este nie je zaevidovany v databaze, mozete tak spravit kliknutim na tlacidlo:&#xa;&lt;br&gt;&lt;b&gt;Novy student&lt;/b&gt;&#xa;&lt;/html&gt;"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder/>
@@ -195,7 +195,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="?"/>
-        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;Zadajte meno a priezvisko existujuceho instruktora v tvare:&#xa;&lt;br&gt;&quot;meno priezvisko&quot;&#xa;&lt;br&gt;Ak instruktor este nie je zaevidovany v databaze, mozete tak spravit kliknutim na tlacidlo&#xa;&lt;br&gt;&lt;b&gt;Novy instruktor&lt;/b&gt;&#xa;&lt;/html&gt;"/>
+        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;Zadajte meno a priezvisko existujuceho instruktora.&#xa;&lt;br&gt;Ak instruktor este nie je zaevidovany v databaze, mozete tak spravit kliknutim na tlacidlo:&#xa;&lt;br&gt;&lt;b&gt;Novy instruktor&lt;/b&gt;&#xa;&lt;/html&gt;"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder/>
@@ -215,7 +215,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="?"/>
-        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;Zadajte SPZ vozidla. &#xa;&lt;br&gt;Ak vozidlo este nie je zaevidovane v databaze,  mozete tak spravit kliknutim na tlacidlo &#xa;&lt;br&gt;&lt;b&gt;Nove vozidlo&lt;/b&gt;&#xa;&lt;/html&gt;"/>
+        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;Zadajte SPZ vozidla. &#xa;&lt;br&gt;Ak vozidlo este nie je zaevidovane v databaze,  mozete tak spravit kliknutim na tlacidlo:&#xa;&lt;br&gt;&lt;b&gt;Nove vozidlo&lt;/b&gt;&#xa;&lt;/html&gt;"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder/>

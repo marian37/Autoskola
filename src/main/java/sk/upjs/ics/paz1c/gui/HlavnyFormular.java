@@ -1094,7 +1094,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         Skuska vybranaSkuska = skuskyTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
 
-        UpravaSkuskyFormular upravaSkuskyFormular = new UpravaSkuskyFormular(vybranaSkuska);
+        UpravaSkuskyFormular upravaSkuskyFormular = new UpravaSkuskyFormular(this, vybranaSkuska);
         upravaSkuskyFormular.setVisible(true);
     }//GEN-LAST:event_btnSkuskyUpravActionPerformed
 
@@ -1104,7 +1104,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         Student vybranyStudent = studentiTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
 
-        UpravaStudentiFormular upravaStudentiFormular = new UpravaStudentiFormular(vybranyStudent);
+        UpravaStudentiFormular upravaStudentiFormular = new UpravaStudentiFormular(this, vybranyStudent);
         upravaStudentiFormular.setVisible(true);
     }//GEN-LAST:event_btnStudentiUpravActionPerformed
 
@@ -1214,27 +1214,27 @@ public class HlavnyFormular extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVozidlaVymazActionPerformed
 
     private void btnJazdyPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJazdyPridajActionPerformed
-        UpravaJazdyFormular pridanieJazdyFormular = new UpravaJazdyFormular(new Jazda());
+        UpravaJazdyFormular pridanieJazdyFormular = new UpravaJazdyFormular(this, new Jazda());
         pridanieJazdyFormular.setVisible(true);
     }//GEN-LAST:event_btnJazdyPridajActionPerformed
 
     private void btnSkuskyPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkuskyPridajActionPerformed
-        UpravaSkuskyFormular pridanieSkuskyFormular = new UpravaSkuskyFormular(new Skuska());
+        UpravaSkuskyFormular pridanieSkuskyFormular = new UpravaSkuskyFormular(this, new Skuska());
         pridanieSkuskyFormular.setVisible(true);
     }//GEN-LAST:event_btnSkuskyPridajActionPerformed
 
     private void btnStudentiPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentiPridajActionPerformed
-        UpravaStudentiFormular pridanieStudentiFormular = new UpravaStudentiFormular(new Student());
+        UpravaStudentiFormular pridanieStudentiFormular = new UpravaStudentiFormular(this, new Student());
         pridanieStudentiFormular.setVisible(true);
     }//GEN-LAST:event_btnStudentiPridajActionPerformed
 
     private void btnInstruktoriPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInstruktoriPridajActionPerformed
-        UpravaInstruktoriFormular pridanieInstruktoriFormular = new UpravaInstruktoriFormular(new Instruktor());
+        UpravaInstruktoriFormular pridanieInstruktoriFormular = new UpravaInstruktoriFormular(this, new Instruktor());
         pridanieInstruktoriFormular.setVisible(true);
     }//GEN-LAST:event_btnInstruktoriPridajActionPerformed
 
     private void btnVozidlaPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVozidlaPridajActionPerformed
-        UpravaVozidlaFormular pridanieVozidlaFormular = new UpravaVozidlaFormular(new Vozidlo());
+        UpravaVozidlaFormular pridanieVozidlaFormular = new UpravaVozidlaFormular(this, new Vozidlo());
         pridanieVozidlaFormular.setVisible(true);
     }//GEN-LAST:event_btnVozidlaPridajActionPerformed
 
