@@ -1,12 +1,8 @@
 package sk.upjs.ics.paz1c.gui;
 
-import sk.upjs.ics.paz1c.autoskola.BeanFactory;
-import sk.upjs.ics.paz1c.dao.InstruktoriDao;
 import sk.upjs.ics.paz1c.entity.Instruktor;
 
 public class DetailInstruktoriFormular extends javax.swing.JFrame {
-
-    private InstruktoriDao instruktoriDao = BeanFactory.INSTANCE.getInstruktoriDao();
 
     public DetailInstruktoriFormular(Instruktor instruktor) {
         this();

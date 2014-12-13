@@ -1,14 +1,10 @@
 package sk.upjs.ics.paz1c.gui;
 
 import java.util.List;
-import sk.upjs.ics.paz1c.autoskola.BeanFactory;
-import sk.upjs.ics.paz1c.dao.SkuskyDao;
 import sk.upjs.ics.paz1c.entity.Skuska;
 import sk.upjs.ics.paz1c.entity.Student;
 
 public class DetailSkuskyFormular extends javax.swing.JFrame {
-
-    private SkuskyDao skuskyDao = BeanFactory.INSTANCE.getSkuskyDao();
 
     public DetailSkuskyFormular(Skuska skuska) {
         this();
@@ -20,7 +16,10 @@ public class DetailSkuskyFormular extends javax.swing.JFrame {
         List<Student> studenti = skuska.getStudenti();
         StringBuilder sb = new StringBuilder();
         for (Student student : studenti) {
-            sb.append(student.getMeno() + " " + student.getPriezvisko() + "\n");
+            sb.append(student.getMeno())
+                    .append(" ")
+                    .append(student.getPriezvisko())
+                    .append("\n");
         }
         txtaStudenti.setText(sb.toString());
 

@@ -215,6 +215,7 @@
             <Component class="javax.swing.JButton" name="btnJazdyDetail">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Detail"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[70, 25]"/>
                 </Property>
@@ -226,14 +227,19 @@
             <Component class="javax.swing.JButton" name="btnJazdyUprav">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Uprav"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnJazdyUpravActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnJazdyVymaz">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Vymaz"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[70, 25]"/>
                 </Property>
@@ -388,6 +394,7 @@
             <Component class="javax.swing.JButton" name="btnSkuskyVymaz">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Vymaz"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[70, 25]"/>
                 </Property>
@@ -396,14 +403,19 @@
             <Component class="javax.swing.JButton" name="btnSkuskyUprav">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Uprav"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSkuskyUpravActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnSkuskyDetail">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Detail"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[70, 25]"/>
                 </Property>
@@ -563,6 +575,7 @@
             <Component class="javax.swing.JButton" name="btnStudentiVymaz">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Vymaz"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[70, 25]"/>
                 </Property>
@@ -571,14 +584,19 @@
             <Component class="javax.swing.JButton" name="btnStudentiUprav">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Uprav"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStudentiUpravActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnStudentiDetail">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Detail"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[70, 25]"/>
                 </Property>
@@ -725,6 +743,7 @@
             <Component class="javax.swing.JButton" name="btnInstruktoriVymaz">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Vymaz"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[70, 25]"/>
                 </Property>
@@ -733,14 +752,19 @@
             <Component class="javax.swing.JButton" name="btnInstruktoriUprav">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Uprav"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInstruktoriUpravActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnInstruktoriDetail">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Detail"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[70, 25]"/>
                 </Property>
@@ -898,6 +922,7 @@
             <Component class="javax.swing.JButton" name="btnVozidlaVymaz">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Vymaz"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[70, 25]"/>
                 </Property>
@@ -906,14 +931,19 @@
             <Component class="javax.swing.JButton" name="btnVozidlaUprav">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Uprav"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVozidlaUpravActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnVozidlaDetail">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Detail"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[70, 25]"/>
                 </Property>

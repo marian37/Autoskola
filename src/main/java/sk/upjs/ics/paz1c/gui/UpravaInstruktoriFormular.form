@@ -36,9 +36,9 @@
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtKontakt" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="txtPriezvisko" min="-2" pref="200" max="-2" attributes="0"/>
                           <Component id="txtMeno" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="txtPriezvisko" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="txtKontakt" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -63,12 +63,12 @@
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtKontakt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="txtPriezvisko" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="lblPriezvisko" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtPriezvisko" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="txtKontakt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="lblKontakt" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -94,24 +94,30 @@
         <Property name="text" type="java.lang.String" value="Priezvisko:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtPriezvisko">
+    <Component class="javax.swing.JTextField" name="txtKontakt">
     </Component>
     <Component class="javax.swing.JLabel" name="lblKontakt">
       <Properties>
         <Property name="text" type="java.lang.String" value="Kontakt:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtKontakt">
+    <Component class="javax.swing.JTextField" name="txtPriezvisko">
     </Component>
     <Component class="javax.swing.JButton" name="btnOk">
       <Properties>
         <Property name="text" type="java.lang.String" value="OK"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOkActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnVynuluj">
       <Properties>
         <Property name="text" type="java.lang.String" value="Vynuluj"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVynulujActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
