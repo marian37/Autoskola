@@ -12,10 +12,13 @@ public class UpravaVozidlaFormular extends javax.swing.JFrame {
     private HlavnyFormular rodic;
 
     public UpravaVozidlaFormular(HlavnyFormular rodic, Vozidlo vozidlo) {
-        this();
-
-        this.vozidlo = vozidlo;
+        this(vozidlo);
         this.rodic = rodic;
+    }
+
+    public UpravaVozidlaFormular(Vozidlo vozidlo) {
+        this();
+        this.vozidlo = vozidlo;
 
         txtSpz.setText(vozidlo.getSpz());
         txtZnacka.setText(vozidlo.getZnacka());
@@ -27,7 +30,7 @@ public class UpravaVozidlaFormular extends javax.swing.JFrame {
     /**
      * Creates new form UpravaVozidlaFormular
      */
-    public UpravaVozidlaFormular() {
+    private UpravaVozidlaFormular() {
         initComponents();
     }
 
@@ -68,6 +71,11 @@ public class UpravaVozidlaFormular extends javax.swing.JFrame {
         lblKategoria.setText("Kategoria:");
 
         btnVynuluj.setText("Vynuluj");
+        btnVynuluj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVynulujActionPerformed(evt);
+            }
+        });
 
         btnOk.setText("OK");
         btnOk.addActionListener(new java.awt.event.ActionListener() {
@@ -142,16 +150,26 @@ public class UpravaVozidlaFormular extends javax.swing.JFrame {
         vozidlo.setSpz(txtSpz.getText());
         vozidlo.setZnacka(txtZnacka.getText());
         vozidlo.setTyp(txtTyp.getText());
-        /*
-         if (vozidlo.getId() == null) {
-         vozidlaDao.uloz(vozidlo);
-         } else {
-         vozidlaDao.uprav(vozidlo);
-         }
-         */
-        rodic.aktualizujZoznamInstruktorov();
+
+        if (vozidlo.getId() == null) {
+            vozidlaDao.uloz(vozidlo);
+        } else {
+            vozidlaDao.uprav(vozidlo);
+        }
+
+        if (rodic != null) {
+            rodic.aktualizujZoznamInstruktorov();
+        }
         dispose();
     }//GEN-LAST:event_btnOkActionPerformed
+
+    private void btnVynulujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVynulujActionPerformed
+        txtSpz.setText("");
+        txtZnacka.setText("");
+        txtTyp.setText("");
+        txtFarba.setText("");
+        txtKategoria.setText("");
+    }//GEN-LAST:event_btnVynulujActionPerformed
 
     /**
      * @param args the command line arguments

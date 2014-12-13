@@ -12,10 +12,13 @@ public class UpravaInstruktoriFormular extends javax.swing.JFrame {
     private HlavnyFormular rodic;
 
     public UpravaInstruktoriFormular(HlavnyFormular rodic, Instruktor instruktor) {
-        this();
-
-        this.instruktor = instruktor;
+        this(instruktor);
         this.rodic = rodic;
+    }
+
+    public UpravaInstruktoriFormular(Instruktor instruktor) {
+        this();
+        this.instruktor = instruktor;
 
         txtMeno.setText(instruktor.getMeno());
         txtPriezvisko.setText(instruktor.getPriezvisko());
@@ -132,7 +135,9 @@ public class UpravaInstruktoriFormular extends javax.swing.JFrame {
             instruktoriDao.uprav(instruktor);
         }
 
-        rodic.aktualizujZoznamInstruktorov();
+        if (rodic != null) {
+            rodic.aktualizujZoznamInstruktorov();
+        }
         dispose();
     }//GEN-LAST:event_btnOkActionPerformed
 

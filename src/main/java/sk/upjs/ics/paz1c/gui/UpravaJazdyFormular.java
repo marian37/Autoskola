@@ -1,11 +1,46 @@
 package sk.upjs.ics.paz1c.gui;
 
+import java.sql.Date;
+import java.sql.Time;
+import sk.upjs.ics.paz1c.autoskola.BeanFactory;
+import sk.upjs.ics.paz1c.dao.JazdyDao;
+import sk.upjs.ics.paz1c.entity.Instruktor;
+import sk.upjs.ics.paz1c.entity.Jazda;
+import sk.upjs.ics.paz1c.entity.Student;
+import sk.upjs.ics.paz1c.entity.Vozidlo;
+
 public class UpravaJazdyFormular extends javax.swing.JFrame {
 
-        /**
+    private JazdyDao jazdyDao = BeanFactory.INSTANCE.getJazdyDao();
+
+    private Jazda jazda;
+    private HlavnyFormular rodic;
+
+    public UpravaJazdyFormular(HlavnyFormular rodic, Jazda jazda) {
+        this(jazda);
+        this.rodic = rodic;
+    }
+
+    public UpravaJazdyFormular(Jazda jazda) {
+        this();
+        this.jazda = jazda;
+
+        txtStudent.setText(jazda.getStudent().getMeno() + " " + jazda.getStudent().getPriezvisko());
+        txtInstruktor.setText(jazda.getInstruktor().getMeno() + " " + jazda.getInstruktor().getPriezvisko());
+        txtVozidlo.setText(jazda.getVozidlo().getSpz());
+        txtDatum.setText(jazda.getDatum().toString());
+        txtCas.setText(jazda.getCas().toString());
+        txtKm.setText(String.valueOf(jazda.getKm()));
+
+        chBoxVpremavke.setSelected(jazda.isvPremavke());
+        chBoxNacvicisku.setSelected(jazda.isNaCvicisku());
+        chBoxSvozikom.setSelected(jazda.issVozikom());
+    }
+
+    /**
      * Creates new form UpravaJazdyFormular
      */
-    public UpravaJazdyFormular() {
+    private UpravaJazdyFormular() {
         initComponents();
     }
 
@@ -87,8 +122,18 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
         chBoxSvozikom.setText("S vozikom");
 
         btnVynuluj.setText("Vynuluj");
+        btnVynuluj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVynulujActionPerformed(evt);
+            }
+        });
 
         btnOk.setText("OK");
+        btnOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOkActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -194,6 +239,43 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
+        jazda.setStudent(new Student());
+        jazda.setInstruktor(new Instruktor());
+        jazda.setVozidlo(new Vozidlo());
+        jazda.setDatum(Date.valueOf(txtDatum.getText()));
+        jazda.setCas(Time.valueOf(txtCas.getText()));
+        jazda.setKm(Integer.valueOf(txtKm.getText()));
+
+        jazda.setvPremavke(chBoxVpremavke.isSelected());
+        jazda.setNaCvicisku(chBoxNacvicisku.isSelected());
+        jazda.setsVozikom(chBoxSvozikom.isSelected());
+
+        if (jazda.getId() == null) {
+            jazdyDao.uloz(jazda);
+        } else {
+            jazdyDao.uprav(jazda);
+        }
+
+        if (rodic != null) {
+            rodic.aktualizujZoznamJazd();
+        }
+        dispose();
+    }//GEN-LAST:event_btnOkActionPerformed
+
+    private void btnVynulujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVynulujActionPerformed
+        txtStudent.setText("");
+        txtInstruktor.setText("");
+        txtVozidlo.setText("");
+        txtDatum.setText("");
+        txtCas.setText("");
+        txtKm.setText("");
+
+        chBoxVpremavke.setSelected(false);
+        chBoxNacvicisku.setSelected(false);
+        chBoxSvozikom.setSelected(false);
+    }//GEN-LAST:event_btnVynulujActionPerformed
 
     /**
      * @param args the command line arguments

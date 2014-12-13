@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import sk.upjs.ics.paz1c.autoskola.BeanFactory;
 import sk.upjs.ics.paz1c.dao.SkuskyDao;
 import sk.upjs.ics.paz1c.entity.Instruktor;
@@ -18,8 +17,14 @@ public class UpravaSkuskyFormular extends javax.swing.JFrame {
     private Skuska skuska;
     private HlavnyFormular rodic;
 
+    public UpravaSkuskyFormular(HlavnyFormular rodic, Skuska skuska) {
+        this(skuska);
+        this.rodic = rodic;
+    }
+
     public UpravaSkuskyFormular(Skuska skuska) {
         this();
+        this.skuska = skuska;
 
         txtDatum.setText(skuska.getDatum().toString());
         txtCas.setText(skuska.getCas().toString());
@@ -171,14 +176,14 @@ public class UpravaSkuskyFormular extends javax.swing.JFrame {
 
         List<Student> studenti = new ArrayList<>();
         String retazecStudentov = txtaStudenti.getText();
-        Scanner sc = new Scanner(retazecStudentov);
-        while (sc.hasNext()) {
+        String poleStudentov[] = retazecStudentov.split("\n");
+        for (String retazec : poleStudentov) {
             Student student = new Student();
-            student.setMeno(sc.next());
-            student.setPriezvisko(sc.next());
+            String poleStudenta[] = retazec.split(" ");
+            student.setMeno(poleStudenta[0]);
+            student.setPriezvisko(poleStudenta[1]);
             studenti.add(student);
         }
-        sc.close();
         skuska.setStudenti(studenti);
 
         skuska.setPolicajt(txtPolicajt.getText());
@@ -189,7 +194,9 @@ public class UpravaSkuskyFormular extends javax.swing.JFrame {
             skuskyDao.uprav(skuska);
         }
 
-        rodic.aktualizujZoznamSkusok();
+        if (rodic != null) {
+            rodic.aktualizujZoznamSkusok();
+        }
         dispose();
 
     }//GEN-LAST:event_btnOkActionPerformed
