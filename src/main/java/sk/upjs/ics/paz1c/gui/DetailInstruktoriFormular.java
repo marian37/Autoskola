@@ -38,6 +38,7 @@ public class DetailInstruktoriFormular extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Instruktor");
         setName("detailInstruktoriFrame"); // NOI18N
+        setResizable(false);
 
         lblMeno.setText("Meno:");
 

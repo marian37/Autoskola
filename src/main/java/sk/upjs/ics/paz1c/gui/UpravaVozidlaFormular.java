@@ -59,6 +59,7 @@ public class UpravaVozidlaFormular extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Vozidlo");
         setName("upravaVozidlaFrame"); // NOI18N
+        setResizable(false);
 
         lblSpz.setText("SPZ:");
 

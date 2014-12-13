@@ -994,15 +994,33 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
 
     private void btnJazdyUpravActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJazdyUpravActionPerformed
-        // TODO add your handling code here:
+        int vybranyRiadok = tblJazdy.getSelectedRow();
+        int vybratyIndexVModeli = tblJazdy.convertRowIndexToModel(vybranyRiadok);
+
+        Jazda vybranaJazda = jazdyTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
+
+        UpravaJazdyFormular upravaJazdyFormular = new UpravaJazdyFormular(this, vybranaJazda);
+        upravaJazdyFormular.setVisible(true);
     }//GEN-LAST:event_btnJazdyUpravActionPerformed
 
     private void btnSkuskyUpravActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkuskyUpravActionPerformed
-        // TODO add your handling code here:
+        int vybranyRiadok = tblSkusky.getSelectedRow();
+        int vybratyIndexVModeli = tblSkusky.convertRowIndexToModel(vybranyRiadok);
+
+        Skuska vybranaSkuska = skuskyTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
+
+        UpravaSkuskyFormular upravaSkuskyFormular = new UpravaSkuskyFormular(vybranaSkuska);
+        upravaSkuskyFormular.setVisible(true);
     }//GEN-LAST:event_btnSkuskyUpravActionPerformed
 
     private void btnStudentiUpravActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentiUpravActionPerformed
-        // TODO add your handling code here:
+        int vybranyRiadok = tblStudenti.getSelectedRow();
+        int vybratyIndexVModeli = tblStudenti.convertRowIndexToModel(vybranyRiadok);
+
+        Student vybranyStudent = studentiTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
+
+        UpravaStudentiFormular upravaStudentiFormular = new UpravaStudentiFormular(vybranyStudent);
+        upravaStudentiFormular.setVisible(true);
     }//GEN-LAST:event_btnStudentiUpravActionPerformed
 
     private void btnInstruktoriUpravActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInstruktoriUpravActionPerformed
@@ -1022,7 +1040,8 @@ public class HlavnyFormular extends javax.swing.JFrame {
         Vozidlo vybraneVozidlo = vozidlaTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
 
         UpravaVozidlaFormular upravaVozidlaFormular = new UpravaVozidlaFormular(this, vybraneVozidlo);
-        upravaVozidlaFormular.setVisible(true);    }//GEN-LAST:event_btnVozidlaUpravActionPerformed
+        upravaVozidlaFormular.setVisible(true);
+    }//GEN-LAST:event_btnVozidlaUpravActionPerformed
 
     /**
      * @param args the command line arguments

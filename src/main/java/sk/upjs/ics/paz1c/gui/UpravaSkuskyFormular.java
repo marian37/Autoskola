@@ -76,6 +76,7 @@ public class UpravaSkuskyFormular extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Skuska");
         setName("upravaSkuskyFrame"); // NOI18N
+        setResizable(false);
 
         lblDatum.setText("Datum:");
 

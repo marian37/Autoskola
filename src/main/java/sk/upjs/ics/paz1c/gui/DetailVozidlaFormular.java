@@ -44,6 +44,7 @@ public class DetailVozidlaFormular extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Vozidlo");
         setName("detailVozidlaFrame"); // NOI18N
+        setResizable(false);
 
         lblSpz.setText("SPZ:");
 

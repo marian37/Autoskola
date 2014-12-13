@@ -57,6 +57,7 @@ public class DetailSkuskyFormular extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Skuska");
         setName("detailSkuskyFrame"); // NOI18N
+        setResizable(false);
 
         lblDatum.setText("Datum:");
 

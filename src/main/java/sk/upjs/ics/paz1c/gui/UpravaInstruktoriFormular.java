@@ -53,6 +53,7 @@ public class UpravaInstruktoriFormular extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Instruktor");
         setName("upravaInstruktoriFrame"); // NOI18N
+        setResizable(false);
 
         lblMeno.setText("Meno:");
 
