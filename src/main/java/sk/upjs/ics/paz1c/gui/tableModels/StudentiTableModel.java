@@ -1,17 +1,16 @@
-package sk.upjs.ics.paz1c.gui.tabelModels;
+package sk.upjs.ics.paz1c.gui.tableModels;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import javax.swing.table.AbstractTableModel;
 import sk.upjs.ics.paz1c.autoskola.BeanFactory;
-import sk.upjs.ics.paz1c.dao.VozidlaDao;
-import sk.upjs.ics.paz1c.entity.Vozidlo;
+import sk.upjs.ics.paz1c.dao.StudentiDao;
+import sk.upjs.ics.paz1c.entity.*;
 
-public class VozidlaTableModel extends AbstractTableModel {
+public class StudentiTableModel extends AbstractTableModel {
 
     private static final int POCET_STLPCOV = 3;
 
-    private static final String[] NAZVY_STLPCOV = {"SPZ", "Znacka", "Kategoria"};
+    private static final String[] NAZVY_STLPCOV = {"Meno", "Priezvisko", "Kontakt"};
 
     private static final Class[] TYPY_STLPCOV = {
         String.class,
@@ -19,12 +18,12 @@ public class VozidlaTableModel extends AbstractTableModel {
         String.class
     };
 
-    private VozidlaDao vozidlaDao = BeanFactory.INSTANCE.getVozidlaDao();
-    private List<Vozidlo> vozidla = new LinkedList<>();
+    private StudentiDao studentiDao = BeanFactory.INSTANCE.getStudentiDao();
+    private List<Student> studenti = new LinkedList<>();
 
     @Override
     public int getRowCount() {
-        return vozidla.size();
+        return studenti.size();
     }
 
     @Override
@@ -34,26 +33,26 @@ public class VozidlaTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Vozidlo vybraneVozidlo = vozidla.get(rowIndex);
+        Student vybranyStudent = studenti.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return vybraneVozidlo.getSpz();
+                return vybranyStudent.getMeno();
             case 1:
-                return vybraneVozidlo.getZnacka();
+                return vybranyStudent.getPriezvisko();
             case 2:
-                return vybraneVozidlo.getKategoria();
+                return vybranyStudent.getKontakt();
             default:
                 return "???";
         }
     }
 
     public void obnov() {
-        vozidla = vozidlaDao.dajVsetky();
+        studenti = studentiDao.dajVsetky();
         fireTableDataChanged();
     }
-
-    public Vozidlo dajPodlaCislaRiadku(int riadok) {
-        return vozidla.get(riadok);
+    
+    public Student dajPodlaCislaRiadku(int riadok) {
+        return studenti.get(riadok);
     }
 
     @Override

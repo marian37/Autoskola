@@ -1,17 +1,17 @@
-package sk.upjs.ics.paz1c.gui.tabelModels;
+package sk.upjs.ics.paz1c.gui.tableModels;
 
 import java.util.LinkedList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import sk.upjs.ics.paz1c.autoskola.BeanFactory;
-import sk.upjs.ics.paz1c.dao.InstruktoriDao;
-import sk.upjs.ics.paz1c.entity.Instruktor;
+import sk.upjs.ics.paz1c.dao.JazdyDao;
+import sk.upjs.ics.paz1c.entity.Jazda;
 
-public class InstruktoriTableModel extends AbstractTableModel {
+public class JazdyTableModel extends AbstractTableModel {
 
     private static final int POCET_STLPCOV = 3;
 
-    private static final String[] NAZVY_STLPCOV = {"Meno", "Priezvisko", "Kontakt"};
+    private static final String[] NAZVY_STLPCOV = {"Datum", "Student", "Instruktor"};
 
     private static final Class[] TYPY_STLPCOV = {
         String.class,
@@ -19,12 +19,12 @@ public class InstruktoriTableModel extends AbstractTableModel {
         String.class
     };
 
-    private InstruktoriDao instruktoriDao = BeanFactory.INSTANCE.getInstruktoriDao();
-    private List<Instruktor> instruktori = new LinkedList<>();
+    private JazdyDao jazdyDao = BeanFactory.INSTANCE.getJazdyDao();
+    private List<Jazda> jazdy = new LinkedList<>();
 
     @Override
     public int getRowCount() {
-        return instruktori.size();
+        return jazdy.size();
     }
 
     @Override
@@ -34,26 +34,26 @@ public class InstruktoriTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Instruktor vybranyInstruktor = instruktori.get(rowIndex);
+        Jazda vybranaJazda = jazdy.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return vybranyInstruktor.getMeno();
+                return vybranaJazda.getDatum();
             case 1:
-                return vybranyInstruktor.getPriezvisko();
+                return vybranaJazda.getStudent().getMeno() + " " + vybranaJazda.getStudent().getPriezvisko();
             case 2:
-                return vybranyInstruktor.getKontakt();
+                return vybranaJazda.getInstruktor().getMeno() + " " + vybranaJazda.getInstruktor().getPriezvisko();
             default:
                 return "???";
         }
     }
 
     public void obnov() {
-        instruktori = instruktoriDao.dajVsetky();
+        jazdy = jazdyDao.dajVsetky();
         fireTableDataChanged();
     }
 
-    public Instruktor dajPodlaCislaRiadku(int riadok) {
-        return instruktori.get(riadok);
+    public Jazda dajPodlaCislaRiadku(int riadok) {
+        return jazdy.get(riadok);
     }
 
     @Override

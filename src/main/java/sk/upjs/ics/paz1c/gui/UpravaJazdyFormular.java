@@ -25,6 +25,19 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
         this();
         this.jazda = jazda;
 
+        if (jazda.getId() != null) {
+            pripravFormular();
+        }
+    }
+
+    /**
+     * Creates new form UpravaJazdyFormular
+     */
+    private UpravaJazdyFormular() {
+        initComponents();
+    }
+
+    private void pripravFormular() {
         txtStudent.setText(jazda.getStudent().getMeno() + " " + jazda.getStudent().getPriezvisko());
         txtInstruktor.setText(jazda.getInstruktor().getMeno() + " " + jazda.getInstruktor().getPriezvisko());
         txtVozidlo.setText(jazda.getVozidlo().getSpz());
@@ -35,13 +48,6 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
         chBoxVpremavke.setSelected(jazda.isvPremavke());
         chBoxNacvicisku.setSelected(jazda.isNaCvicisku());
         chBoxSvozikom.setSelected(jazda.issVozikom());
-    }
-
-    /**
-     * Creates new form UpravaJazdyFormular
-     */
-    private UpravaJazdyFormular() {
-        initComponents();
     }
 
     /**
@@ -94,6 +100,11 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
         lblStudentPomoc.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         btnNovyStudent.setText("Novy student");
+        btnNovyStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovyStudentActionPerformed(evt);
+            }
+        });
 
         lblInstuktorPomoc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblInstuktorPomoc.setText("?");
@@ -101,6 +112,11 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
         lblInstuktorPomoc.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         btnNovyInstruktor.setText("Novy instruktor");
+        btnNovyInstruktor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovyInstruktorActionPerformed(evt);
+            }
+        });
 
         lblVozidloPomoc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVozidloPomoc.setText("?");
@@ -108,6 +124,11 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
         lblVozidloPomoc.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         btnNoveVozidlo.setText("Nove vozidlo");
+        btnNoveVozidlo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNoveVozidloActionPerformed(evt);
+            }
+        });
 
         lblDatum.setText("Datum:");
 
@@ -240,6 +261,7 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // generator nahodnych vynimiek :D
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         jazda.setStudent(new Student());
         jazda.setInstruktor(new Instruktor());
@@ -276,6 +298,21 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
         chBoxNacvicisku.setSelected(false);
         chBoxSvozikom.setSelected(false);
     }//GEN-LAST:event_btnVynulujActionPerformed
+
+    private void btnNovyStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovyStudentActionPerformed
+        UpravaStudentiFormular pridanieStudentiFormular = new UpravaStudentiFormular(new Student());
+        pridanieStudentiFormular.setVisible(true);
+    }//GEN-LAST:event_btnNovyStudentActionPerformed
+
+    private void btnNovyInstruktorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovyInstruktorActionPerformed
+        UpravaInstruktoriFormular pridanieInstruktoriFormular = new UpravaInstruktoriFormular(new Instruktor());
+        pridanieInstruktoriFormular.setVisible(true);
+    }//GEN-LAST:event_btnNovyInstruktorActionPerformed
+
+    private void btnNoveVozidloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoveVozidloActionPerformed
+        UpravaVozidlaFormular pridanieVozidlaFormular = new UpravaVozidlaFormular(new Vozidlo());
+        pridanieVozidlaFormular.setVisible(true);
+    }//GEN-LAST:event_btnNoveVozidloActionPerformed
 
     /**
      * @param args the command line arguments

@@ -21,6 +21,19 @@ public class UpravaStudentiFormular extends javax.swing.JFrame {
         this();
         this.student = student;
 
+        if (student.getId() != null) {
+            pripravFormular();
+        }
+    }
+
+    /**
+     * Creates new form UpravaStudentiFormular
+     */
+    private UpravaStudentiFormular() {
+        initComponents();
+    }
+
+    private void pripravFormular() {
         txtMeno.setText(student.getMeno());
         txtPriezvisko.setText(student.getPriezvisko());
         txtBydlisko.setText(student.getBydlisko());
@@ -32,13 +45,6 @@ public class UpravaStudentiFormular extends javax.swing.JFrame {
         chBoxPrvaPomoc.setSelected(student.isPrvaPomoc());
         chBoxCvicisko.setSelected(student.isCvicisko());
         chBoxJazda.setSelected(student.isJazda());
-    }
-
-    /**
-     * Creates new form UpravaStudentiFormular
-     */
-    private UpravaStudentiFormular() {
-        initComponents();
     }
 
     /**

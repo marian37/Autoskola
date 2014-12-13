@@ -26,6 +26,19 @@ public class UpravaSkuskyFormular extends javax.swing.JFrame {
         this();
         this.skuska = skuska;
 
+        if (skuska.getId() != null) {
+            pripravFormular();
+        }
+    }
+
+    /**
+     * Creates new form UpravaSkuskyFormular
+     */
+    private UpravaSkuskyFormular() {
+        initComponents();
+    }
+
+    private void pripravFormular() {
         txtDatum.setText(skuska.getDatum().toString());
         txtCas.setText(skuska.getCas().toString());
         txtInstruktor.setText(skuska.getInstruktor().getMeno() + " " + skuska.getInstruktor().getPriezvisko());
@@ -41,13 +54,6 @@ public class UpravaSkuskyFormular extends javax.swing.JFrame {
         txtaStudenti.setText(sb.toString());
 
         txtPolicajt.setText(skuska.getPolicajt());
-    }
-
-    /**
-     * Creates new form UpravaSkuskyFormular
-     */
-    private UpravaSkuskyFormular() {
-        initComponents();
     }
 
     /**

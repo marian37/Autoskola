@@ -20,9 +20,9 @@ public class UpravaInstruktoriFormular extends javax.swing.JFrame {
         this();
         this.instruktor = instruktor;
 
-        txtMeno.setText(instruktor.getMeno());
-        txtPriezvisko.setText(instruktor.getPriezvisko());
-        txtKontakt.setText(instruktor.getKontakt());
+        if (instruktor.getId() != null) {
+            pripravFormular();
+        }
     }
 
     /**
@@ -30,6 +30,12 @@ public class UpravaInstruktoriFormular extends javax.swing.JFrame {
      */
     private UpravaInstruktoriFormular() {
         initComponents();
+    }
+
+    private void pripravFormular() {
+        txtMeno.setText(instruktor.getMeno());
+        txtPriezvisko.setText(instruktor.getPriezvisko());
+        txtKontakt.setText(instruktor.getKontakt());
     }
 
     /**

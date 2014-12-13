@@ -1,7 +1,12 @@
 package sk.upjs.ics.paz1c.gui;
 
+import sk.upjs.ics.paz1c.gui.tableModels.SkuskyTableModel;
+import sk.upjs.ics.paz1c.gui.tableModels.VozidlaTableModel;
+import sk.upjs.ics.paz1c.gui.tableModels.InstruktoriTableModel;
+import sk.upjs.ics.paz1c.gui.tableModels.StudentiTableModel;
+import sk.upjs.ics.paz1c.gui.tableModels.JazdyTableModel;
+import javax.swing.JOptionPane;
 import sk.upjs.ics.paz1c.gui.rowFilters.*;
-import sk.upjs.ics.paz1c.gui.tabelModels.*;
 import sk.upjs.ics.paz1c.dao.*;
 import sk.upjs.ics.paz1c.entity.*;
 import javax.swing.event.ListSelectionEvent;
@@ -247,6 +252,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
         btnJazdyDetail = new javax.swing.JButton();
         btnJazdyUprav = new javax.swing.JButton();
         btnJazdyVymaz = new javax.swing.JButton();
+        btnJazdyPridaj = new javax.swing.JButton();
         paneSkusky = new javax.swing.JPanel();
         txtSkuskyHladaj = new javax.swing.JTextField();
         btnSkuskyHladaj = new javax.swing.JButton();
@@ -260,6 +266,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
         btnSkuskyVymaz = new javax.swing.JButton();
         btnSkuskyUprav = new javax.swing.JButton();
         btnSkuskyDetail = new javax.swing.JButton();
+        btnSkuskyPridaj = new javax.swing.JButton();
         paneStudenti = new javax.swing.JPanel();
         txtStudentiHladaj = new javax.swing.JTextField();
         btnStudentiHladaj = new javax.swing.JButton();
@@ -273,6 +280,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
         btnStudentiVymaz = new javax.swing.JButton();
         btnStudentiUprav = new javax.swing.JButton();
         btnStudentiDetail = new javax.swing.JButton();
+        btnStudentiPridaj = new javax.swing.JButton();
         paneInstruktori = new javax.swing.JPanel();
         txtInstruktoriHladaj = new javax.swing.JTextField();
         btnInstruktoriHladaj = new javax.swing.JButton();
@@ -285,6 +293,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
         btnInstruktoriVymaz = new javax.swing.JButton();
         btnInstruktoriUprav = new javax.swing.JButton();
         btnInstruktoriDetail = new javax.swing.JButton();
+        btnInstruktoriPridaj = new javax.swing.JButton();
         paneVozidla = new javax.swing.JPanel();
         txtVozidlaHladaj = new javax.swing.JTextField();
         btnVozidlaHladaj = new javax.swing.JButton();
@@ -298,6 +307,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
         btnVozidlaVymaz = new javax.swing.JButton();
         btnVozidlaUprav = new javax.swing.JButton();
         btnVozidlaDetail = new javax.swing.JButton();
+        btnVozidlaPridaj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Autoskola");
@@ -369,6 +379,18 @@ public class HlavnyFormular extends javax.swing.JFrame {
         btnJazdyVymaz.setText("Vymaz");
         btnJazdyVymaz.setEnabled(false);
         btnJazdyVymaz.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnJazdyVymaz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJazdyVymazActionPerformed(evt);
+            }
+        });
+
+        btnJazdyPridaj.setText("Pridaj");
+        btnJazdyPridaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJazdyPridajActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout paneJazdyLayout = new javax.swing.GroupLayout(paneJazdy);
         paneJazdy.setLayout(paneJazdyLayout);
@@ -377,7 +399,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
             .addGroup(paneJazdyLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paneJazdyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPaneJazdy, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+                    .addComponent(scrollPaneJazdy, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE)
                     .addGroup(paneJazdyLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(lblJazdyHladajPodla)
@@ -392,6 +414,8 @@ public class HlavnyFormular extends javax.swing.JFrame {
                     .addGroup(paneJazdyLayout.createSequentialGroup()
                         .addComponent(btnJazdyRozsireneVyhladavanie, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnJazdyPridaj, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnJazdyVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnJazdyUprav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -424,7 +448,8 @@ public class HlavnyFormular extends javax.swing.JFrame {
                     .addComponent(btnJazdyRozsireneVyhladavanie, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnJazdyDetail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnJazdyUprav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnJazdyVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnJazdyVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnJazdyPridaj, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -468,6 +493,11 @@ public class HlavnyFormular extends javax.swing.JFrame {
         btnSkuskyVymaz.setText("Vymaz");
         btnSkuskyVymaz.setEnabled(false);
         btnSkuskyVymaz.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnSkuskyVymaz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSkuskyVymazActionPerformed(evt);
+            }
+        });
 
         btnSkuskyUprav.setText("Uprav");
         btnSkuskyUprav.setEnabled(false);
@@ -484,6 +514,13 @@ public class HlavnyFormular extends javax.swing.JFrame {
         btnSkuskyDetail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSkuskyDetailActionPerformed(evt);
+            }
+        });
+
+        btnSkuskyPridaj.setText("Pridaj");
+        btnSkuskyPridaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSkuskyPridajActionPerformed(evt);
             }
         });
 
@@ -505,13 +542,15 @@ public class HlavnyFormular extends javax.swing.JFrame {
                         .addComponent(rbtnSkuskyInstruktor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSkuskyVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(scrollPaneSkusky, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+                    .addComponent(scrollPaneSkusky, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE)
                     .addGroup(paneSkuskyLayout.createSequentialGroup()
                         .addComponent(txtSkuskyHladaj)
                         .addGap(18, 18, 18)
                         .addComponent(btnSkuskyHladaj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneSkuskyLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnSkuskyPridaj, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSkuskyVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSkuskyUprav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -535,11 +574,12 @@ public class HlavnyFormular extends javax.swing.JFrame {
                     .addComponent(btnSkuskyVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrollPaneSkusky, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
                 .addGroup(paneSkuskyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSkuskyDetail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSkuskyUprav, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSkuskyVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSkuskyVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSkuskyPridaj, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -588,6 +628,11 @@ public class HlavnyFormular extends javax.swing.JFrame {
         btnStudentiVymaz.setText("Vymaz");
         btnStudentiVymaz.setEnabled(false);
         btnStudentiVymaz.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnStudentiVymaz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStudentiVymazActionPerformed(evt);
+            }
+        });
 
         btnStudentiUprav.setText("Uprav");
         btnStudentiUprav.setEnabled(false);
@@ -607,6 +652,13 @@ public class HlavnyFormular extends javax.swing.JFrame {
             }
         });
 
+        btnStudentiPridaj.setText("Pridaj");
+        btnStudentiPridaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStudentiPridajActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout paneStudentiLayout = new javax.swing.GroupLayout(paneStudenti);
         paneStudenti.setLayout(paneStudentiLayout);
         paneStudentiLayout.setHorizontalGroup(
@@ -614,10 +666,12 @@ public class HlavnyFormular extends javax.swing.JFrame {
             .addGroup(paneStudentiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paneStudentiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPaneStudenti, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+                    .addComponent(scrollPaneStudenti, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE)
                     .addGroup(paneStudentiLayout.createSequentialGroup()
                         .addComponent(btnStudentiRozsireneVyhladavanie, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnStudentiPridaj, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnStudentiVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnStudentiUprav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -658,7 +712,8 @@ public class HlavnyFormular extends javax.swing.JFrame {
                     .addComponent(btnStudentiRozsireneVyhladavanie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnStudentiDetail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnStudentiUprav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnStudentiVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnStudentiVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnStudentiPridaj, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -699,6 +754,11 @@ public class HlavnyFormular extends javax.swing.JFrame {
         btnInstruktoriVymaz.setText("Vymaz");
         btnInstruktoriVymaz.setEnabled(false);
         btnInstruktoriVymaz.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnInstruktoriVymaz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInstruktoriVymazActionPerformed(evt);
+            }
+        });
 
         btnInstruktoriUprav.setText("Uprav");
         btnInstruktoriUprav.setEnabled(false);
@@ -718,6 +778,13 @@ public class HlavnyFormular extends javax.swing.JFrame {
             }
         });
 
+        btnInstruktoriPridaj.setText("Pridaj");
+        btnInstruktoriPridaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInstruktoriPridajActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout paneInstruktoriLayout = new javax.swing.GroupLayout(paneInstruktori);
         paneInstruktori.setLayout(paneInstruktoriLayout);
         paneInstruktoriLayout.setHorizontalGroup(
@@ -725,7 +792,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
             .addGroup(paneInstruktoriLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paneInstruktoriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPaneInstruktori, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+                    .addComponent(scrollPaneInstruktori, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE)
                     .addGroup(paneInstruktoriLayout.createSequentialGroup()
                         .addComponent(txtInstruktoriHladaj)
                         .addGap(18, 18, 18)
@@ -741,6 +808,8 @@ public class HlavnyFormular extends javax.swing.JFrame {
                         .addComponent(btnInstruktoriVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneInstruktoriLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnInstruktoriPridaj, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnInstruktoriVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnInstruktoriUprav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -767,7 +836,8 @@ public class HlavnyFormular extends javax.swing.JFrame {
                 .addGroup(paneInstruktoriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInstruktoriDetail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnInstruktoriUprav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInstruktoriVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnInstruktoriVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnInstruktoriPridaj, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -811,6 +881,11 @@ public class HlavnyFormular extends javax.swing.JFrame {
         btnVozidlaVymaz.setText("Vymaz");
         btnVozidlaVymaz.setEnabled(false);
         btnVozidlaVymaz.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnVozidlaVymaz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVozidlaVymazActionPerformed(evt);
+            }
+        });
 
         btnVozidlaUprav.setText("Uprav");
         btnVozidlaUprav.setEnabled(false);
@@ -827,6 +902,13 @@ public class HlavnyFormular extends javax.swing.JFrame {
         btnVozidlaDetail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVozidlaDetailActionPerformed(evt);
+            }
+        });
+
+        btnVozidlaPridaj.setText("Pridaj");
+        btnVozidlaPridaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVozidlaPridajActionPerformed(evt);
             }
         });
 
@@ -848,13 +930,15 @@ public class HlavnyFormular extends javax.swing.JFrame {
                         .addComponent(rbtnVozidlaKategoria)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnVozidlaVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(scrollPaneVozidla, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+                    .addComponent(scrollPaneVozidla, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE)
                     .addGroup(paneVozidlaLayout.createSequentialGroup()
                         .addComponent(txtVozidlaHladaj)
                         .addGap(18, 18, 18)
                         .addComponent(btnVozidlaHladaj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneVozidlaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnVozidlaPridaj, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnVozidlaVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnVozidlaUprav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -882,7 +966,8 @@ public class HlavnyFormular extends javax.swing.JFrame {
                 .addGroup(paneVozidlaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVozidlaDetail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVozidlaUprav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVozidlaVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnVozidlaVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVozidlaPridaj, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -1043,6 +1128,116 @@ public class HlavnyFormular extends javax.swing.JFrame {
         upravaVozidlaFormular.setVisible(true);
     }//GEN-LAST:event_btnVozidlaUpravActionPerformed
 
+    private void btnJazdyVymazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJazdyVymazActionPerformed
+        int vybranyRiadok = tblJazdy.getSelectedRow();
+        int vybratyIndexVModeli = tblJazdy.convertRowIndexToModel(vybranyRiadok);
+
+        Jazda vybranaJazda = jazdyTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
+
+        int tlacidlo = JOptionPane.showConfirmDialog(this,
+                "Naozaj odstranit?",
+                "Odstranit jazdu",
+                JOptionPane.YES_NO_OPTION
+        );
+        if (tlacidlo == JOptionPane.YES_OPTION) {
+            jazdyDao.vymaz(vybranaJazda);
+            aktualizujZoznamJazd();
+        }
+    }//GEN-LAST:event_btnJazdyVymazActionPerformed
+
+    private void btnSkuskyVymazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkuskyVymazActionPerformed
+        int vybranyRiadok = tblSkusky.getSelectedRow();
+        int vybratyIndexVModeli = tblSkusky.convertRowIndexToModel(vybranyRiadok);
+
+        Skuska vybranaSkuska = skuskyTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
+
+        int tlacidlo = JOptionPane.showConfirmDialog(this,
+                "Naozaj odstranit?",
+                "Odstranit skusku",
+                JOptionPane.YES_NO_OPTION
+        );
+        if (tlacidlo == JOptionPane.YES_OPTION) {
+            skuskyDao.vymaz(vybranaSkuska);
+            aktualizujZoznamSkusok();
+        }
+    }//GEN-LAST:event_btnSkuskyVymazActionPerformed
+
+    private void btnStudentiVymazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentiVymazActionPerformed
+        int vybranyRiadok = tblStudenti.getSelectedRow();
+        int vybratyIndexVModeli = tblStudenti.convertRowIndexToModel(vybranyRiadok);
+
+        Student vybranyStudent = studentiTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
+
+        int tlacidlo = JOptionPane.showConfirmDialog(this,
+                "Naozaj odstranit?",
+                "Odstranit studenta",
+                JOptionPane.YES_NO_OPTION
+        );
+        if (tlacidlo == JOptionPane.YES_OPTION) {
+            studentiDao.vymaz(vybranyStudent);
+            aktualizujZoznamStudentov();
+        }
+    }//GEN-LAST:event_btnStudentiVymazActionPerformed
+
+    private void btnInstruktoriVymazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInstruktoriVymazActionPerformed
+        int vybranyRiadok = tblInstruktori.getSelectedRow();
+        int vybratyIndexVModeli = tblInstruktori.convertRowIndexToModel(vybranyRiadok);
+
+        Instruktor vybratyInstruktor = instruktoriTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
+
+        int tlacidlo = JOptionPane.showConfirmDialog(this,
+                "Naozaj odstranit?",
+                "Odstranit instruktora",
+                JOptionPane.YES_NO_OPTION
+        );
+        if (tlacidlo == JOptionPane.YES_OPTION) {
+            instruktoriDao.vymaz(vybratyInstruktor);
+            aktualizujZoznamInstruktorov();
+        }
+    }//GEN-LAST:event_btnInstruktoriVymazActionPerformed
+
+    private void btnVozidlaVymazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVozidlaVymazActionPerformed
+        int vybranyRiadok = tblVozidla.getSelectedRow();
+        int vybratyIndexVModeli = tblVozidla.convertRowIndexToModel(vybranyRiadok);
+
+        Vozidlo vybraneVozidlo = vozidlaTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
+
+        int tlacidlo = JOptionPane.showConfirmDialog(this,
+                "Naozaj odstranit?",
+                "Odstranit vozidlo",
+                JOptionPane.YES_NO_OPTION
+        );
+        if (tlacidlo == JOptionPane.YES_OPTION) {
+            vozidlaDao.vymaz(vybraneVozidlo);
+            aktualizujZoznamVozidiel();
+        }
+    }//GEN-LAST:event_btnVozidlaVymazActionPerformed
+
+    private void btnJazdyPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJazdyPridajActionPerformed
+        UpravaJazdyFormular pridanieJazdyFormular = new UpravaJazdyFormular(new Jazda());
+        pridanieJazdyFormular.setVisible(true);
+    }//GEN-LAST:event_btnJazdyPridajActionPerformed
+
+    private void btnSkuskyPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkuskyPridajActionPerformed
+        UpravaSkuskyFormular pridanieSkuskyFormular = new UpravaSkuskyFormular(new Skuska());
+        pridanieSkuskyFormular.setVisible(true);
+    }//GEN-LAST:event_btnSkuskyPridajActionPerformed
+
+    private void btnStudentiPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentiPridajActionPerformed
+        UpravaStudentiFormular pridanieStudentiFormular = new UpravaStudentiFormular(new Student());
+        pridanieStudentiFormular.setVisible(true);
+    }//GEN-LAST:event_btnStudentiPridajActionPerformed
+
+    private void btnInstruktoriPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInstruktoriPridajActionPerformed
+        UpravaInstruktoriFormular pridanieInstruktoriFormular = new UpravaInstruktoriFormular(new Instruktor());
+        pridanieInstruktoriFormular.setVisible(true);
+    }//GEN-LAST:event_btnInstruktoriPridajActionPerformed
+
+    private void btnVozidlaPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVozidlaPridajActionPerformed
+        UpravaVozidlaFormular pridanieVozidlaFormular = new UpravaVozidlaFormular(new Vozidlo());
+        pridanieVozidlaFormular.setVisible(true);
+    }//GEN-LAST:event_btnVozidlaPridajActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1081,28 +1276,33 @@ public class HlavnyFormular extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInstruktoriDetail;
     private javax.swing.JButton btnInstruktoriHladaj;
+    private javax.swing.JButton btnInstruktoriPridaj;
     private javax.swing.JButton btnInstruktoriUprav;
     private javax.swing.JButton btnInstruktoriVymaz;
     private javax.swing.JButton btnInstruktoriVynuluj;
     private javax.swing.JButton btnJazdyDetail;
     private javax.swing.JButton btnJazdyHladaj;
+    private javax.swing.JButton btnJazdyPridaj;
     private javax.swing.JButton btnJazdyRozsireneVyhladavanie;
     private javax.swing.JButton btnJazdyUprav;
     private javax.swing.JButton btnJazdyVymaz;
     private javax.swing.JButton btnJazdyVynuluj;
     private javax.swing.JButton btnSkuskyDetail;
     private javax.swing.JButton btnSkuskyHladaj;
+    private javax.swing.JButton btnSkuskyPridaj;
     private javax.swing.JButton btnSkuskyUprav;
     private javax.swing.JButton btnSkuskyVymaz;
     private javax.swing.JButton btnSkuskyVynuluj;
     private javax.swing.JButton btnStudentiDetail;
     private javax.swing.JButton btnStudentiHladaj;
+    private javax.swing.JButton btnStudentiPridaj;
     private javax.swing.JButton btnStudentiRozsireneVyhladavanie;
     private javax.swing.JButton btnStudentiUprav;
     private javax.swing.JButton btnStudentiVymaz;
     private javax.swing.JButton btnStudentiVynuluj;
     private javax.swing.JButton btnVozidlaDetail;
     private javax.swing.JButton btnVozidlaHladaj;
+    private javax.swing.JButton btnVozidlaPridaj;
     private javax.swing.JButton btnVozidlaUprav;
     private javax.swing.JButton btnVozidlaVymaz;
     private javax.swing.JButton btnVozidlaVynuluj;

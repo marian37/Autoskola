@@ -20,11 +20,9 @@ public class UpravaVozidlaFormular extends javax.swing.JFrame {
         this();
         this.vozidlo = vozidlo;
 
-        txtSpz.setText(vozidlo.getSpz());
-        txtZnacka.setText(vozidlo.getZnacka());
-        txtTyp.setText(vozidlo.getTyp());
-        txtFarba.setText(vozidlo.getFarba());
-        txtKategoria.setText(vozidlo.getKategoria());
+        if (vozidlo.getId() != null) {
+            pripravFormular();
+        }
     }
 
     /**
@@ -32,6 +30,14 @@ public class UpravaVozidlaFormular extends javax.swing.JFrame {
      */
     private UpravaVozidlaFormular() {
         initComponents();
+    }
+
+    private void pripravFormular() {
+        txtSpz.setText(vozidlo.getSpz());
+        txtZnacka.setText(vozidlo.getZnacka());
+        txtTyp.setText(vozidlo.getTyp());
+        txtFarba.setText(vozidlo.getFarba());
+        txtKategoria.setText(vozidlo.getKategoria());
     }
 
     /**
@@ -151,6 +157,8 @@ public class UpravaVozidlaFormular extends javax.swing.JFrame {
         vozidlo.setSpz(txtSpz.getText());
         vozidlo.setZnacka(txtZnacka.getText());
         vozidlo.setTyp(txtTyp.getText());
+        vozidlo.setFarba(txtFarba.getText());
+        vozidlo.setKategoria(txtKategoria.getText());
 
         if (vozidlo.getId() == null) {
             vozidlaDao.uloz(vozidlo);
@@ -159,7 +167,7 @@ public class UpravaVozidlaFormular extends javax.swing.JFrame {
         }
 
         if (rodic != null) {
-            rodic.aktualizujZoznamInstruktorov();
+            rodic.aktualizujZoznamVozidiel();
         }
         dispose();
     }//GEN-LAST:event_btnOkActionPerformed

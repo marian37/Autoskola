@@ -1,16 +1,17 @@
-package sk.upjs.ics.paz1c.gui.tabelModels;
+package sk.upjs.ics.paz1c.gui.tableModels;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import sk.upjs.ics.paz1c.autoskola.BeanFactory;
-import sk.upjs.ics.paz1c.dao.StudentiDao;
-import sk.upjs.ics.paz1c.entity.*;
+import sk.upjs.ics.paz1c.dao.VozidlaDao;
+import sk.upjs.ics.paz1c.entity.Vozidlo;
 
-public class StudentiTableModel extends AbstractTableModel {
+public class VozidlaTableModel extends AbstractTableModel {
 
     private static final int POCET_STLPCOV = 3;
 
-    private static final String[] NAZVY_STLPCOV = {"Meno", "Priezvisko", "Kontakt"};
+    private static final String[] NAZVY_STLPCOV = {"SPZ", "Znacka", "Kategoria"};
 
     private static final Class[] TYPY_STLPCOV = {
         String.class,
@@ -18,12 +19,12 @@ public class StudentiTableModel extends AbstractTableModel {
         String.class
     };
 
-    private StudentiDao studentiDao = BeanFactory.INSTANCE.getStudentiDao();
-    private List<Student> studenti = new LinkedList<>();
+    private VozidlaDao vozidlaDao = BeanFactory.INSTANCE.getVozidlaDao();
+    private List<Vozidlo> vozidla = new LinkedList<>();
 
     @Override
     public int getRowCount() {
-        return studenti.size();
+        return vozidla.size();
     }
 
     @Override
@@ -33,26 +34,26 @@ public class StudentiTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Student vybranyStudent = studenti.get(rowIndex);
+        Vozidlo vybraneVozidlo = vozidla.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return vybranyStudent.getMeno();
+                return vybraneVozidlo.getSpz();
             case 1:
-                return vybranyStudent.getPriezvisko();
+                return vybraneVozidlo.getZnacka();
             case 2:
-                return vybranyStudent.getKontakt();
+                return vybraneVozidlo.getKategoria();
             default:
                 return "???";
         }
     }
 
     public void obnov() {
-        studenti = studentiDao.dajVsetky();
+        vozidla = vozidlaDao.dajVsetky();
         fireTableDataChanged();
     }
-    
-    public Student dajPodlaCislaRiadku(int riadok) {
-        return studenti.get(riadok);
+
+    public Vozidlo dajPodlaCislaRiadku(int riadok) {
+        return vozidla.get(riadok);
     }
 
     @Override

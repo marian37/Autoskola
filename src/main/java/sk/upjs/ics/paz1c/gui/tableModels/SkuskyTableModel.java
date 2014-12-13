@@ -1,4 +1,4 @@
-package sk.upjs.ics.paz1c.gui.tabelModels;
+package sk.upjs.ics.paz1c.gui.tableModels;
 
 import java.util.LinkedList;
 import java.util.List;

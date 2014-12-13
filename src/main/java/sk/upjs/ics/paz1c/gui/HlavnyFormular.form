@@ -70,7 +70,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="scrollPaneJazdy" pref="575" max="32767" attributes="0"/>
+                          <Component id="scrollPaneJazdy" pref="775" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                               <Component id="lblJazdyHladajPodla" min="-2" max="-2" attributes="0"/>
@@ -86,6 +86,8 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="btnJazdyRozsireneVyhladavanie" min="-2" pref="160" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnJazdyPridaj" min="-2" pref="70" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnJazdyVymaz" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnJazdyUprav" min="-2" max="-2" attributes="0"/>
@@ -126,6 +128,7 @@
                           <Component id="btnJazdyDetail" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnJazdyUprav" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnJazdyVymaz" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnJazdyPridaj" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -244,6 +247,17 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnJazdyVymazActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnJazdyPridaj">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pridaj"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnJazdyPridajActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -274,7 +288,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnSkuskyVynuluj" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="scrollPaneSkusky" alignment="0" pref="575" max="32767" attributes="0"/>
+                          <Component id="scrollPaneSkusky" alignment="0" pref="775" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="txtSkuskyHladaj" max="32767" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -282,6 +296,8 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btnSkuskyPridaj" min="-2" pref="70" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnSkuskyVymaz" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnSkuskyUprav" min="-2" max="-2" attributes="0"/>
@@ -311,11 +327,12 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="scrollPaneSkusky" pref="447" max="32767" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnSkuskyDetail" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnSkuskyUprav" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="btnSkuskyVymaz" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSkuskyPridaj" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -399,6 +416,9 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSkuskyVymazActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnSkuskyUprav">
               <Properties>
@@ -424,6 +444,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSkuskyDetailActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="btnSkuskyPridaj">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pridaj"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSkuskyPridajActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="paneStudenti">
@@ -441,10 +469,12 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="scrollPaneStudenti" alignment="0" pref="575" max="32767" attributes="0"/>
+                          <Component id="scrollPaneStudenti" alignment="0" pref="775" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="btnStudentiRozsireneVyhladavanie" min="-2" pref="160" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnStudentiPridaj" min="-2" pref="70" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnStudentiVymaz" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnStudentiUprav" min="-2" max="-2" attributes="0"/>
@@ -494,6 +524,7 @@
                           <Component id="btnStudentiDetail" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnStudentiUprav" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnStudentiVymaz" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnStudentiPridaj" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -580,6 +611,9 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStudentiVymazActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnStudentiUprav">
               <Properties>
@@ -605,6 +639,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStudentiDetailActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="btnStudentiPridaj">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pridaj"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStudentiPridajActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="paneInstruktori">
@@ -622,7 +664,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="scrollPaneInstruktori" alignment="0" pref="575" max="32767" attributes="0"/>
+                          <Component id="scrollPaneInstruktori" alignment="0" pref="775" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="txtInstruktoriHladaj" max="32767" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -640,6 +682,8 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btnInstruktoriPridaj" min="-2" pref="70" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnInstruktoriVymaz" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnInstruktoriUprav" min="-2" max="-2" attributes="0"/>
@@ -673,6 +717,7 @@
                           <Component id="btnInstruktoriDetail" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnInstruktoriUprav" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnInstruktoriVymaz" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnInstruktoriPridaj" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -748,6 +793,9 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInstruktoriVymazActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnInstruktoriUprav">
               <Properties>
@@ -771,6 +819,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInstruktoriDetailActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnInstruktoriPridaj">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pridaj"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInstruktoriPridajActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -802,7 +858,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnVozidlaVynuluj" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="scrollPaneVozidla" alignment="0" pref="575" max="32767" attributes="0"/>
+                          <Component id="scrollPaneVozidla" alignment="0" pref="775" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="txtVozidlaHladaj" max="32767" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -810,6 +866,8 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btnVozidlaPridaj" min="-2" pref="70" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnVozidlaVymaz" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnVozidlaUprav" min="-2" max="-2" attributes="0"/>
@@ -844,6 +902,7 @@
                           <Component id="btnVozidlaDetail" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnVozidlaUprav" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnVozidlaVymaz" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnVozidlaPridaj" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -927,6 +986,9 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVozidlaVymazActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnVozidlaUprav">
               <Properties>
@@ -950,6 +1012,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVozidlaDetailActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnVozidlaPridaj">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pridaj"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVozidlaPridajActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
