@@ -1,5 +1,6 @@
 package sk.upjs.ics.paz1c.databazoveDao;
 
+import sk.upjs.ics.paz1c.databazoveDao.rowMappers.InstruktorRowMapper;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

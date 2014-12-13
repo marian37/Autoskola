@@ -2,11 +2,20 @@ package sk.upjs.ics.paz1c.entity;
 
 public class Vozidlo {
 
+    private Long id;
     private String spz;
     private String znacka;
     private String typ;
     private String farba;
     private String kategoria;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getSpz() {
         return spz;

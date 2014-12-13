@@ -1,5 +1,6 @@
 package sk.upjs.ics.paz1c.databazoveDao;
 
+import sk.upjs.ics.paz1c.databazoveDao.rowMappers.StudentRowMapper;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +34,20 @@ public class DatabazoveStudentiDao implements StudentiDao {
     @Override
     public List<Student> dajPodlaSkusky(Skuska skuska) {
         return jdbcTemplate.query(SqlQueries.SELECT_STUDENT_BY_SKUSKA, studentRowMapper, skuska.getId());
+    }
+
+    @Override
+    public List<Student> hladajPodlaMena(String meno) {
+        meno = meno.trim();
+        meno = "%" + meno + "%";
+        return jdbcTemplate.query(SqlQueries.SELECT_STUDENT_BY_MENO, studentRowMapper, meno);
+    }
+
+    @Override
+    public List<Student> hladajPodlaPriezviska(String priezvisko) {
+        priezvisko = priezvisko.trim();
+        priezvisko = "%" + priezvisko + "%";
+        return jdbcTemplate.query(SqlQueries.SELECT_STUDENT_BY_PRIEZVISKO, studentRowMapper, priezvisko);
     }
 
     @Override

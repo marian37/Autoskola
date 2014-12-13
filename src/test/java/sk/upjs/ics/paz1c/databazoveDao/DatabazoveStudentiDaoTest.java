@@ -17,6 +17,10 @@ public class DatabazoveStudentiDaoTest {
 
     private static final int POCET_STUDENTOV_NA_SKUSKE = 2;
 
+    private static final int POCET_STUDENTOV_V_DB_PODLA_MENA = 1;
+
+    private static final int POCET_STUDENTOV_V_DB_PODLA_PRIEZVISKA = 1;
+
     private final StudentiDao studentiDao = BeanFactory.INSTANCE.getStudentiDao();
 
     private final SkuskyDao skuskyDao = BeanFactory.INSTANCE.getSkuskyDao();
@@ -40,6 +44,18 @@ public class DatabazoveStudentiDaoTest {
         Skuska skuska = skuskyDao.dajVsetky().get(1);
         List<Student> studenti = studentiDao.dajPodlaSkusky(skuska);
         assertEquals(POCET_STUDENTOV_NA_SKUSKE, studenti.size());
+    }
+
+    @Test
+    public void testHladajPodlaMena() {
+        List<Student> studenti = studentiDao.hladajPodlaMena("Jakub");
+        assertEquals(POCET_STUDENTOV_V_DB_PODLA_MENA, studenti.size());
+    }
+
+    @Test
+    public void testHladajPodlaPriezviska() {
+        List<Student> studenti = studentiDao.hladajPodlaPriezviska("Novot");
+        assertEquals(POCET_STUDENTOV_V_DB_PODLA_PRIEZVISKA, studenti.size());
     }
 
     @Test

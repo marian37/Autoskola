@@ -73,6 +73,7 @@ public class SqlQueries {
             + "FROM Student";
 
     public static final String SELECT_ALL_VOZIDLO = "SELECT\n"
+            + "    Vozidlo.id AS VozidloId,\n"
             + "    Vozidlo.spz AS VozidloSpz,\n"
             + "    Vozidlo.znacka AS VozidloZnacka,    \n"
             + "    Vozidlo.typ AS VozidloTyp,\n"
@@ -115,7 +116,38 @@ public class SqlQueries {
             + "JOIN SkuskaStudent ON Student.id = SkuskaStudent.studentId\n"
             + "WHERE SkuskaStudent.skuskaId = ?;";
 
+    public static final String SELECT_STUDENT_BY_MENO = "SELECT\n"
+            + "    Student.id AS StudentId,\n"
+            + "    Student.meno AS StudentMeno,\n"
+            + "    Student.priezvisko AS StudentPriezvisko,\n"
+            + "    Student.datumNarodenia AS StudentDatumNarodenia,\n"
+            + "    Student.bydlisko AS StudentBydlisko,\n"
+            + "    Student.kontakt AS StudentKontakt,\n"
+            + "    Student.prvaPomoc AS StudentPrvaPomoc,\n"
+            + "    Student.pocetPokusov AS StudentPocetPokusov,\n"
+            + "    Student.pocetBodov AS StudentPocetBodov,\n"
+            + "    Student.cvicisko AS StudentCvicisko,\n"
+            + "    Student.jazda AS StudentJazda\n"
+            + "FROM Student\n"
+            + "WHERE Student.meno LIKE ?;";
+
+    public static final String SELECT_STUDENT_BY_PRIEZVISKO = "SELECT\n"
+            + "    Student.id AS StudentId,\n"
+            + "    Student.meno AS StudentMeno,\n"
+            + "    Student.priezvisko AS StudentPriezvisko,\n"
+            + "    Student.datumNarodenia AS StudentDatumNarodenia,\n"
+            + "    Student.bydlisko AS StudentBydlisko,\n"
+            + "    Student.kontakt AS StudentKontakt,\n"
+            + "    Student.prvaPomoc AS StudentPrvaPomoc,\n"
+            + "    Student.pocetPokusov AS StudentPocetPokusov,\n"
+            + "    Student.pocetBodov AS StudentPocetBodov,\n"
+            + "    Student.cvicisko AS StudentCvicisko,\n"
+            + "    Student.jazda AS StudentJazda\n"
+            + "FROM Student\n"
+            + "WHERE Student.priezvisko LIKE ?;";
+
     public static final String SELECT_VOZIDLO_BY_SPZ = "SELECT \n"
+            + "    Vozidlo.id AS VozidloId,\n"
             + "    Vozidlo.spz AS VozidloSpz,\n"
             + "    Vozidlo.znacka AS VozidloZnacka,\n"
             + "    Vozidlo.typ AS VozidloTyp,\n"
@@ -125,6 +157,7 @@ public class SqlQueries {
             + "WHERE Vozidlo.spz LIKE ?;";
 
     public static final String SELECT_VOZIDLO_BY_ZNACKA = "SELECT \n"
+            + "    Vozidlo.id AS VozidloId,\n"
             + "    Vozidlo.spz AS VozidloSpz,\n"
             + "    Vozidlo.znacka AS VozidloZnacka,\n"
             + "    Vozidlo.typ AS VozidloTyp,\n"
@@ -134,6 +167,7 @@ public class SqlQueries {
             + "WHERE Vozidlo.znacka LIKE ?;";
 
     public static final String SELECT_VOZIDLO_BY_KATEGORIA = "SELECT \n"
+            + "    Vozidlo.id AS VozidloId,\n"
             + "    Vozidlo.spz AS VozidloSpz,\n"
             + "    Vozidlo.znacka AS VozidloZnacka,\n"
             + "    Vozidlo.typ AS VozidloTyp,\n"

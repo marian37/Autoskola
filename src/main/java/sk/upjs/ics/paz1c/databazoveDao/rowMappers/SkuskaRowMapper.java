@@ -1,4 +1,4 @@
-package sk.upjs.ics.paz1c.databazoveDao;
+package sk.upjs.ics.paz1c.databazoveDao.rowMappers;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

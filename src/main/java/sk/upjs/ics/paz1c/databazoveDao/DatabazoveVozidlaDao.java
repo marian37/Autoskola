@@ -1,11 +1,14 @@
 package sk.upjs.ics.paz1c.databazoveDao;
 
+import sk.upjs.ics.paz1c.databazoveDao.rowMappers.VozidloRowMapper;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import sk.upjs.ics.paz1c.dao.VozidlaDao;
 import sk.upjs.ics.paz1c.entity.Vozidlo;
 
@@ -32,14 +35,14 @@ public class DatabazoveVozidlaDao implements VozidlaDao {
         spz = spz.trim();
         spz = "%" + spz + "%";
         return jdbcTemplate.query(SqlQueries.SELECT_VOZIDLO_BY_SPZ, vozidloRowMapper, spz);
-    }    
+    }
 
     @Override
     public List<Vozidlo> hladajPodlaZnacky(String znacka) {
         znacka = znacka.trim();
         znacka = "%" + znacka + "%";
         return jdbcTemplate.query(SqlQueries.SELECT_VOZIDLO_BY_ZNACKA, vozidloRowMapper, znacka);
-    }    
+    }
 
     @Override
     public List<Vozidlo> hladajPodlaKategorie(String kategoria) {
@@ -57,29 +60,34 @@ public class DatabazoveVozidlaDao implements VozidlaDao {
         insertMap.put("farba", vozidlo.getFarba());
         insertMap.put("kategoria", vozidlo.getKategoria());
 
-        String sql = "INSERT INTO Vozidlo VALUES(:spz, :znacka, :typ, :farba, :kategoria)";
+        String sql = "INSERT INTO Vozidlo (spz, znacka, typ, farba, kategoria)\n"
+                + "VALUES(:spz, :znacka, :typ, :farba, :kategoria)";
 
-        namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(insertMap));
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(insertMap), keyHolder);
+        Long id = keyHolder.getKey().longValue();
+        vozidlo.setId(id);
     }
 
     @Override
     public void uprav(Vozidlo vozidlo) {
         Map<String, Object> updateMap = new HashMap<String, Object>();
+        updateMap.put("id", vozidlo.getId());
         updateMap.put("spz", vozidlo.getSpz());
         updateMap.put("znacka", vozidlo.getZnacka());
         updateMap.put("typ", vozidlo.getTyp());
         updateMap.put("farba", vozidlo.getFarba());
         updateMap.put("kategoria", vozidlo.getKategoria());
 
-        String sql = "UPDATE Vozidlo SET znacka = :znacka, typ = :typ, farba = :farba, kategoria = :kategoria WHERE spz = :spz";
+        String sql = "UPDATE Vozidlo SET spz = :spz, znacka = :znacka, typ = :typ, farba = :farba, kategoria = :kategoria WHERE id = :id";
 
         namedParameterJdbcTemplate.update(sql, updateMap);
     }
 
     @Override
     public void vymaz(Vozidlo vozidlo) {
-        String sql = "DELETE FROM Vozidlo WHERE spz = ?";
-        jdbcTemplate.update(sql, vozidlo.getSpz());
+        String sql = "DELETE FROM Vozidlo WHERE id = ?";
+        jdbcTemplate.update(sql, vozidlo.getId());
     }
 
 }

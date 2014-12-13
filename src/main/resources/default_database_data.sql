@@ -1,11 +1,13 @@
 DROP TABLE IF EXISTS Vozidlo;
 
 CREATE TABLE Vozidlo (
-    spz VARCHAR(7) NOT NULL PRIMARY KEY,
+    id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    spz VARCHAR(7) NOT NULL,
     znacka VARCHAR(50) NOT NULL,
     typ VARCHAR(50),
     farba VARCHAR(50),
-    kategoria VARCHAR(10)
+    kategoria VARCHAR(10),
+    UNIQUE (spz)
 );
 
 INSERT INTO Vozidlo (spz, znacka, typ, farba, kategoria)

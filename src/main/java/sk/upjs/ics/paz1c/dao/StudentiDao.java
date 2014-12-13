@@ -10,6 +10,10 @@ public interface StudentiDao {
 
     public List<Student> dajPodlaSkusky(Skuska skuska);
 
+    public List<Student> hladajPodlaMena(String meno);
+
+    public List<Student> hladajPodlaPriezviska(String priezvisko);
+
     public void uloz(Student student);
 
     public void uprav(Student student);
