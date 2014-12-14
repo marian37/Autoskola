@@ -5,7 +5,9 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import sk.upjs.ics.paz1c.autoskola.BeanFactory;
+import sk.upjs.ics.paz1c.dao.InstruktoriDao;
 import sk.upjs.ics.paz1c.dao.SkuskyDao;
+import sk.upjs.ics.paz1c.dao.StudentiDao;
 import sk.upjs.ics.paz1c.entity.Instruktor;
 import sk.upjs.ics.paz1c.entity.Skuska;
 import sk.upjs.ics.paz1c.entity.Student;
@@ -13,6 +15,8 @@ import sk.upjs.ics.paz1c.entity.Student;
 public class UpravaSkuskyFormular extends javax.swing.JFrame {
 
     private SkuskyDao skuskyDao = BeanFactory.INSTANCE.getSkuskyDao();
+    private StudentiDao studentiDao = BeanFactory.INSTANCE.getStudentiDao();
+    private InstruktoriDao instruktoriDao = BeanFactory.INSTANCE.getInstruktoriDao();
 
     private Skuska skuska;
     private HlavnyFormular rodic;
@@ -175,21 +179,20 @@ public class UpravaSkuskyFormular extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    // generator nahodnych vynimiek :D
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         skuska.setDatum(Date.valueOf(txtDatum.getText()));
         skuska.setCas(Time.valueOf(txtCas.getText()));
-        skuska.setInstruktor(new Instruktor());
+
+        List<Instruktor> instruktori = instruktoriDao.hladajPodlaMenaPriezviska(txtInstruktor.getText());
+        skuska.setInstruktor(instruktori.get(0));
 
         List<Student> studenti = new ArrayList<>();
         String retazecStudentov = txtaStudenti.getText();
         String poleStudentov[] = retazecStudentov.split("\n");
         for (String retazec : poleStudentov) {
-            Student student = new Student();
-            String poleStudenta[] = retazec.split(" ");
-            student.setMeno(poleStudenta[0]);
-            student.setPriezvisko(poleStudenta[1]);
-            studenti.add(student);
+            retazec = retazec.trim();
+            List<Student> docasniStudenti = studentiDao.hladajPodlaMenaPriezviska(retazec);
+            studenti.add(docasniStudenti.get(0));
         }
         skuska.setStudenti(studenti);
 

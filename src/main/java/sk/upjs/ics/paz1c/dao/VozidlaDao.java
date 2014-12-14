@@ -18,4 +18,5 @@ public interface VozidlaDao {
     public void uprav(Vozidlo vozidlo);
 
     public void vymaz(Vozidlo vozidlo);
+    
 }

@@ -2,8 +2,12 @@ package sk.upjs.ics.paz1c.gui;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
 import sk.upjs.ics.paz1c.autoskola.BeanFactory;
+import sk.upjs.ics.paz1c.dao.InstruktoriDao;
 import sk.upjs.ics.paz1c.dao.JazdyDao;
+import sk.upjs.ics.paz1c.dao.StudentiDao;
+import sk.upjs.ics.paz1c.dao.VozidlaDao;
 import sk.upjs.ics.paz1c.entity.Instruktor;
 import sk.upjs.ics.paz1c.entity.Jazda;
 import sk.upjs.ics.paz1c.entity.Student;
@@ -12,6 +16,9 @@ import sk.upjs.ics.paz1c.entity.Vozidlo;
 public class UpravaJazdyFormular extends javax.swing.JFrame {
 
     private JazdyDao jazdyDao = BeanFactory.INSTANCE.getJazdyDao();
+    private StudentiDao studentiDao = BeanFactory.INSTANCE.getStudentiDao();
+    private InstruktoriDao instruktoriDao = BeanFactory.INSTANCE.getInstruktoriDao();
+    private VozidlaDao vozidlaDao = BeanFactory.INSTANCE.getVozidlaDao();
 
     private Jazda jazda;
     private HlavnyFormular rodic;
@@ -261,11 +268,16 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    // generator nahodnych vynimiek :D
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-        jazda.setStudent(new Student());
-        jazda.setInstruktor(new Instruktor());
-        jazda.setVozidlo(new Vozidlo());
+        List<Student> studenti = studentiDao.hladajPodlaMenaPriezviska(txtStudent.getText());
+        jazda.setStudent(studenti.get(0));
+
+        List<Instruktor> instruktori = instruktoriDao.hladajPodlaMenaPriezviska(txtInstruktor.getText());
+        jazda.setInstruktor(instruktori.get(0));
+
+        List<Vozidlo> vozidla = vozidlaDao.hladajPodlaSpz(txtVozidlo.getText());
+        jazda.setVozidlo(vozidla.get(0));
+
         jazda.setDatum(Date.valueOf(txtDatum.getText()));
         jazda.setCas(Time.valueOf(txtCas.getText()));
         jazda.setKm(Integer.valueOf(txtKm.getText()));

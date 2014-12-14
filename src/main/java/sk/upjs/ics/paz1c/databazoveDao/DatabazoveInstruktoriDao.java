@@ -45,6 +45,15 @@ public class DatabazoveInstruktoriDao implements InstruktoriDao {
     }
 
     @Override
+    public List<Instruktor> hladajPodlaMenaPriezviska(String menoPriezvisko) {
+        menoPriezvisko = menoPriezvisko.trim();
+        String poleStudenta[] = menoPriezvisko.split(" ");
+        String meno = poleStudenta[0].trim();
+        String priezvisko = poleStudenta[1].trim();
+        return jdbcTemplate.query(SqlQueries.SELECT_INSTRUCTOR_BY_MENO_PRIEZVISKO, instruktorRowMapper, meno, priezvisko);
+    }
+
+    @Override
     public void uloz(Instruktor instruktor) {
         Map<String, Object> insertMap = new HashMap<String, Object>();
         insertMap.put("meno", instruktor.getMeno());

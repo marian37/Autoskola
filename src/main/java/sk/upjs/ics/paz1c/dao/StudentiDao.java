@@ -13,10 +13,13 @@ public interface StudentiDao {
     public List<Student> hladajPodlaMena(String meno);
 
     public List<Student> hladajPodlaPriezviska(String priezvisko);
+    
+    public List<Student> hladajPodlaMenaPriezviska(String text);
 
     public void uloz(Student student);
 
     public void uprav(Student student);
 
     public void vymaz(Student student);
+
 }

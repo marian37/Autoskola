@@ -51,6 +51,15 @@ public class DatabazoveStudentiDao implements StudentiDao {
     }
 
     @Override
+    public List<Student> hladajPodlaMenaPriezviska(String menoPriezvisko) {
+        menoPriezvisko = menoPriezvisko.trim();
+        String poleStudenta[] = menoPriezvisko.split(" ");
+        String meno = poleStudenta[0].trim();
+        String priezvisko = poleStudenta[1].trim();
+        return jdbcTemplate.query(SqlQueries.SELECT_STUDENT_BY_MENO_PRIEZVISKO, studentRowMapper, meno, priezvisko);
+    }
+
+    @Override
     public void uloz(Student student) {
         Map<String, Object> insertMap = new HashMap<String, Object>();
         insertMap.put("meno", student.getMeno());

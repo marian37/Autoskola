@@ -98,6 +98,14 @@ public class SqlQueries {
             + "FROM Instruktor\n"
             + "WHERE Instruktor.priezvisko LIKE ?;";
 
+    public static final String SELECT_INSTRUCTOR_BY_MENO_PRIEZVISKO = "SELECT \n"
+            + "    Instruktor.id AS InstruktorId,\n"
+            + "    Instruktor.meno AS InstruktorMeno,\n"
+            + "    Instruktor.priezvisko AS InstruktorPriezvisko,\n"
+            + "    Instruktor.kontakt AS InstruktorKontakt\n"
+            + "FROM Instruktor\n"
+            + "WHERE Instruktor.meno LIKE ? AND Instruktor.priezvisko LIKE ?;";
+
     public static final String SELECT_JAZDA_BY_DATUM = "SELECT \n"
             + "    Jazda.id AS JazdaId,\n"
             + "    Jazda.studentId AS JazdaStudentId,\n"
@@ -306,6 +314,21 @@ public class SqlQueries {
             + "    Student.jazda AS StudentJazda\n"
             + "FROM Student\n"
             + "WHERE Student.priezvisko LIKE ?;";
+
+    public static final String SELECT_STUDENT_BY_MENO_PRIEZVISKO = "SELECT\n"
+            + "    Student.id AS StudentId,\n"
+            + "    Student.meno AS StudentMeno,\n"
+            + "    Student.priezvisko AS StudentPriezvisko,\n"
+            + "    Student.datumNarodenia AS StudentDatumNarodenia,\n"
+            + "    Student.bydlisko AS StudentBydlisko,\n"
+            + "    Student.kontakt AS StudentKontakt,\n"
+            + "    Student.prvaPomoc AS StudentPrvaPomoc,\n"
+            + "    Student.pocetPokusov AS StudentPocetPokusov,\n"
+            + "    Student.pocetBodov AS StudentPocetBodov,\n"
+            + "    Student.cvicisko AS StudentCvicisko,\n"
+            + "    Student.jazda AS StudentJazda\n"
+            + "FROM Student\n"
+            + "WHERE Student.meno LIKE ? AND Student.priezvisko LIKE ?;";
 
     public static final String SELECT_VOZIDLO_BY_SPZ = "SELECT \n"
             + "    Vozidlo.id AS VozidloId,\n"
