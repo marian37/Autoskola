@@ -88,7 +88,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
     }
 
     public void aktualizujZoznamJazd() {
-        jazdyTableModel.obnov(false);
+        jazdyTableModel.obnov();
     }
 
     private void nastavSkusky() {
@@ -1290,76 +1290,71 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
     private void btnJazdyHladajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJazdyHladajActionPerformed
         String filter = txtJazdyHladaj.getText().trim();
-        if (!filter.equals("")) {
-            if (rbtnJazdyDatum.isSelected()) {
-                // este sa uvidi co s tym
-            }
-            if (rbtnJazdyStudent.isSelected()) {
-                // este sa uvidi co s tym
-            }
-            if (rbtnJazdyInstruktor.isSelected()) {
-                // este sa uvidi co s tym
-            }
+
+        if (rbtnJazdyDatum.isSelected()) {
+            jazdyTableModel.zobrazPodlaDatumu(filter);
         }
-        aktualizujZoznamJazd();
+        if (rbtnJazdyStudent.isSelected()) {
+            jazdyTableModel.zobrazPodlaStudenta(filter);
+        }
+        if (rbtnJazdyInstruktor.isSelected()) {
+            jazdyTableModel.zobrazPodlaInstruktora(filter);
+        }
+
     }//GEN-LAST:event_btnJazdyHladajActionPerformed
 
     private void btnSkuskyHladajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkuskyHladajActionPerformed
         String filter = txtSkuskyHladaj.getText().trim();
-        if (!filter.equals("")) {
-            if (rbtnSkuskyDatum.isSelected()) {
-                // este sa uvidi co s tym
-            }
-            if (rbtnSkuskyStudent.isSelected()) {
-                // este sa uvidi co s tym
-            }
-            if (rbtnJazdyInstruktor.isSelected()) {
-                // este sa uvidi co s tym
-            }
+
+        if (rbtnSkuskyDatum.isSelected()) {
+            skuskyTableModel.zobrazPodlaDatumu(filter);
         }
-        aktualizujZoznamSkusok();
+        if (rbtnSkuskyStudent.isSelected()) {
+            skuskyTableModel.zobrazPodlaStudenta(filter);
+        }
+        if (rbtnSkuskyInstruktor.isSelected()) {
+            skuskyTableModel.zobrazPodlaInstruktora(filter);
+        }
+
     }//GEN-LAST:event_btnSkuskyHladajActionPerformed
 
     private void btnStudentiHladajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentiHladajActionPerformed
         String filter = txtStudentiHladaj.getText().trim();
-        if (!filter.equals("")) {
-            if (rbtnStudentiMeno.isSelected()) {
-                // este sa uvidi co s tym
-            }
-            if (rbtnStudentiPriezvisko.isSelected()) {
-                // este sa uvidi co s tym
-            }
+
+        if (rbtnStudentiMeno.isSelected()) {
+            studentiTableModel.zobrazPodlaMena(filter);
         }
-        aktualizujZoznamStudentov();
+        if (rbtnStudentiPriezvisko.isSelected()) {
+            studentiTableModel.zobrazPodlaPriezviska(filter);
+        }
+
     }//GEN-LAST:event_btnStudentiHladajActionPerformed
 
     private void btnInstruktoriHladajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInstruktoriHladajActionPerformed
         String filter = txtInstruktoriHladaj.getText().trim();
-        if (!filter.equals("")) {
-            if (rbtnInstruktoriMeno.isSelected()) {
-                // este sa uvidi co s tym
-            }
-            if (rbtnInstruktoriPriezvisko.isSelected()) {
-                // este sa uvidi co s tym
-            }
+
+        if (rbtnInstruktoriMeno.isSelected()) {
+            instruktoriTableModel.zobrazPodlaMena(filter);
         }
-        aktualizujZoznamInstruktorov();
+        if (rbtnInstruktoriPriezvisko.isSelected()) {
+            instruktoriTableModel.zobrazPodlaPriezviska(filter);
+        }
+
     }//GEN-LAST:event_btnInstruktoriHladajActionPerformed
 
     private void btnVozidlaHladajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVozidlaHladajActionPerformed
         String filter = txtVozidlaHladaj.getText().trim();
-        if (!filter.equals("")) {
-            if (rbtnVozidlaSpz.isSelected()) {
-                // este sa uvidi co s tym
-            }
-            if (rbtnVozidlaZnacka.isSelected()) {
-                // este sa uvidi co s tym
-            }
-            if (rbtnVozidlaKategoria.isSelected()) {
-                // este sa uvidi co s tym
-            }
+
+        if (rbtnVozidlaSpz.isSelected()) {
+            vozidlaTableModel.zobrazPodlaSpz(filter);
         }
-        aktualizujZoznamVozidiel();
+        if (rbtnVozidlaZnacka.isSelected()) {
+            vozidlaTableModel.zobrazPodlaZnacky(filter);
+        }
+        if (rbtnVozidlaKategoria.isSelected()) {
+            vozidlaTableModel.zobrazPodlaKategorie(filter);
+        }
+
     }//GEN-LAST:event_btnVozidlaHladajActionPerformed
 
     private void btnJazdyVynulujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJazdyVynulujActionPerformed

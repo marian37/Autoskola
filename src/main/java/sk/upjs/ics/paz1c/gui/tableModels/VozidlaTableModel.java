@@ -52,6 +52,21 @@ public class VozidlaTableModel extends AbstractTableModel {
         fireTableDataChanged();
     }
 
+    public void zobrazPodlaSpz(String spz) {
+        vozidla = vozidlaDao.hladajPodlaSpz(spz);
+        fireTableDataChanged();
+    }
+
+    public void zobrazPodlaZnacky(String znacka) {
+        vozidla = vozidlaDao.hladajPodlaZnacky(znacka);
+        fireTableDataChanged();
+    }
+
+    public void zobrazPodlaKategorie(String kategoria) {
+        vozidla = vozidlaDao.hladajPodlaKategorie(kategoria);
+        fireTableDataChanged();
+    }
+
     public Vozidlo dajPodlaCislaRiadku(int riadok) {
         return vozidla.get(riadok);
     }

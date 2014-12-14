@@ -25,9 +25,7 @@ public enum BeanFactory {
 
     private JdbcTemplate jdbcTemplate;
 
-    private DataSource dataSource;
-
-    private String password;
+    private DataSource dataSource;    
 
     public StudentiDao getStudentiDao() {
         if (studentiDao == null) {

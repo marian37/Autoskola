@@ -55,6 +55,21 @@ public class SkuskyTableModel extends AbstractTableModel {
         fireTableDataChanged();
     }
 
+    public void zobrazPodlaDatumu(String datum) {
+        skusky = skuskyDao.hladajPodlaDatumu(datum);
+        fireTableDataChanged();
+    }
+
+    public void zobrazPodlaStudenta(String student) {
+        skusky = skuskyDao.hladajPodlaStudenta(student);
+        fireTableDataChanged();
+    }
+
+    public void zobrazPodlaInstruktora(String instruktor) {
+        skusky = skuskyDao.hladajPodlaInstruktora(instruktor);
+        fireTableDataChanged();
+    }
+
     public Skuska dajPodlaCislaRiadku(int riadok) {
         return skusky.get(riadok);
     }
@@ -68,5 +83,5 @@ public class SkuskyTableModel extends AbstractTableModel {
     public Class<?> getColumnClass(int columnIndex) {
         return TYPY_STLPCOV[columnIndex];
     }
-    
+
 }

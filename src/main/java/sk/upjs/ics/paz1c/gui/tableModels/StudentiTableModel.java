@@ -50,7 +50,17 @@ public class StudentiTableModel extends AbstractTableModel {
         studenti = studentiDao.dajVsetky();
         fireTableDataChanged();
     }
-    
+
+    public void zobrazPodlaMena(String meno) {
+        studenti = studentiDao.hladajPodlaMena(meno);
+        fireTableDataChanged();
+    }
+
+    public void zobrazPodlaPriezviska(String priezvisko) {
+        studenti = studentiDao.hladajPodlaPriezviska(priezvisko);
+        fireTableDataChanged();
+    }
+
     public Student dajPodlaCislaRiadku(int riadok) {
         return studenti.get(riadok);
     }

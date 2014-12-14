@@ -47,8 +47,23 @@ public class JazdyTableModel extends AbstractTableModel {
         }
     }
 
-    public void obnov(boolean filterJeAktivny) {
+    public void obnov() {
         jazdy = jazdyDao.dajVsetky();
+        fireTableDataChanged();
+    }
+
+    public void zobrazPodlaDatumu(String datum) {
+        jazdy = jazdyDao.hladajPodlaDatumu(datum);
+        fireTableDataChanged();
+    }
+
+    public void zobrazPodlaStudenta(String student) {
+        jazdy = jazdyDao.hladajPodlaStudenta(student);
+        fireTableDataChanged();
+    }
+
+    public void zobrazPodlaInstruktora(String instruktor) {
+        jazdy = jazdyDao.hladajPodlaInstruktora(instruktor);
         fireTableDataChanged();
     }
 

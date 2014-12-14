@@ -52,6 +52,16 @@ public class InstruktoriTableModel extends AbstractTableModel {
         fireTableDataChanged();
     }
 
+    public void zobrazPodlaMena(String meno) {
+        instruktori = instruktoriDao.hladajPodlaMena(meno);
+        fireTableDataChanged();
+    }
+
+    public void zobrazPodlaPriezviska(String priezvisko) {
+        instruktori = instruktoriDao.hladajPodlaPriezviska(priezvisko);
+        fireTableDataChanged();
+    }
+
     public Instruktor dajPodlaCislaRiadku(int riadok) {
         return instruktori.get(riadok);
     }
