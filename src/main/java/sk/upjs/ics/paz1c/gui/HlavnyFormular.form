@@ -145,6 +145,9 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnJazdyHladajActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblJazdyHladajPodla">
               <Properties>
@@ -182,6 +185,9 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnJazdyVynulujActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="scrollPaneJazdy">
 
@@ -349,6 +355,9 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSkuskyHladajActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnSkuskyVynuluj">
               <Properties>
@@ -357,6 +366,9 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSkuskyVynulujActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblSkuskyHladajPodla">
               <Properties>
@@ -541,6 +553,9 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStudentiHladajActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnStudentiVynuluj">
               <Properties>
@@ -549,6 +564,9 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStudentiVynulujActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblStudentiHladajPodla">
               <Properties>
@@ -734,6 +752,9 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInstruktoriHladajActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnInstruktoriVynuluj">
               <Properties>
@@ -742,6 +763,9 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInstruktoriVynulujActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblInstruktoriHladajPodla">
               <Properties>
@@ -919,6 +943,9 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVozidlaHladajActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnVozidlaVynuluj">
               <Properties>
@@ -927,6 +954,9 @@
                   <Dimension value="[70, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVozidlaVynulujActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblVozidlaHladajPodla">
               <Properties>

@@ -88,7 +88,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
     }
 
     public void aktualizujZoznamJazd() {
-        jazdyTableModel.obnov();
+        jazdyTableModel.obnov(false);
     }
 
     private void nastavSkusky() {
@@ -317,6 +317,11 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         btnJazdyHladaj.setText("Hladaj");
         btnJazdyHladaj.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnJazdyHladaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJazdyHladajActionPerformed(evt);
+            }
+        });
 
         lblJazdyHladajPodla.setText("Hladaj podla:");
 
@@ -331,6 +336,11 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         btnJazdyVynuluj.setText("Vynuluj");
         btnJazdyVynuluj.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnJazdyVynuluj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJazdyVynulujActionPerformed(evt);
+            }
+        });
 
         tblJazdy.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -457,9 +467,19 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         btnSkuskyHladaj.setText("Hladaj");
         btnSkuskyHladaj.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnSkuskyHladaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSkuskyHladajActionPerformed(evt);
+            }
+        });
 
         btnSkuskyVynuluj.setText("Vynuluj");
         btnSkuskyVynuluj.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnSkuskyVynuluj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSkuskyVynulujActionPerformed(evt);
+            }
+        });
 
         lblSkuskyHladajPodla.setText("Hladaj podla:");
 
@@ -587,9 +607,19 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         btnStudentiHladaj.setText("Hladaj");
         btnStudentiHladaj.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnStudentiHladaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStudentiHladajActionPerformed(evt);
+            }
+        });
 
         btnStudentiVynuluj.setText("Vynuluj");
         btnStudentiVynuluj.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnStudentiVynuluj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStudentiVynulujActionPerformed(evt);
+            }
+        });
 
         lblStudentiHladajPodla.setText("Hladaj podla:");
 
@@ -721,9 +751,19 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         btnInstruktoriHladaj.setText("Hladaj");
         btnInstruktoriHladaj.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnInstruktoriHladaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInstruktoriHladajActionPerformed(evt);
+            }
+        });
 
         btnInstruktoriVynuluj.setText("Vynuluj");
         btnInstruktoriVynuluj.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnInstruktoriVynuluj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInstruktoriVynulujActionPerformed(evt);
+            }
+        });
 
         lblInstruktoriHladajPodla.setText("Hladaj podla:");
 
@@ -845,9 +885,19 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         btnVozidlaHladaj.setText("Hladaj");
         btnVozidlaHladaj.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnVozidlaHladaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVozidlaHladajActionPerformed(evt);
+            }
+        });
 
         btnVozidlaVynuluj.setText("Vynuluj");
         btnVozidlaVynuluj.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnVozidlaVynuluj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVozidlaVynulujActionPerformed(evt);
+            }
+        });
 
         lblVozidlaHladajPodla.setText("Hladaj podla:");
 
@@ -1237,6 +1287,105 @@ public class HlavnyFormular extends javax.swing.JFrame {
         UpravaVozidlaFormular pridanieVozidlaFormular = new UpravaVozidlaFormular(this, new Vozidlo());
         pridanieVozidlaFormular.setVisible(true);
     }//GEN-LAST:event_btnVozidlaPridajActionPerformed
+
+    private void btnJazdyHladajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJazdyHladajActionPerformed
+        String filter = txtJazdyHladaj.getText().trim();
+        if (!filter.equals("")) {
+            if (rbtnJazdyDatum.isSelected()) {
+                // este sa uvidi co s tym
+            }
+            if (rbtnJazdyStudent.isSelected()) {
+                // este sa uvidi co s tym
+            }
+            if (rbtnJazdyInstruktor.isSelected()) {
+                // este sa uvidi co s tym
+            }
+        }
+        aktualizujZoznamJazd();
+    }//GEN-LAST:event_btnJazdyHladajActionPerformed
+
+    private void btnSkuskyHladajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkuskyHladajActionPerformed
+        String filter = txtSkuskyHladaj.getText().trim();
+        if (!filter.equals("")) {
+            if (rbtnSkuskyDatum.isSelected()) {
+                // este sa uvidi co s tym
+            }
+            if (rbtnSkuskyStudent.isSelected()) {
+                // este sa uvidi co s tym
+            }
+            if (rbtnJazdyInstruktor.isSelected()) {
+                // este sa uvidi co s tym
+            }
+        }
+        aktualizujZoznamSkusok();
+    }//GEN-LAST:event_btnSkuskyHladajActionPerformed
+
+    private void btnStudentiHladajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentiHladajActionPerformed
+        String filter = txtStudentiHladaj.getText().trim();
+        if (!filter.equals("")) {
+            if (rbtnStudentiMeno.isSelected()) {
+                // este sa uvidi co s tym
+            }
+            if (rbtnStudentiPriezvisko.isSelected()) {
+                // este sa uvidi co s tym
+            }
+        }
+        aktualizujZoznamStudentov();
+    }//GEN-LAST:event_btnStudentiHladajActionPerformed
+
+    private void btnInstruktoriHladajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInstruktoriHladajActionPerformed
+        String filter = txtInstruktoriHladaj.getText().trim();
+        if (!filter.equals("")) {
+            if (rbtnInstruktoriMeno.isSelected()) {
+                // este sa uvidi co s tym
+            }
+            if (rbtnInstruktoriPriezvisko.isSelected()) {
+                // este sa uvidi co s tym
+            }
+        }
+        aktualizujZoznamInstruktorov();
+    }//GEN-LAST:event_btnInstruktoriHladajActionPerformed
+
+    private void btnVozidlaHladajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVozidlaHladajActionPerformed
+        String filter = txtVozidlaHladaj.getText().trim();
+        if (!filter.equals("")) {
+            if (rbtnVozidlaSpz.isSelected()) {
+                // este sa uvidi co s tym
+            }
+            if (rbtnVozidlaZnacka.isSelected()) {
+                // este sa uvidi co s tym
+            }
+            if (rbtnVozidlaKategoria.isSelected()) {
+                // este sa uvidi co s tym
+            }
+        }
+        aktualizujZoznamVozidiel();
+    }//GEN-LAST:event_btnVozidlaHladajActionPerformed
+
+    private void btnJazdyVynulujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJazdyVynulujActionPerformed
+        txtJazdyHladaj.setText("");
+        rbtnJazdyDatum.doClick();
+    }//GEN-LAST:event_btnJazdyVynulujActionPerformed
+
+    private void btnSkuskyVynulujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkuskyVynulujActionPerformed
+        txtSkuskyHladaj.setText("");
+        rbtnSkuskyDatum.doClick();
+    }//GEN-LAST:event_btnSkuskyVynulujActionPerformed
+
+    private void btnStudentiVynulujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentiVynulujActionPerformed
+        txtStudentiHladaj.setText("");
+        rbtnStudentiMeno.doClick();
+    }//GEN-LAST:event_btnStudentiVynulujActionPerformed
+
+    private void btnInstruktoriVynulujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInstruktoriVynulujActionPerformed
+        txtInstruktoriHladaj.setText("");
+        rbtnInstruktoriMeno.doClick();
+    }//GEN-LAST:event_btnInstruktoriVynulujActionPerformed
+
+    private void btnVozidlaVynulujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVozidlaVynulujActionPerformed
+        txtVozidlaHladaj.setText("");
+        rbtnVozidlaSpz.doClick();
+    }//GEN-LAST:event_btnVozidlaVynulujActionPerformed
 
     /**
      * @param args the command line arguments

@@ -47,7 +47,7 @@ public class JazdyTableModel extends AbstractTableModel {
         }
     }
 
-    public void obnov() {
+    public void obnov(boolean filterJeAktivny) {
         jazdy = jazdyDao.dajVsetky();
         fireTableDataChanged();
     }
