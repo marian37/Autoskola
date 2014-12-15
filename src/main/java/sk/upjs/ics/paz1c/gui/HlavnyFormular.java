@@ -6,7 +6,6 @@ import sk.upjs.ics.paz1c.gui.tableModels.InstruktoriTableModel;
 import sk.upjs.ics.paz1c.gui.tableModels.StudentiTableModel;
 import sk.upjs.ics.paz1c.gui.tableModels.JazdyTableModel;
 import javax.swing.JOptionPane;
-import sk.upjs.ics.paz1c.gui.rowFilters.*;
 import sk.upjs.ics.paz1c.dao.*;
 import sk.upjs.ics.paz1c.entity.*;
 import javax.swing.event.ListSelectionEvent;
@@ -19,35 +18,22 @@ public class HlavnyFormular extends javax.swing.JFrame {
     private JazdyDao jazdyDao = BeanFactory.INSTANCE.getJazdyDao();
     private JazdyTableModel jazdyTableModel = new JazdyTableModel();
     private TableRowSorter jazdyRowSorter = new TableRowSorter(jazdyTableModel);
-    private JazdyPodlaDatumuRowFilter jazdyPodlaDatumuRowFilter = new JazdyPodlaDatumuRowFilter();
-    private JazdyPodlaStudentaRowFilter jazdyPodlaStudentaRowFilter = new JazdyPodlaStudentaRowFilter();
-    private JazdyPodlaInstruktoraRowFilter jazdyPodlaInstruktoraRowFilter = new JazdyPodlaInstruktoraRowFilter();
 
     private SkuskyDao skuskyDao = BeanFactory.INSTANCE.getSkuskyDao();
     private SkuskyTableModel skuskyTableModel = new SkuskyTableModel();
     private TableRowSorter skuskyRowSorter = new TableRowSorter(skuskyTableModel);
-    private SkuskyPodlaDatumuRowFilter skuskyPodlaDatumuRowFilter = new SkuskyPodlaDatumuRowFilter();
-    private SkuskyPodlaStudentaRowFilter skuskyPodlaStudentaRowFilter = new SkuskyPodlaStudentaRowFilter();
-    private SkuskyPodlaInstruktoraRowFilter skuskyPodlaInstruktoraRowFilter = new SkuskyPodlaInstruktoraRowFilter();
 
     private StudentiDao studentiDao = BeanFactory.INSTANCE.getStudentiDao();
     private StudentiTableModel studentiTableModel = new StudentiTableModel();
     private TableRowSorter studentiRowSorter = new TableRowSorter(studentiTableModel);
-    private StudentiPodlaMenaRowFilter studentiPodlaMenaRowFilter = new StudentiPodlaMenaRowFilter();
-    private StudentiPodlaPriezviskaRowFilter studentiPodlaPriezviskaRowFilter = new StudentiPodlaPriezviskaRowFilter();
 
     private InstruktoriDao instruktoriDao = BeanFactory.INSTANCE.getInstruktoriDao();
     private InstruktoriTableModel instruktoriTableModel = new InstruktoriTableModel();
     private TableRowSorter instruktoriRowSorter = new TableRowSorter(instruktoriTableModel);
-    private InstruktoriPodlaMenaRowFilter instruktoriPodlaMenaRowFilter = new InstruktoriPodlaMenaRowFilter();
-    private InstruktoriPodlaPriezviskaRowFilter instruktoriPodlaPriezviskaRowFilter = new InstruktoriPodlaPriezviskaRowFilter();
 
     private VozidlaDao vozidlaDao = BeanFactory.INSTANCE.getVozidlaDao();
     private VozidlaTableModel vozidlaTableModel = new VozidlaTableModel();
     private TableRowSorter vozidlaRowSorter = new TableRowSorter(vozidlaTableModel);
-    private VozidlaPodlaSpzRowFilter vozidlaPodlaSpzRowFilter = new VozidlaPodlaSpzRowFilter();
-    private VozidlaPodlaZnackyRowFilter vozidlaPodlaZnackyRowFilter = new VozidlaPodlaZnackyRowFilter();
-    private VozidlaPodlaKategorieRowFilter vozidlaPodlaKategorieRowFilter = new VozidlaPodlaKategorieRowFilter();
 
     public HlavnyFormular() {
         initComponents();
@@ -59,7 +45,6 @@ public class HlavnyFormular extends javax.swing.JFrame {
     }
 
     private void nastavJazdy() {
-        jazdyRowSorter.setRowFilter(jazdyPodlaDatumuRowFilter);
         tblJazdy.setModel(jazdyTableModel);
 
         tblJazdy.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -92,7 +77,6 @@ public class HlavnyFormular extends javax.swing.JFrame {
     }
 
     private void nastavSkusky() {
-        skuskyRowSorter.setRowFilter(skuskyPodlaDatumuRowFilter);
         tblSkusky.setModel(skuskyTableModel);
 
         tblSkusky.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -125,7 +109,6 @@ public class HlavnyFormular extends javax.swing.JFrame {
     }
 
     private void nastavStudenti() {
-        studentiRowSorter.setRowFilter(studentiPodlaMenaRowFilter);
         tblStudenti.setModel(studentiTableModel);
 
         tblStudenti.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -158,7 +141,6 @@ public class HlavnyFormular extends javax.swing.JFrame {
     }
 
     private void nastavInstruktori() {
-        instruktoriRowSorter.setRowFilter(instruktoriPodlaMenaRowFilter);
         tblInstruktori.setModel(instruktoriTableModel);
 
         tblInstruktori.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -191,7 +173,6 @@ public class HlavnyFormular extends javax.swing.JFrame {
     }
 
     private void nastavVozidla() {
-        vozidlaRowSorter.setRowFilter(vozidlaPodlaSpzRowFilter);
         tblVozidla.setModel(vozidlaTableModel);
 
         tblVozidla.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -1360,26 +1341,31 @@ public class HlavnyFormular extends javax.swing.JFrame {
     private void btnJazdyVynulujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJazdyVynulujActionPerformed
         txtJazdyHladaj.setText("");
         rbtnJazdyDatum.doClick();
+        aktualizujZoznamJazd();
     }//GEN-LAST:event_btnJazdyVynulujActionPerformed
 
     private void btnSkuskyVynulujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkuskyVynulujActionPerformed
         txtSkuskyHladaj.setText("");
         rbtnSkuskyDatum.doClick();
+        aktualizujZoznamSkusok();
     }//GEN-LAST:event_btnSkuskyVynulujActionPerformed
 
     private void btnStudentiVynulujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentiVynulujActionPerformed
         txtStudentiHladaj.setText("");
         rbtnStudentiMeno.doClick();
+        aktualizujZoznamStudentov();
     }//GEN-LAST:event_btnStudentiVynulujActionPerformed
 
     private void btnInstruktoriVynulujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInstruktoriVynulujActionPerformed
         txtInstruktoriHladaj.setText("");
         rbtnInstruktoriMeno.doClick();
+        aktualizujZoznamInstruktorov();
     }//GEN-LAST:event_btnInstruktoriVynulujActionPerformed
 
     private void btnVozidlaVynulujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVozidlaVynulujActionPerformed
         txtVozidlaHladaj.setText("");
         rbtnVozidlaSpz.doClick();
+        aktualizujZoznamVozidiel();
     }//GEN-LAST:event_btnVozidlaVynulujActionPerformed
 
     /**
