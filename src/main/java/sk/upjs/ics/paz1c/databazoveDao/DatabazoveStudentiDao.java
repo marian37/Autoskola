@@ -1,5 +1,6 @@
 package sk.upjs.ics.paz1c.databazoveDao;
 
+import java.util.Arrays;
 import sk.upjs.ics.paz1c.databazoveDao.rowMappers.StudentRowMapper;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +13,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import sk.upjs.ics.paz1c.entity.Student;
 import sk.upjs.ics.paz1c.dao.StudentiDao;
 import sk.upjs.ics.paz1c.entity.Skuska;
+import sk.upjs.ics.paz1c.kriteria.StudentiKriterium;
 
 public class DatabazoveStudentiDao implements StudentiDao {
 
@@ -60,7 +62,182 @@ public class DatabazoveStudentiDao implements StudentiDao {
     }
 
     @Override
-    public void uloz(Student student) {
+    public List<Student> hladajPodlaKriteria(StudentiKriterium kriterium) {
+        boolean where = false;
+        int usedArgs = 0;
+        Object[] args = new Object[10];
+        StringBuilder sql = new StringBuilder(SqlQueries.SELECT_STUDENT_BY_KRITERIUM + "\n");
+
+        if (kriterium.getMeno() != null) {
+            String meno = kriterium.getMeno().trim();
+            meno = "%" + meno + "%";
+            if (!where) {
+                sql.append("WHERE StudentMeno LIKE ?\n");
+                where = true;
+            } else {
+                sql.append("AND StudentMeno LIKE ?\n");
+            }
+            args[usedArgs] = meno;
+            usedArgs++;
+        }
+
+        if (kriterium.getPriezvisko() != null) {
+            String priezvisko = kriterium.getPriezvisko().trim();
+            priezvisko = "%" + priezvisko + "%";
+            if (!where) {
+                sql.append("WHERE StudentPriezvisko LIKE ?\n");
+                where = true;
+            } else {
+                sql.append("AND StudentPriezvisko LIKE ?\n");
+            }
+            args[usedArgs] = priezvisko;
+            usedArgs++;
+        }
+
+        if (kriterium.getBydlisko() != null) {
+            String bydlisko = kriterium.getBydlisko().trim();
+            bydlisko = "%" + bydlisko + "%";
+            if (!where) {
+                sql.append("WHERE StudentBydlisko LIKE ?\n");
+                where = true;
+            } else {
+                sql.append("AND StudentBydlisko LIKE ?\n");
+            }
+            args[usedArgs] = bydlisko;
+            usedArgs++;
+        }
+
+        if (kriterium.getDatumNarodeniaOd() != null) {
+            if (!where) {
+                sql.append("WHERE StudentDatumNarodenia >=  ?\n");
+                where = true;
+            } else {
+                sql.append("AND StudentDatumNarodenia >=  ?\n");
+            }
+            args[usedArgs] = kriterium.getDatumNarodeniaOd();
+            usedArgs++;
+        }
+
+        if (kriterium.getDatumNarodeniaDo() != null) {
+            if (!where) {
+                sql.append("WHERE StudentDatumNarodenia <=  ?\n");
+                where = true;
+            } else {
+                sql.append("AND StudentDatumNarodenia <=  ?\n");
+            }
+            args[usedArgs] = kriterium.getDatumNarodeniaDo();
+            usedArgs++;
+        }
+
+        if (kriterium.getPocetJazdOd() != null) {
+            if (!where) {
+                sql.append("WHERE PocetJazd >= ?\n");
+                where = true;
+            } else {
+                sql.append("AND PocetJazd >= ?\n");
+            }
+            args[usedArgs] = kriterium.getPocetJazdOd();
+            usedArgs++;
+        }
+
+        if (kriterium.getPocetJazdDo() != null) {
+            if (!where) {
+                sql.append("WHERE PocetJazd <= ?\n");
+                where = true;
+            } else {
+                sql.append("AND PocetJazd <= ?\n");
+            }
+            args[usedArgs] = kriterium.getPocetJazdDo();
+            usedArgs++;
+        }
+
+        if (kriterium.getPrejdeneKmOd() != null) {
+            if (!where) {
+                sql.append("WHERE PrejdeneKm >= ?\n");
+                where = true;
+            } else {
+                sql.append("AND PrejdeneKm >= ?\n");
+            }
+            args[usedArgs] = kriterium.getPrejdeneKmOd();
+            usedArgs++;
+        }
+
+        if (kriterium.getPrejdeneKmDo() != null) {
+            if (!where) {
+                sql.append("WHERE PrejdeneKm <= ?\n");
+                where = true;
+            } else {
+                sql.append("AND PrejdeneKm <= ?\n");
+            }
+            args[usedArgs] = kriterium.getPrejdeneKmDo();
+            usedArgs++;
+        }
+
+        if (kriterium.getPrvaPomoc() != null) {
+            if (!where) {
+                if (Boolean.TRUE.equals(kriterium.getPrvaPomoc())) {
+                    sql.append("WHERE StudentPrvaPomoc\n");
+                } else {
+                    sql.append("WHERE NOT StudentPrvaPomoc\n");
+                }
+            } else {
+                if (Boolean.TRUE.equals(kriterium.getPrvaPomoc())) {
+                    sql.append("AND StudentPrvaPomoc\n");
+                } else {
+                    sql.append("AND NOT StudentPrvaPomoc\n");
+                }
+            }
+        }
+
+        if (kriterium.getTest() != null) {
+            if (!where) {
+                if (Boolean.TRUE.equals(kriterium.getTest())) {
+                    sql.append("WHERE StudentPocetBodov >= 50\n");
+                } else {
+                    sql.append("WHERE StudentPocetBodov < 50\n");
+                }
+            } else {
+                if (Boolean.TRUE.equals(kriterium.getTest())) {
+                    sql.append("AND StudentPocetBodov >= 50\n");
+                } else {
+                    sql.append("AND StudentPocetBodov < 50\n");
+                }
+            }
+        }
+
+        if (kriterium.getCvicisko() != null) {
+            if (!where) {
+                if (Boolean.TRUE.equals(kriterium.getCvicisko())) {
+                    sql.append("WHERE StudentCvicisko\n");
+                } else {
+                    sql.append("WHERE NOT StudentCvicisko\n");
+                }
+            } else {
+                if (Boolean.TRUE.equals(kriterium.getCvicisko())) {
+                    sql.append("AND StudentCvicisko\n");
+                } else {
+                    sql.append("AND NOT StudentCvicisko\n");
+                }
+            }
+        }
+
+        if (kriterium.getKategoria() != null) {
+            if (!where) {
+                sql.append("WHERE VozidloKategoria = ?\n");
+                where = true;
+            } else {
+                sql.append("AND VozidloKategoria = ?\n");
+            }
+            args[usedArgs] = kriterium.getKategoria();
+            usedArgs++;
+        }
+
+        return jdbcTemplate.query(sql.toString(), Arrays.copyOfRange(args, 0, usedArgs), studentRowMapper);
+    }
+
+    @Override
+    public void uloz(Student student
+    ) {
         Map<String, Object> insertMap = new HashMap<String, Object>();
         insertMap.put("meno", student.getMeno());
         insertMap.put("priezvisko", student.getPriezvisko());
@@ -83,7 +260,8 @@ public class DatabazoveStudentiDao implements StudentiDao {
     }
 
     @Override
-    public void uprav(Student student) {
+    public void uprav(Student student
+    ) {
         Map<String, Object> updateMap = new HashMap<String, Object>();
         updateMap.put("id", student.getId());
         updateMap.put("meno", student.getMeno());
@@ -103,7 +281,8 @@ public class DatabazoveStudentiDao implements StudentiDao {
     }
 
     @Override
-    public void vymaz(Student student) {
+    public void vymaz(Student student
+    ) {
         String sql = "DELETE FROM Student WHERE id = ?";
         jdbcTemplate.update(sql, student.getId());
     }

@@ -12,6 +12,7 @@ import sk.upjs.ics.paz1c.dao.JazdyDao;
 import sk.upjs.ics.paz1c.dao.StudentiDao;
 import sk.upjs.ics.paz1c.dao.VozidlaDao;
 import sk.upjs.ics.paz1c.entity.Jazda;
+import sk.upjs.ics.paz1c.kriteria.JazdyKriterium;
 
 public class DatabazoveJazdyDaoTest {
 
@@ -22,6 +23,8 @@ public class DatabazoveJazdyDaoTest {
     private static final int POCET_JAZD_V_DB_PODLA_STUDENTA = 2;
 
     private static final int POCET_JAZD_V_DB_PODLA_INSTRUKTORA = 3;
+
+    private static final int POCET_JAZD_V_DB_PODLA_KRITERIA = 1;
 
     private final JazdyDao jazdyDao = BeanFactory.INSTANCE.getJazdyDao();
 
@@ -61,6 +64,27 @@ public class DatabazoveJazdyDaoTest {
     public void testHladajPodlaInstraktora() {
         List<Jazda> jazdy = jazdyDao.hladajPodlaInstruktora("Jozef");
         assertEquals(POCET_JAZD_V_DB_PODLA_INSTRUKTORA, jazdy.size());
+    }
+
+    @Test
+    public void testHladajPodlaKriteria() {
+        JazdyKriterium kriterium = new JazdyKriterium();
+        kriterium.setStudent("Jozef Múdry");
+        kriterium.setInstruktor("Jozef");
+        kriterium.setVozidlo("PO");
+        kriterium.setDatumOd(Date.valueOf("2000-01-01"));
+        kriterium.setDatumDo(Date.valueOf("2015-01-01"));
+        kriterium.setCasOd(Time.valueOf("08:00:00"));
+        kriterium.setCasDo(Time.valueOf("10:00:00"));
+        kriterium.setKmOd(0);
+        kriterium.setKmDo(40);
+        kriterium.setvPremavke(Boolean.TRUE);
+        kriterium.setNaCvicisku(Boolean.FALSE);
+        kriterium.setsVozikom(Boolean.FALSE);
+        kriterium.setKategoria("B");
+
+        List<Jazda> jazdy = jazdyDao.hladajPodlaKriteria(kriterium);
+        assertEquals(POCET_JAZD_V_DB_PODLA_KRITERIA, jazdy.size());
     }
 
     @Test
