@@ -1,5 +1,6 @@
 package sk.upjs.ics.paz1c.gui.tableModels;
 
+import java.sql.Date;
 import java.util.LinkedList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -14,7 +15,7 @@ public class JazdyTableModel extends AbstractTableModel {
     private static final String[] NAZVY_STLPCOV = {"Datum", "Student", "Instruktor"};
 
     private static final Class[] TYPY_STLPCOV = {
-        String.class,
+        Date.class,
         String.class,
         String.class
     };

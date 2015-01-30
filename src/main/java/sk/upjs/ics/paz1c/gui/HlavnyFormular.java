@@ -334,6 +334,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblJazdy.setRowSorter(jazdyRowSorter);
         tblJazdy.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblJazdyMouseClicked(evt);
@@ -484,6 +485,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblSkusky.setRowSorter(skuskyRowSorter);
         tblSkusky.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblSkuskyMouseClicked(evt);
@@ -621,6 +623,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblStudenti.setRowSorter(studentiRowSorter);
         tblStudenti.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblStudentiMouseClicked(evt);
@@ -765,6 +768,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblInstruktori.setRowSorter(instruktoriRowSorter);
         tblInstruktori.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblInstruktoriMouseClicked(evt);
@@ -902,6 +906,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblVozidla.setRowSorter(vozidlaRowSorter);
         tblVozidla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblVozidlaMouseClicked(evt);

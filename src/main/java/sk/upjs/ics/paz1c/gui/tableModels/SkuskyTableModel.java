@@ -13,13 +13,12 @@ public class SkuskyTableModel extends AbstractTableModel {
 
     private static final String[] NAZVY_STLPCOV = {"Datum", "Cas", "Pocet prihlasenych", "Instruktor"};
 
-    private static final Class[] TYPY_STLPCOV = {
-        String.class,
-        String.class,
-        Integer.class,
-        String.class
-    };
-
+    /*private static final Class[] TYPY_STLPCOV = {
+     Date.class,
+     Time.class,
+     Integer.class,
+     String.class
+     };*/
     private SkuskyDao skuskyDao = BeanFactory.INSTANCE.getSkuskyDao();
     private List<Skuska> skusky = new LinkedList<>();
 
@@ -78,10 +77,10 @@ public class SkuskyTableModel extends AbstractTableModel {
     public String getColumnName(int column) {
         return NAZVY_STLPCOV[column];
     }
-
-    @Override
-    public Class<?> getColumnClass(int columnIndex) {
-        return TYPY_STLPCOV[columnIndex];
-    }
-
+    /*
+     @Override
+     public Class<?> getColumnClass(int columnIndex) {
+     return TYPY_STLPCOV[columnIndex];
+     }
+     */
 }
