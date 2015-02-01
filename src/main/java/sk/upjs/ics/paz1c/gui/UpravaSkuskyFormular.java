@@ -5,12 +5,9 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import sk.upjs.ics.paz1c.autoskola.BeanFactory;
-import sk.upjs.ics.paz1c.dao.InstruktoriDao;
-import sk.upjs.ics.paz1c.dao.SkuskyDao;
-import sk.upjs.ics.paz1c.dao.StudentiDao;
-import sk.upjs.ics.paz1c.entity.Instruktor;
-import sk.upjs.ics.paz1c.entity.Skuska;
-import sk.upjs.ics.paz1c.entity.Student;
+import sk.upjs.ics.paz1c.dao.*;
+import sk.upjs.ics.paz1c.entity.*;
+import sk.upjs.ics.paz1c.gui.ComboBoxModels.*;
 
 public class UpravaSkuskyFormular extends javax.swing.JFrame {
 
@@ -18,8 +15,17 @@ public class UpravaSkuskyFormular extends javax.swing.JFrame {
     private StudentiDao studentiDao = BeanFactory.INSTANCE.getStudentiDao();
     private InstruktoriDao instruktoriDao = BeanFactory.INSTANCE.getInstruktoriDao();
 
+    private DenComboBoxModel denComboBoxModel = new DenComboBoxModel();
+    private MesiacComboBoxModel mesiacComboBoxModel = new MesiacComboBoxModel();
+    private RokComboBoxModel rokComboBoxModel = new RokComboBoxModel();
+    private HodinaComboBoxModel hodinaComboBoxModel = new HodinaComboBoxModel();
+    private MinutaComboBoxModel minutaComboBoxModel = new MinutaComboBoxModel();
+    private InstruktorComboBoxModel instruktorComboBoxModel = new InstruktorComboBoxModel();
+    private StudentComboBoxModel studentComboBoxModel = new StudentComboBoxModel();
+
     private Skuska skuska;
     private HlavnyFormular rodic;
+    private List<Student> vybraniStudenti;
 
     public UpravaSkuskyFormular(HlavnyFormular rodic, Skuska skuska) {
         this(skuska);
@@ -43,19 +49,22 @@ public class UpravaSkuskyFormular extends javax.swing.JFrame {
     }
 
     private void pripravFormular() {
-        txtDatum.setText(skuska.getDatum().toString());
-        txtCas.setText(skuska.getCas().toString());
-        txtInstruktor.setText(skuska.getInstruktor().getMeno() + " " + skuska.getInstruktor().getPriezvisko());
+        cmBoxDen.setSelectedIndex(skuska.getDatum().getDate() - 1);
+        cmBoxMesiac.setSelectedIndex(skuska.getDatum().getMonth());
+        // + 1900 pretoze .getYear tolko odpocitava
+        cmBoxRok.setSelectedIndex(skuska.getDatum().getYear() + 1900 - BeanFactory.INSTANCE.PRVY_ROK);
+        cmBoxHodina.setSelectedIndex(skuska.getCas().getHours());
+        cmBoxMinuta.setSelectedIndex(skuska.getCas().getMinutes());
 
-        List<Student> studenti = skuska.getStudenti();
-        StringBuilder sb = new StringBuilder();
-        for (Student student : studenti) {
-            sb.append(student.getMeno())
-                    .append(" ")
-                    .append(student.getPriezvisko())
-                    .append("\n");
+        List<Instruktor> instruktori = instruktoriDao.dajVsetky();
+        for (int i = 0; i < instruktori.size(); i++) {
+            if (i < instruktori.size() && skuska.getInstruktor().getId() == instruktori.get(i).getId()) {
+                cmBoxInstruktor.setSelectedIndex(i);
+            }
         }
-        txtaStudenti.setText(sb.toString());
+
+        vybraniStudenti = new ArrayList(skuska.getStudenti());
+        lstStudenti.setListData(vybraniStudenti.toArray());
 
         txtPolicajt.setText(skuska.getPolicajt());
     }
@@ -72,16 +81,22 @@ public class UpravaSkuskyFormular extends javax.swing.JFrame {
         lblDatum = new javax.swing.JLabel();
         lblCas = new javax.swing.JLabel();
         lblInstruktor = new javax.swing.JLabel();
-        txtCas = new javax.swing.JTextField();
-        txtDatum = new javax.swing.JTextField();
-        txtInstruktor = new javax.swing.JTextField();
         scrollPane = new javax.swing.JScrollPane();
-        txtaStudenti = new javax.swing.JTextArea();
+        lstStudenti = new javax.swing.JList();
         lblStudenti = new javax.swing.JLabel();
         txtPolicajt = new javax.swing.JTextField();
         lblPolicajt = new javax.swing.JLabel();
         btnVynuluj = new javax.swing.JButton();
         btnOk = new javax.swing.JButton();
+        cmBoxDen = new javax.swing.JComboBox();
+        cmBoxMesiac = new javax.swing.JComboBox();
+        cmBoxRok = new javax.swing.JComboBox();
+        cmBoxHodina = new javax.swing.JComboBox();
+        cmBoxMinuta = new javax.swing.JComboBox();
+        cmBoxInstruktor = new javax.swing.JComboBox();
+        cmBoxStudent = new javax.swing.JComboBox();
+        btnPridaj = new javax.swing.JButton();
+        btnVymaz = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Skuska");
@@ -94,10 +109,7 @@ public class UpravaSkuskyFormular extends javax.swing.JFrame {
 
         lblInstruktor.setText("Instruktor:");
 
-        txtaStudenti.setColumns(20);
-        txtaStudenti.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        txtaStudenti.setRows(5);
-        scrollPane.setViewportView(txtaStudenti);
+        scrollPane.setViewportView(lstStudenti);
 
         lblStudenti.setText("Studenti:");
 
@@ -117,6 +129,41 @@ public class UpravaSkuskyFormular extends javax.swing.JFrame {
             }
         });
 
+        cmBoxDen.setModel(denComboBoxModel);
+        cmBoxDen.setSelectedIndex(0);
+
+        cmBoxMesiac.setModel(mesiacComboBoxModel);
+        cmBoxMesiac.setSelectedIndex(0);
+
+        cmBoxRok.setModel(rokComboBoxModel);
+        cmBoxRok.setSelectedIndex(0);
+
+        cmBoxHodina.setModel(hodinaComboBoxModel);
+        cmBoxHodina.setSelectedIndex(0);
+
+        cmBoxMinuta.setModel(minutaComboBoxModel);
+        cmBoxMinuta.setSelectedIndex(0);
+
+        cmBoxInstruktor.setModel(instruktorComboBoxModel);
+        cmBoxInstruktor.setSelectedIndex(0);
+
+        cmBoxStudent.setModel(studentComboBoxModel);
+        cmBoxStudent.setSelectedIndex(0);
+
+        btnPridaj.setText("Pridaj");
+        btnPridaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPridajActionPerformed(evt);
+            }
+        });
+
+        btnVymaz.setText("Vymaz");
+        btnVymaz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVymazActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,27 +171,43 @@ public class UpravaSkuskyFormular extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblInstruktor)
-                    .addComponent(lblDatum)
-                    .addComponent(lblCas)
-                    .addComponent(lblStudenti)
-                    .addComponent(lblPolicajt))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblInstruktor)
+                            .addComponent(lblDatum)
+                            .addComponent(lblCas)
+                            .addComponent(lblStudenti)
+                            .addComponent(lblPolicajt))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPolicajt)
-                            .addComponent(scrollPane)
-                            .addComponent(txtDatum, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(txtInstruktor, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(txtCas, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cmBoxDen, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmBoxMesiac, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmBoxRok, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtPolicajt)
+                                    .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(cmBoxHodina, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmBoxMinuta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cmBoxInstruktor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmBoxStudent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPridaj, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,19 +215,28 @@ public class UpravaSkuskyFormular extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmBoxDen, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmBoxMesiac, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmBoxRok, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCas, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCas, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCas, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmBoxHodina, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmBoxMinuta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmBoxInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblStudenti, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblStudenti, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmBoxStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPridaj, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPolicajt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,22 +252,18 @@ public class UpravaSkuskyFormular extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-        skuska.setDatum(Date.valueOf(txtDatum.getText()));
-        skuska.setCas(Time.valueOf(txtCas.getText()));
+        StringBuilder datum = new StringBuilder();
+        datum.append(cmBoxRok.getSelectedItem()).append("-")
+                .append(cmBoxMesiac.getSelectedItem()).append("-")
+                .append(cmBoxDen.getSelectedItem());
+        skuska.setDatum(Date.valueOf(datum.toString()));
+        StringBuilder cas = new StringBuilder();
+        cas.append(cmBoxHodina.getSelectedItem()).append(":")
+                .append(cmBoxMinuta.getSelectedItem()).append(":00");
+        skuska.setCas(Time.valueOf(cas.toString()));
 
-        List<Instruktor> instruktori = instruktoriDao.hladajPodlaMenaPriezviska(txtInstruktor.getText());
-        skuska.setInstruktor(instruktori.get(0));
-
-        List<Student> studenti = new ArrayList<>();
-        String retazecStudentov = txtaStudenti.getText();
-        String poleStudentov[] = retazecStudentov.split("\n");
-        for (String retazec : poleStudentov) {
-            retazec = retazec.trim();
-            List<Student> docasniStudenti = studentiDao.hladajPodlaMenaPriezviska(retazec);
-            studenti.add(docasniStudenti.get(0));
-        }
-        skuska.setStudenti(studenti);
-
+        skuska.setInstruktor((Instruktor) cmBoxInstruktor.getSelectedItem());
+        skuska.setStudenti(new ArrayList<>(vybraniStudenti));
         skuska.setPolicajt(txtPolicajt.getText());
 
         if (skuska.getId() == null) {
@@ -212,12 +280,46 @@ public class UpravaSkuskyFormular extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOkActionPerformed
 
     private void btnVynulujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVynulujActionPerformed
-        txtDatum.setText("");
-        txtCas.setText("");
-        txtInstruktor.setText("");
-        txtaStudenti.setText("");
+        cmBoxDen.setSelectedIndex(0);
+        cmBoxDen.updateUI();
+        cmBoxMesiac.setSelectedIndex(0);
+        cmBoxMesiac.updateUI();
+        cmBoxRok.setSelectedIndex(0);
+        cmBoxRok.updateUI();
+
+        cmBoxHodina.setSelectedIndex(0);
+        cmBoxHodina.updateUI();
+        cmBoxMinuta.setSelectedIndex(0);
+        cmBoxMinuta.updateUI();
+
+        cmBoxInstruktor.setSelectedIndex(0);
+        cmBoxInstruktor.updateUI();
+        cmBoxStudent.setSelectedIndex(0);
+        cmBoxStudent.updateUI();
+
+        vybraniStudenti = new ArrayList<>();
+        lstStudenti.setListData(vybraniStudenti.toArray());
+
         txtPolicajt.setText("");
     }//GEN-LAST:event_btnVynulujActionPerformed
+
+    private void btnPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPridajActionPerformed
+        Student student = (Student) cmBoxStudent.getSelectedItem();
+        for (int i = 0; i < vybraniStudenti.size(); i++) {
+            if (vybraniStudenti.get(i).getId() == student.getId()) {
+                vybraniStudenti.remove(i);
+                i--;
+            }
+        }
+        vybraniStudenti.add(student);
+        lstStudenti.setListData(vybraniStudenti.toArray());
+    }//GEN-LAST:event_btnPridajActionPerformed
+
+    private void btnVymazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVymazActionPerformed
+        Student student = (Student) lstStudenti.getSelectedValue();
+        vybraniStudenti.remove(student);
+        lstStudenti.setListData(vybraniStudenti.toArray());
+    }//GEN-LAST:event_btnVymazActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,18 +358,24 @@ public class UpravaSkuskyFormular extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOk;
+    private javax.swing.JButton btnPridaj;
+    private javax.swing.JButton btnVymaz;
     private javax.swing.JButton btnVynuluj;
+    private javax.swing.JComboBox cmBoxDen;
+    private javax.swing.JComboBox cmBoxHodina;
+    private javax.swing.JComboBox cmBoxInstruktor;
+    private javax.swing.JComboBox cmBoxMesiac;
+    private javax.swing.JComboBox cmBoxMinuta;
+    private javax.swing.JComboBox cmBoxRok;
+    private javax.swing.JComboBox cmBoxStudent;
     private javax.swing.JLabel lblCas;
     private javax.swing.JLabel lblDatum;
     private javax.swing.JLabel lblInstruktor;
     private javax.swing.JLabel lblPolicajt;
     private javax.swing.JLabel lblStudenti;
+    private javax.swing.JList lstStudenti;
     private javax.swing.JScrollPane scrollPane;
-    private javax.swing.JTextField txtCas;
-    private javax.swing.JTextField txtDatum;
-    private javax.swing.JTextField txtInstruktor;
     private javax.swing.JTextField txtPolicajt;
-    private javax.swing.JTextArea txtaStudenti;
     // End of variables declaration//GEN-END:variables
 
 }

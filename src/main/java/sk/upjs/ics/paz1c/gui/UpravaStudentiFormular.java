@@ -4,10 +4,15 @@ import java.sql.Date;
 import sk.upjs.ics.paz1c.autoskola.BeanFactory;
 import sk.upjs.ics.paz1c.dao.StudentiDao;
 import sk.upjs.ics.paz1c.entity.Student;
+import sk.upjs.ics.paz1c.gui.ComboBoxModels.*;
 
 public class UpravaStudentiFormular extends javax.swing.JFrame {
 
     private StudentiDao studentiDao = BeanFactory.INSTANCE.getStudentiDao();
+
+    private DenComboBoxModel denComboBoxModel = new DenComboBoxModel();
+    private MesiacComboBoxModel mesiacComboBoxModel = new MesiacComboBoxModel();
+    private RokNarodeniaComboBoxModel rokNarodeniaComboBoxModel = new RokNarodeniaComboBoxModel();
 
     private Student student;
     private HlavnyFormular rodic;
@@ -37,7 +42,12 @@ public class UpravaStudentiFormular extends javax.swing.JFrame {
         txtMeno.setText(student.getMeno());
         txtPriezvisko.setText(student.getPriezvisko());
         txtBydlisko.setText(student.getBydlisko());
-        txtDatumNarodenia.setText(student.getDatumNarodenia().toString());
+
+        cmBoxDen.setSelectedIndex(student.getDatumNarodenia().getDate() - 1);
+        cmBoxMesiac.setSelectedIndex(student.getDatumNarodenia().getMonth());
+        // + 1900 pretoze .getYear tolko odpocitava
+        cmBoxRok.setSelectedIndex(student.getDatumNarodenia().getYear() + 1900 - BeanFactory.INSTANCE.PRVY_ROK_NARODENIA);
+
         txtKontakt.setText(student.getKontakt());
         txtPocetPokusov.setText(String.valueOf(student.getPocetPokusov()));
         txtPocetBodov.setText(String.valueOf(student.getPocetBodov()));
@@ -64,7 +74,6 @@ public class UpravaStudentiFormular extends javax.swing.JFrame {
         lblPocetBodov = new javax.swing.JLabel();
         lblPocetPokusov = new javax.swing.JLabel();
         txtPocetBodov = new javax.swing.JTextField();
-        txtDatumNarodenia = new javax.swing.JTextField();
         txtPriezvisko = new javax.swing.JTextField();
         txtMeno = new javax.swing.JTextField();
         txtBydlisko = new javax.swing.JTextField();
@@ -75,6 +84,9 @@ public class UpravaStudentiFormular extends javax.swing.JFrame {
         chBoxJazda = new javax.swing.JCheckBox();
         btnVynuluj = new javax.swing.JButton();
         btnOk = new javax.swing.JButton();
+        cmBoxDen = new javax.swing.JComboBox();
+        cmBoxMesiac = new javax.swing.JComboBox();
+        cmBoxRok = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Student");
@@ -115,6 +127,15 @@ public class UpravaStudentiFormular extends javax.swing.JFrame {
             }
         });
 
+        cmBoxDen.setModel(denComboBoxModel);
+        cmBoxDen.setSelectedIndex(0);
+
+        cmBoxMesiac.setModel(mesiacComboBoxModel);
+        cmBoxMesiac.setSelectedIndex(0);
+
+        cmBoxRok.setModel(rokNarodeniaComboBoxModel);
+        cmBoxRok.setSelectedIndex(0);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,20 +156,27 @@ public class UpravaStudentiFormular extends javax.swing.JFrame {
                             .addComponent(lblPocetPokusov))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPocetPokusov, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtKontakt, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtBydlisko, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMeno, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPriezvisko, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDatumNarodenia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPocetBodov, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(chBoxPrvaPomoc))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cmBoxDen, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmBoxMesiac, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmBoxRok, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtPocetPokusov, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtKontakt, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtBydlisko, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtMeno, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPriezvisko, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPocetBodov, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(chBoxPrvaPomoc)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -168,8 +196,10 @@ public class UpravaStudentiFormular extends javax.swing.JFrame {
                     .addComponent(lblBydlisko, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDatumNarodenia, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDatumNarodenia, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblDatumNarodenia, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmBoxDen, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmBoxMesiac, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmBoxRok, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtKontakt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,7 +232,11 @@ public class UpravaStudentiFormular extends javax.swing.JFrame {
         student.setMeno(txtMeno.getText());
         student.setPriezvisko(txtPriezvisko.getText());
         student.setBydlisko(txtBydlisko.getText());
-        student.setDatumNarodenia(Date.valueOf(txtDatumNarodenia.getText()));
+        StringBuilder datum = new StringBuilder();
+        datum.append(cmBoxRok.getSelectedItem()).append("-")
+                .append(cmBoxMesiac.getSelectedItem()).append("-")
+                .append(cmBoxDen.getSelectedItem());
+        student.setDatumNarodenia(Date.valueOf(datum.toString()));
         student.setKontakt(txtKontakt.getText());
         student.setPocetPokusov(Integer.valueOf(txtPocetPokusov.getText()));
         student.setPocetBodov(Integer.valueOf(txtPocetBodov.getText()));
@@ -227,7 +261,14 @@ public class UpravaStudentiFormular extends javax.swing.JFrame {
         txtMeno.setText("");
         txtPriezvisko.setText("");
         txtBydlisko.setText("");
-        txtDatumNarodenia.setText("");
+
+        cmBoxDen.setSelectedIndex(0);
+        cmBoxDen.updateUI();
+        cmBoxMesiac.setSelectedIndex(0);
+        cmBoxMesiac.updateUI();
+        cmBoxRok.setSelectedIndex(0);
+        cmBoxRok.updateUI();
+
         txtKontakt.setText("");
         txtPocetPokusov.setText("");
         txtPocetBodov.setText("");
@@ -278,6 +319,9 @@ public class UpravaStudentiFormular extends javax.swing.JFrame {
     private javax.swing.JCheckBox chBoxCvicisko;
     private javax.swing.JCheckBox chBoxJazda;
     private javax.swing.JCheckBox chBoxPrvaPomoc;
+    private javax.swing.JComboBox cmBoxDen;
+    private javax.swing.JComboBox cmBoxMesiac;
+    private javax.swing.JComboBox cmBoxRok;
     private javax.swing.JLabel lblBydlisko;
     private javax.swing.JLabel lblDatumNarodenia;
     private javax.swing.JLabel lblKontakt;
@@ -286,7 +330,6 @@ public class UpravaStudentiFormular extends javax.swing.JFrame {
     private javax.swing.JLabel lblPocetPokusov;
     private javax.swing.JLabel lblPriezvisko;
     private javax.swing.JTextField txtBydlisko;
-    private javax.swing.JTextField txtDatumNarodenia;
     private javax.swing.JTextField txtKontakt;
     private javax.swing.JTextField txtMeno;
     private javax.swing.JTextField txtPocetBodov;

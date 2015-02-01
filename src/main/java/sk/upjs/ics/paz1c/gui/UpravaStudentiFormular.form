@@ -26,7 +26,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="chBoxJazda" min="-2" max="-2" attributes="0"/>
@@ -43,24 +43,34 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtPocetPokusov" min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="txtKontakt" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="txtBydlisko" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="txtMeno" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="txtPriezvisko" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="txtDatumNarodenia" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="txtPocetBodov" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="cmBoxDen" min="-2" pref="50" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cmBoxMesiac" min="-2" pref="50" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cmBoxRok" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtPocetPokusov" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="txtKontakt" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="txtBydlisko" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="txtMeno" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="txtPriezvisko" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="txtPocetBodov" min="-2" pref="50" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <Component id="chBoxPrvaPomoc" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="btnVynuluj" min="-2" pref="70" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnOk" min="-2" pref="70" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="btnVynuluj" min="-2" pref="70" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnOk" min="-2" pref="70" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -85,8 +95,10 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtDatumNarodenia" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="lblDatumNarodenia" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="cmBoxDen" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="cmBoxMesiac" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="cmBoxRok" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -157,8 +169,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtPocetBodov">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtDatumNarodenia">
-    </Component>
     <Component class="javax.swing.JTextField" name="txtPriezvisko">
     </Component>
     <Component class="javax.swing.JTextField" name="txtMeno">
@@ -199,6 +209,36 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOkActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmBoxDen">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="denComboBoxModel" type="code"/>
+        </Property>
+        <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="0" type="code"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmBoxMesiac">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="mesiacComboBoxModel" type="code"/>
+        </Property>
+        <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="0" type="code"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmBoxRok">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="rokNarodeniaComboBoxModel" type="code"/>
+        </Property>
+        <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="0" type="code"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

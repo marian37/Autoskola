@@ -12,6 +12,10 @@ import sk.upjs.ics.paz1c.databazoveDao.*;
 public enum BeanFactory {
 
     INSTANCE;
+    
+    public static final int PRVY_ROK = 2014;
+    
+    public static final int PRVY_ROK_NARODENIA = 1900;
 
     private StudentiDao studentiDao;
 

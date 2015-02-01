@@ -5,13 +5,9 @@ import java.sql.Time;
 import java.util.List;
 import sk.upjs.ics.paz1c.autoskola.BeanFactory;
 import sk.upjs.ics.paz1c.dao.InstruktoriDao;
-import sk.upjs.ics.paz1c.dao.JazdyDao;
-import sk.upjs.ics.paz1c.dao.StudentiDao;
-import sk.upjs.ics.paz1c.dao.VozidlaDao;
-import sk.upjs.ics.paz1c.entity.Instruktor;
-import sk.upjs.ics.paz1c.entity.Jazda;
-import sk.upjs.ics.paz1c.entity.Student;
-import sk.upjs.ics.paz1c.entity.Vozidlo;
+import sk.upjs.ics.paz1c.dao.*;
+import sk.upjs.ics.paz1c.entity.*;
+import sk.upjs.ics.paz1c.gui.ComboBoxModels.*;
 
 public class UpravaJazdyFormular extends javax.swing.JFrame {
 
@@ -19,6 +15,15 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
     private StudentiDao studentiDao = BeanFactory.INSTANCE.getStudentiDao();
     private InstruktoriDao instruktoriDao = BeanFactory.INSTANCE.getInstruktoriDao();
     private VozidlaDao vozidlaDao = BeanFactory.INSTANCE.getVozidlaDao();
+
+    private StudentComboBoxModel studentComboBoxModel = new StudentComboBoxModel();
+    private InstruktorComboBoxModel instruktorComboBoxModel = new InstruktorComboBoxModel();
+    private VozidloComboBoxModel vozidloComboBoxModel = new VozidloComboBoxModel();
+    private DenComboBoxModel denComboBoxModel = new DenComboBoxModel();
+    private MesiacComboBoxModel mesiacComboBoxModel = new MesiacComboBoxModel();
+    private RokComboBoxModel rokComboBoxModel = new RokComboBoxModel();
+    private HodinaComboBoxModel hodinaComboBoxModel = new HodinaComboBoxModel();
+    private MinutaComboBoxModel minutaComboBoxModel = new MinutaComboBoxModel();
 
     private Jazda jazda;
     private HlavnyFormular rodic;
@@ -45,11 +50,30 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
     }
 
     private void pripravFormular() {
-        txtStudent.setText(jazda.getStudent().getMeno() + " " + jazda.getStudent().getPriezvisko());
-        txtInstruktor.setText(jazda.getInstruktor().getMeno() + " " + jazda.getInstruktor().getPriezvisko());
-        txtVozidlo.setText(jazda.getVozidlo().getSpz());
-        txtDatum.setText(jazda.getDatum().toString());
-        txtCas.setText(jazda.getCas().toString());
+        List<Student> studenti = studentiDao.dajVsetky();
+        List<Instruktor> instruktori = instruktoriDao.dajVsetky();
+        List<Vozidlo> vozidla = vozidlaDao.dajVsetky();
+        int max = Math.max(Math.max(studenti.size(), instruktori.size()), vozidla.size());
+        System.out.println(max + " a " + studenti.size());
+        for (int i = 0; i < max; i++) {
+            if (i < studenti.size() && jazda.getStudent().getId() == studenti.get(i).getId()) {
+                cmBoxStudent.setSelectedIndex(i);
+            }
+            if (i < instruktori.size() && jazda.getInstruktor().getId() == instruktori.get(i).getId()) {
+                cmBoxInstruktor.setSelectedIndex(i);
+            }
+            if (i < vozidla.size() && jazda.getVozidlo().getId() == vozidla.get(i).getId()) {
+                cmBoxVozidlo.setSelectedIndex(i);
+            }
+        }
+
+        cmBoxDen.setSelectedIndex(jazda.getDatum().getDate() - 1);
+        cmBoxMesiac.setSelectedIndex(jazda.getDatum().getMonth());
+        // + 1900 pretoze .getYear tolko odpocitava
+        cmBoxRok.setSelectedIndex(jazda.getDatum().getYear() + 1900 - BeanFactory.INSTANCE.PRVY_ROK);
+        cmBoxHodina.setSelectedIndex(jazda.getCas().getHours());
+        cmBoxMinuta.setSelectedIndex(jazda.getCas().getMinutes());
+
         txtKm.setText(String.valueOf(jazda.getKm()));
 
         chBoxVpremavke.setSelected(jazda.isvPremavke());
@@ -69,17 +93,6 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
         lblStudent = new javax.swing.JLabel();
         lblInstruktor = new javax.swing.JLabel();
         lblVozidlo = new javax.swing.JLabel();
-        txtStudent = new javax.swing.JTextField();
-        txtInstruktor = new javax.swing.JTextField();
-        txtVozidlo = new javax.swing.JTextField();
-        lblStudentPomoc = new javax.swing.JLabel();
-        btnNovyStudent = new javax.swing.JButton();
-        lblInstuktorPomoc = new javax.swing.JLabel();
-        btnNovyInstruktor = new javax.swing.JButton();
-        lblVozidloPomoc = new javax.swing.JLabel();
-        btnNoveVozidlo = new javax.swing.JButton();
-        txtDatum = new javax.swing.JTextField();
-        txtCas = new javax.swing.JTextField();
         txtKm = new javax.swing.JTextField();
         lblDatum = new javax.swing.JLabel();
         lblCas = new javax.swing.JLabel();
@@ -89,6 +102,14 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
         chBoxSvozikom = new javax.swing.JCheckBox();
         btnVynuluj = new javax.swing.JButton();
         btnOk = new javax.swing.JButton();
+        cmBoxDen = new javax.swing.JComboBox();
+        cmBoxMesiac = new javax.swing.JComboBox();
+        cmBoxRok = new javax.swing.JComboBox();
+        cmBoxHodina = new javax.swing.JComboBox();
+        cmBoxMinuta = new javax.swing.JComboBox();
+        cmBoxStudent = new javax.swing.JComboBox();
+        cmBoxInstruktor = new javax.swing.JComboBox();
+        cmBoxVozidlo = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Jazda");
@@ -100,42 +121,6 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
         lblInstruktor.setText("Instruktor:");
 
         lblVozidlo.setText("Vozidlo:");
-
-        lblStudentPomoc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblStudentPomoc.setText("?");
-        lblStudentPomoc.setToolTipText("<html>\nZadajte meno a priezvisko existujuceho studenta.\n<br>Ak student este nie je zaevidovany v databaze, mozete tak spravit kliknutim na tlacidlo:\n<br><b>Novy student</b>\n</html>");
-        lblStudentPomoc.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        btnNovyStudent.setText("Novy student");
-        btnNovyStudent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovyStudentActionPerformed(evt);
-            }
-        });
-
-        lblInstuktorPomoc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblInstuktorPomoc.setText("?");
-        lblInstuktorPomoc.setToolTipText("<html>\nZadajte meno a priezvisko existujuceho instruktora.\n<br>Ak instruktor este nie je zaevidovany v databaze, mozete tak spravit kliknutim na tlacidlo:\n<br><b>Novy instruktor</b>\n</html>");
-        lblInstuktorPomoc.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        btnNovyInstruktor.setText("Novy instruktor");
-        btnNovyInstruktor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovyInstruktorActionPerformed(evt);
-            }
-        });
-
-        lblVozidloPomoc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblVozidloPomoc.setText("?");
-        lblVozidloPomoc.setToolTipText("<html>\nZadajte SPZ vozidla. \n<br>Ak vozidlo este nie je zaevidovane v databaze,  mozete tak spravit kliknutim na tlacidlo:\n<br><b>Nove vozidlo</b>\n</html>");
-        lblVozidloPomoc.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        btnNoveVozidlo.setText("Nove vozidlo");
-        btnNoveVozidlo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNoveVozidloActionPerformed(evt);
-            }
-        });
 
         lblDatum.setText("Datum:");
 
@@ -163,6 +148,30 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
             }
         });
 
+        cmBoxDen.setModel(denComboBoxModel);
+        cmBoxDen.setSelectedIndex(0);
+
+        cmBoxMesiac.setModel(mesiacComboBoxModel);
+        cmBoxMesiac.setSelectedIndex(0);
+
+        cmBoxRok.setModel(rokComboBoxModel);
+        cmBoxRok.setSelectedIndex(0);
+
+        cmBoxHodina.setModel(hodinaComboBoxModel);
+        cmBoxHodina.setSelectedIndex(0);
+
+        cmBoxMinuta.setModel(minutaComboBoxModel);
+        cmBoxMinuta.setSelectedIndex(0);
+
+        cmBoxStudent.setModel(studentComboBoxModel);
+        cmBoxStudent.setSelectedIndex(0);
+
+        cmBoxInstruktor.setModel(instruktorComboBoxModel);
+        cmBoxInstruktor.setSelectedIndex(0);
+
+        cmBoxVozidlo.setModel(vozidloComboBoxModel);
+        cmBoxVozidlo.setSelectedIndex(0);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -170,51 +179,40 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnNoveVozidlo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnNovyStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chBoxSvozikom)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(chBoxNacvicisku, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(chBoxVpremavke, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblInstruktor)
+                                .addComponent(lblVozidlo)
+                                .addComponent(lblDatum)
+                                .addComponent(lblCas)
+                                .addComponent(lblKm)
+                                .addComponent(lblStudent))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtKm, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(cmBoxHodina, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmBoxMinuta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cmBoxInstruktor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cmBoxVozidlo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblStudent)
-                                            .addGap(20, 20, 20))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(lblInstruktor, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(lblVozidlo, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(lblDatum, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(lblCas, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(lblKm, javax.swing.GroupLayout.Alignment.LEADING))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(txtVozidlo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblVozidloPomoc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(txtInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblInstuktorPomoc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(txtStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblStudentPomoc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtCas, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtKm, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(btnNovyInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(chBoxVpremavke)
-                            .addComponent(chBoxNacvicisku)
-                            .addComponent(chBoxSvozikom))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(cmBoxDen, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cmBoxMesiac, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cmBoxRok, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cmBoxStudent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,31 +220,25 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblStudentPomoc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNovyStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmBoxStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblInstuktorPomoc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNovyInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtVozidlo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVozidlo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVozidloPomoc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNoveVozidlo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmBoxInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmBoxVozidlo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblVozidlo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmBoxDen, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmBoxMesiac, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmBoxRok, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCas, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmBoxHodina, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmBoxMinuta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCas, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -258,7 +250,7 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
                 .addComponent(chBoxNacvicisku, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(chBoxSvozikom, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -269,17 +261,20 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-        List<Student> studenti = studentiDao.hladajPodlaMenaPriezviska(txtStudent.getText());
-        jazda.setStudent(studenti.get(0));
+        jazda.setStudent((Student) cmBoxStudent.getSelectedItem());
+        jazda.setInstruktor((Instruktor) cmBoxInstruktor.getSelectedItem());
+        jazda.setVozidlo((Vozidlo) cmBoxVozidlo.getSelectedItem());
 
-        List<Instruktor> instruktori = instruktoriDao.hladajPodlaMenaPriezviska(txtInstruktor.getText());
-        jazda.setInstruktor(instruktori.get(0));
+        StringBuilder datum = new StringBuilder();
+        datum.append(cmBoxRok.getSelectedItem()).append("-")
+                .append(cmBoxMesiac.getSelectedItem()).append("-")
+                .append(cmBoxDen.getSelectedItem());
+        jazda.setDatum(Date.valueOf(datum.toString()));
+        StringBuilder cas = new StringBuilder();
+        cas.append(cmBoxHodina.getSelectedItem()).append(":")
+                .append(cmBoxMinuta.getSelectedItem()).append(":00");
+        jazda.setCas(Time.valueOf(cas.toString()));
 
-        List<Vozidlo> vozidla = vozidlaDao.hladajPodlaSpz(txtVozidlo.getText());
-        jazda.setVozidlo(vozidla.get(0));
-
-        jazda.setDatum(Date.valueOf(txtDatum.getText()));
-        jazda.setCas(Time.valueOf(txtCas.getText()));
         jazda.setKm(Integer.valueOf(txtKm.getText()));
 
         jazda.setvPremavke(chBoxVpremavke.isSelected());
@@ -299,32 +294,31 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOkActionPerformed
 
     private void btnVynulujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVynulujActionPerformed
-        txtStudent.setText("");
-        txtInstruktor.setText("");
-        txtVozidlo.setText("");
-        txtDatum.setText("");
-        txtCas.setText("");
+        cmBoxStudent.setSelectedIndex(0);
+        cmBoxStudent.updateUI();
+        cmBoxInstruktor.setSelectedIndex(0);
+        cmBoxInstruktor.updateUI();
+        cmBoxVozidlo.setSelectedIndex(0);
+        cmBoxVozidlo.updateUI();
+
+        cmBoxDen.setSelectedIndex(0);
+        cmBoxDen.updateUI();
+        cmBoxMesiac.setSelectedIndex(0);
+        cmBoxMesiac.updateUI();
+        cmBoxRok.setSelectedIndex(0);
+        cmBoxRok.updateUI();
+
+        cmBoxHodina.setSelectedIndex(0);
+        cmBoxHodina.updateUI();
+        cmBoxMinuta.setSelectedIndex(0);
+        cmBoxMinuta.updateUI();
+
         txtKm.setText("");
 
         chBoxVpremavke.setSelected(false);
         chBoxNacvicisku.setSelected(false);
         chBoxSvozikom.setSelected(false);
     }//GEN-LAST:event_btnVynulujActionPerformed
-
-    private void btnNovyStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovyStudentActionPerformed
-        UpravaStudentiFormular pridanieStudentiFormular = new UpravaStudentiFormular(new Student());
-        pridanieStudentiFormular.setVisible(true);
-    }//GEN-LAST:event_btnNovyStudentActionPerformed
-
-    private void btnNovyInstruktorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovyInstruktorActionPerformed
-        UpravaInstruktoriFormular pridanieInstruktoriFormular = new UpravaInstruktoriFormular(new Instruktor());
-        pridanieInstruktoriFormular.setVisible(true);
-    }//GEN-LAST:event_btnNovyInstruktorActionPerformed
-
-    private void btnNoveVozidloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoveVozidloActionPerformed
-        UpravaVozidlaFormular pridanieVozidlaFormular = new UpravaVozidlaFormular(new Vozidlo());
-        pridanieVozidlaFormular.setVisible(true);
-    }//GEN-LAST:event_btnNoveVozidloActionPerformed
 
     /**
      * @param args the command line arguments
@@ -362,28 +356,25 @@ public class UpravaJazdyFormular extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnNoveVozidlo;
-    private javax.swing.JButton btnNovyInstruktor;
-    private javax.swing.JButton btnNovyStudent;
     private javax.swing.JButton btnOk;
     private javax.swing.JButton btnVynuluj;
     private javax.swing.JCheckBox chBoxNacvicisku;
     private javax.swing.JCheckBox chBoxSvozikom;
     private javax.swing.JCheckBox chBoxVpremavke;
+    private javax.swing.JComboBox cmBoxDen;
+    private javax.swing.JComboBox cmBoxHodina;
+    private javax.swing.JComboBox cmBoxInstruktor;
+    private javax.swing.JComboBox cmBoxMesiac;
+    private javax.swing.JComboBox cmBoxMinuta;
+    private javax.swing.JComboBox cmBoxRok;
+    private javax.swing.JComboBox cmBoxStudent;
+    private javax.swing.JComboBox cmBoxVozidlo;
     private javax.swing.JLabel lblCas;
     private javax.swing.JLabel lblDatum;
     private javax.swing.JLabel lblInstruktor;
-    private javax.swing.JLabel lblInstuktorPomoc;
     private javax.swing.JLabel lblKm;
     private javax.swing.JLabel lblStudent;
-    private javax.swing.JLabel lblStudentPomoc;
     private javax.swing.JLabel lblVozidlo;
-    private javax.swing.JLabel lblVozidloPomoc;
-    private javax.swing.JTextField txtCas;
-    private javax.swing.JTextField txtDatum;
-    private javax.swing.JTextField txtInstruktor;
     private javax.swing.JTextField txtKm;
-    private javax.swing.JTextField txtStudent;
-    private javax.swing.JTextField txtVozidlo;
     // End of variables declaration//GEN-END:variables
 }

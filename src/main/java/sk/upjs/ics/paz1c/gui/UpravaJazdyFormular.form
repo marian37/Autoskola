@@ -29,65 +29,49 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnVynuluj" min="-2" pref="70" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnOk" min="-2" pref="70" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="btnNoveVozidlo" min="-2" pref="110" max="-2" attributes="0"/>
-                              <Component id="btnNovyStudent" min="-2" pref="110" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="lblStudent" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="lblInstruktor" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblVozidlo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblDatum" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblCas" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblKm" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="txtVozidlo" min="-2" pref="190" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="lblVozidloPomoc" min="-2" pref="30" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="txtInstruktor" min="-2" pref="190" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="lblInstuktorPomoc" min="-2" pref="30" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="txtStudent" min="-2" pref="190" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="lblStudentPomoc" min="-2" pref="30" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="txtDatum" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
-                                      <Component id="txtCas" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
-                                      <Component id="txtKm" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
+                  <Component id="chBoxSvozikom" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Component id="chBoxNacvicisku" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="chBoxVpremavke" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblInstruktor" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblVozidlo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDatum" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCas" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblKm" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblStudent" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="txtKm" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="cmBoxHodina" min="-2" pref="50" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cmBoxMinuta" min="-2" pref="50" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="btnNovyInstruktor" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                              <Component id="cmBoxInstruktor" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cmBoxVozidlo" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="cmBoxDen" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="cmBoxMesiac" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="cmBoxRok" min="-2" pref="78" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="cmBoxStudent" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="chBoxVpremavke" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="chBoxNacvicisku" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="chBoxSvozikom" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="btnVynuluj" min="-2" pref="70" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btnOk" min="-2" pref="70" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -97,35 +81,29 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblStudent" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  <Component id="txtStudent" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  <Component id="lblStudentPomoc" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="cmBoxStudent" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnNovyStudent" min="-2" pref="25" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtInstruktor" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="cmBoxInstruktor" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="lblInstruktor" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  <Component id="lblInstuktorPomoc" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnNovyInstruktor" min="-2" pref="25" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtVozidlo" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  <Component id="lblVozidlo" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  <Component id="lblVozidloPomoc" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnNoveVozidlo" min="-2" pref="25" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtDatum" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="cmBoxVozidlo" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="lblVozidlo" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cmBoxDen" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="cmBoxMesiac" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="cmBoxRok" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="lblDatum" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtCas" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="cmBoxHodina" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="cmBoxMinuta" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="lblCas" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -139,7 +117,7 @@
               <Component id="chBoxNacvicisku" min="-2" pref="25" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="chBoxSvozikom" min="-2" pref="25" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnVynuluj" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="btnOk" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
@@ -164,76 +142,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Vozidlo:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtStudent">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtInstruktor">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtVozidlo">
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblStudentPomoc">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="?"/>
-        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;Zadajte meno a priezvisko existujuceho studenta.&#xa;&lt;br&gt;Ak student este nie je zaevidovany v databaze, mozete tak spravit kliknutim na tlacidlo:&#xa;&lt;br&gt;&lt;b&gt;Novy student&lt;/b&gt;&#xa;&lt;/html&gt;"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder/>
-          </Border>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnNovyStudent">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Novy student"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNovyStudentActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblInstuktorPomoc">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="?"/>
-        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;Zadajte meno a priezvisko existujuceho instruktora.&#xa;&lt;br&gt;Ak instruktor este nie je zaevidovany v databaze, mozete tak spravit kliknutim na tlacidlo:&#xa;&lt;br&gt;&lt;b&gt;Novy instruktor&lt;/b&gt;&#xa;&lt;/html&gt;"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder/>
-          </Border>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnNovyInstruktor">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Novy instruktor"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNovyInstruktorActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblVozidloPomoc">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="?"/>
-        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;Zadajte SPZ vozidla. &#xa;&lt;br&gt;Ak vozidlo este nie je zaevidovane v databaze,  mozete tak spravit kliknutim na tlacidlo:&#xa;&lt;br&gt;&lt;b&gt;Nove vozidlo&lt;/b&gt;&#xa;&lt;/html&gt;"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder/>
-          </Border>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnNoveVozidlo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Nove vozidlo"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNoveVozidloActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtDatum">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtCas">
     </Component>
     <Component class="javax.swing.JTextField" name="txtKm">
     </Component>
@@ -282,6 +190,86 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOkActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmBoxDen">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="denComboBoxModel" type="code"/>
+        </Property>
+        <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="0" type="code"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmBoxMesiac">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="mesiacComboBoxModel" type="code"/>
+        </Property>
+        <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="0" type="code"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmBoxRok">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="rokComboBoxModel" type="code"/>
+        </Property>
+        <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="0" type="code"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmBoxHodina">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="hodinaComboBoxModel" type="code"/>
+        </Property>
+        <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="0" type="code"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmBoxMinuta">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="minutaComboBoxModel" type="code"/>
+        </Property>
+        <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="0" type="code"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmBoxStudent">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="studentComboBoxModel" type="code"/>
+        </Property>
+        <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="0" type="code"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmBoxInstruktor">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="instruktorComboBoxModel" type="code"/>
+        </Property>
+        <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="0" type="code"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmBoxVozidlo">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="vozidloComboBoxModel" type="code"/>
+        </Property>
+        <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="0" type="code"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

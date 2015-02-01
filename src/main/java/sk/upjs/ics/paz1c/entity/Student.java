@@ -106,7 +106,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" + "id=" + id + ", meno=" + meno + ", priezvisko=" + priezvisko + ", datumNarodenia=" + datumNarodenia + ", bydlisko=" + bydlisko + ", kontakt=" + kontakt + ", prvaPomoc=" + prvaPomoc + ", pocetPokusov=" + pocetPokusov + ", pocetBodov=" + pocetBodov + ", cvicisko=" + cvicisko + ", jazda=" + jazda + '}';
+        return meno + " " + priezvisko;
     }
 
 }

@@ -1,10 +1,6 @@
 package sk.upjs.ics.paz1c.gui;
 
-import sk.upjs.ics.paz1c.gui.tableModels.SkuskyTableModel;
-import sk.upjs.ics.paz1c.gui.tableModels.VozidlaTableModel;
-import sk.upjs.ics.paz1c.gui.tableModels.InstruktoriTableModel;
-import sk.upjs.ics.paz1c.gui.tableModels.StudentiTableModel;
-import sk.upjs.ics.paz1c.gui.tableModels.JazdyTableModel;
+import sk.upjs.ics.paz1c.gui.tableModels.*;
 import javax.swing.JOptionPane;
 import sk.upjs.ics.paz1c.dao.*;
 import sk.upjs.ics.paz1c.entity.*;

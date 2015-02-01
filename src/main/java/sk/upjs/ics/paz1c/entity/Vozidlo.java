@@ -59,7 +59,7 @@ public class Vozidlo {
 
     @Override
     public String toString() {
-        return "Vozidlo{" + "spz=" + spz + ", znacka=" + znacka + ", typ=" + typ + ", farba=" + farba + ", kategoria=" + kategoria + '}';
+        return spz;
     }
 
 }
