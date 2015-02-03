@@ -12,7 +12,7 @@ import sk.upjs.ics.paz1c.dao.JazdyDao;
 import sk.upjs.ics.paz1c.dao.StudentiDao;
 import sk.upjs.ics.paz1c.dao.VozidlaDao;
 import sk.upjs.ics.paz1c.entity.Jazda;
-import sk.upjs.ics.paz1c.kriteria.JazdyKriterium;
+import sk.upjs.ics.paz1c.filtre.JazdyFilter;
 
 public class DatabazoveJazdyDaoTest {
 
@@ -67,23 +67,23 @@ public class DatabazoveJazdyDaoTest {
     }
 
     @Test
-    public void testHladajPodlaKriteria() {
-        JazdyKriterium kriterium = new JazdyKriterium();
-        kriterium.setStudent("Jozef Múdry");
-        kriterium.setInstruktor("Jozef");
-        kriterium.setVozidlo("PO");
-        kriterium.setDatumOd(Date.valueOf("2000-01-01"));
-        kriterium.setDatumDo(Date.valueOf("2015-01-01"));
-        kriterium.setCasOd(Time.valueOf("08:00:00"));
-        kriterium.setCasDo(Time.valueOf("10:00:00"));
-        kriterium.setKmOd(0);
-        kriterium.setKmDo(40);
-        kriterium.setvPremavke(Boolean.TRUE);
-        kriterium.setNaCvicisku(Boolean.FALSE);
-        kriterium.setsVozikom(Boolean.FALSE);
-        kriterium.setKategoria("B");
+    public void testHladajPodlaFiltra() {
+        JazdyFilter filter = new JazdyFilter();
+        filter.setStudent("Jozef Múdry");
+        filter.setInstruktor("Jozef");
+        filter.setVozidlo("PO");
+        filter.setDatumOd(Date.valueOf("2000-01-01"));
+        filter.setDatumDo(Date.valueOf("2015-01-01"));
+        filter.setCasOd(Time.valueOf("08:00:00"));
+        filter.setCasDo(Time.valueOf("10:00:00"));
+        filter.setKmOd(0);
+        filter.setKmDo(40);
+        filter.setvPremavke(Boolean.TRUE);
+        filter.setNaCvicisku(Boolean.FALSE);
+        filter.setsVozikom(Boolean.FALSE);
+        filter.setKategoria("B");
 
-        List<Jazda> jazdy = jazdyDao.hladajPodlaKriteria(kriterium);
+        List<Jazda> jazdy = jazdyDao.hladajPodlaFiltra(filter);
         assertEquals(POCET_JAZD_V_DB_PODLA_KRITERIA, jazdy.size());
     }
 

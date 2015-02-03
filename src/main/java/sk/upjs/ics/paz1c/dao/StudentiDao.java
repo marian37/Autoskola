@@ -3,7 +3,7 @@ package sk.upjs.ics.paz1c.dao;
 import sk.upjs.ics.paz1c.entity.Student;
 import java.util.List;
 import sk.upjs.ics.paz1c.entity.Skuska;
-import sk.upjs.ics.paz1c.kriteria.StudentiKriterium;
+import sk.upjs.ics.paz1c.filtre.StudentiFilter;
 
 public interface StudentiDao {
 
@@ -17,7 +17,7 @@ public interface StudentiDao {
 
     public List<Student> hladajPodlaMenaPriezviska(String text);
 
-    public List<Student> hladajPodlaKriteria(StudentiKriterium kriterium);
+    public List<Student> hladajPodlaFiltra(StudentiFilter filter);
 
     public void uloz(Student student);
 

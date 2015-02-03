@@ -1,9 +1,9 @@
-package sk.upjs.ics.paz1c.kriteria;
+package sk.upjs.ics.paz1c.filtre;
 
 import java.sql.Date;
 import java.sql.Time;
 
-public class JazdyKriterium {
+public class JazdyFilter {
 
     private String student;
     private String instruktor;

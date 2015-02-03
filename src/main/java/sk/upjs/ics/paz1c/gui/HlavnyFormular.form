@@ -80,6 +80,8 @@
                               <Component id="rbtnJazdyStudent" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="rbtnJazdyInstruktor" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jLabel2" min="-2" pref="25" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnJazdyVynuluj" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -119,6 +121,7 @@
                           <Component id="rbtnJazdyStudent" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="rbtnJazdyInstruktor" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="btnJazdyVynuluj" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="scrollPaneJazdy" pref="447" max="32767" attributes="0"/>
@@ -268,6 +271,21 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnJazdyPridajActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="?"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;Datum:&lt;br&gt;&#xa;zadavajte v tvare &quot;RRRR-MM-DD&quot;&lt;br&gt;&#xa;&lt;br&gt;&#xa;Student/Instruktor:&lt;br&gt;&#xa;vyhladavanie podla mena, priezviska, mena aj priezviska&#xa;&lt;/html&gt;"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="paneSkusky">
@@ -294,6 +312,8 @@
                               <Component id="rbtnSkuskyStudent" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="rbtnSkuskyInstruktor" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" pref="25" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnSkuskyVynuluj" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -333,6 +353,7 @@
                           <Component id="rbtnSkuskyStudent" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="rbtnSkuskyInstruktor" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="btnSkuskyVynuluj" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="scrollPaneSkusky" pref="447" max="32767" attributes="0"/>
@@ -469,6 +490,21 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSkuskyPridajActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="?"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;Datum:&lt;br&gt;&#xa;zadavajte v tvare &quot;RRRR-MM-DD&quot;&lt;br&gt;&#xa;&lt;br&gt;&#xa;Student/Instruktor:&lt;br&gt;&#xa;vyhladavanie podla mena, priezviska, mena aj priezviska&#xa;&lt;/html&gt;"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

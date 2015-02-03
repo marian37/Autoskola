@@ -1,8 +1,8 @@
-package sk.upjs.ics.paz1c.kriteria;
+package sk.upjs.ics.paz1c.filtre;
 
 import java.sql.Date;
 
-public class StudentiKriterium {
+public class StudentiFilter {
 
     private String meno;
     private String priezvisko;

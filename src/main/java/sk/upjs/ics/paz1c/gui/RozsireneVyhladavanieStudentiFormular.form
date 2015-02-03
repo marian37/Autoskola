@@ -52,6 +52,8 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="btnPridaj" min="-2" pref="70" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnVymaz" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnUprav" min="-2" max="-2" attributes="0"/>
@@ -60,7 +62,7 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="lblNespravnyFormat" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblNespravnyFormat" min="-2" pref="120" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnVynuluj" min="-2" pref="70" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -96,6 +98,7 @@
                   <Component id="btnDetail" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnUprav" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnVymaz" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnPridaj" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -551,14 +554,18 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Hladaj"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JToggleButton" name="btnVynuluj">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Vynuluj"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHladajActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblNespravnyFormat">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="NESPRAVNY FORMAT"/>
       </Properties>
     </Component>
@@ -577,6 +584,9 @@
               </Table>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblStudentiMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -587,6 +597,9 @@
           <Dimension value="[70, 25]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVymazActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnUprav">
       <Properties>
@@ -595,6 +608,9 @@
           <Dimension value="[70, 25]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpravActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnDetail">
       <Properties>
@@ -603,6 +619,25 @@
           <Dimension value="[70, 25]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDetailActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnVynuluj">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Vynuluj"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVynulujActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPridaj">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pridaj"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPridajActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

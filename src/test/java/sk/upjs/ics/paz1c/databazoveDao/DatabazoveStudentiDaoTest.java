@@ -10,7 +10,7 @@ import sk.upjs.ics.paz1c.dao.SkuskyDao;
 import sk.upjs.ics.paz1c.dao.StudentiDao;
 import sk.upjs.ics.paz1c.entity.Skuska;
 import sk.upjs.ics.paz1c.entity.Student;
-import sk.upjs.ics.paz1c.kriteria.StudentiKriterium;
+import sk.upjs.ics.paz1c.filtre.StudentiFilter;
 
 public class DatabazoveStudentiDaoTest {
 
@@ -62,19 +62,19 @@ public class DatabazoveStudentiDaoTest {
     }
 
     @Test
-    public void testHladajPodlaKriteria() {
-        StudentiKriterium kriterium = new StudentiKriterium();
-        kriterium.setMeno("Jakub");
-        kriterium.setPriezvisko("ed");
-        kriterium.setBydlisko("Prešov");
-        kriterium.setDatumNarodeniaOd(Date.valueOf("1993-01-01"));
-        kriterium.setDatumNarodeniaDo(Date.valueOf("1996-01-01"));
-        kriterium.setPocetJazdOd(0);
-        kriterium.setPocetJazdDo(2);
-        kriterium.setPrejdeneKmOd(16);
-        kriterium.setPrejdeneKmDo(35);
-        kriterium.setKategoria("B");
-        List<Student> studenti = studentiDao.hladajPodlaKriteria(kriterium);
+    public void testHladajPodlaFiltra() {
+        StudentiFilter filter = new StudentiFilter();
+        filter.setMeno("Jakub");
+        filter.setPriezvisko("ed");
+        filter.setBydlisko("Prešov");
+        filter.setDatumNarodeniaOd(Date.valueOf("1993-01-01"));
+        filter.setDatumNarodeniaDo(Date.valueOf("1996-01-01"));
+        filter.setPocetJazdOd(0);
+        filter.setPocetJazdDo(2);
+        filter.setPrejdeneKmOd(16);
+        filter.setPrejdeneKmDo(35);
+        filter.setKategoria("B");
+        List<Student> studenti = studentiDao.hladajPodlaFiltra(filter);
         assertEquals(POCET_STUDENTOV_V_DB_PODLA_KRITERIA, studenti.size());
     }
 

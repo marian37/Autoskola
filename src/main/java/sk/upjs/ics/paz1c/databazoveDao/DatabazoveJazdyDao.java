@@ -12,7 +12,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import sk.upjs.ics.paz1c.dao.JazdyDao;
 import sk.upjs.ics.paz1c.entity.Jazda;
-import sk.upjs.ics.paz1c.kriteria.JazdyKriterium;
+import sk.upjs.ics.paz1c.filtre.JazdyFilter;
 
 public class DatabazoveJazdyDao implements JazdyDao {
 
@@ -69,14 +69,14 @@ public class DatabazoveJazdyDao implements JazdyDao {
     }
 
     @Override
-    public List<Jazda> hladajPodlaKriteria(JazdyKriterium kriterium) {
+    public List<Jazda> hladajPodlaFiltra(JazdyFilter filter) {
         boolean where = false;
         int usedArgs = 0;
         Object[] args = new Object[12];
         StringBuilder sql = new StringBuilder(SqlQueries.SELECT_ALL_JAZDA + "\n");
 
-        if (kriterium.getStudent() != null) {
-            String student = kriterium.getStudent().trim();
+        if (filter.getStudent() != null) {
+            String student = filter.getStudent().trim();
             String[] studentTokens = student.split(" ");
             String studentMeno = studentTokens[0];
             studentMeno = "%" + studentMeno + "%";
@@ -99,8 +99,8 @@ public class DatabazoveJazdyDao implements JazdyDao {
             }
         }
 
-        if (kriterium.getInstruktor() != null) {
-            String instruktor = kriterium.getInstruktor().trim();
+        if (filter.getInstruktor() != null) {
+            String instruktor = filter.getInstruktor().trim();
             String[] instruktorTokens = instruktor.split(" ");
             String instruktorMeno = instruktorTokens[0];
             instruktorMeno = "%" + instruktorMeno + "%";
@@ -123,8 +123,8 @@ public class DatabazoveJazdyDao implements JazdyDao {
             }
         }
 
-        if (kriterium.getVozidlo() != null) {
-            String vozidlo = kriterium.getVozidlo().trim();
+        if (filter.getVozidlo() != null) {
+            String vozidlo = filter.getVozidlo().trim();
             vozidlo = "%" + vozidlo + "%";
             if (!where) {
                 sql.append("WHERE Vozidlo.spz LIKE ?\n");
@@ -136,82 +136,82 @@ public class DatabazoveJazdyDao implements JazdyDao {
             usedArgs++;
         }
 
-        if (kriterium.getDatumOd() != null) {
+        if (filter.getDatumOd() != null) {
             if (!where) {
                 sql.append("WHERE Jazda.datum >= ?\n");
                 where = true;
             } else {
                 sql.append("AND Jazda.datum >= ?\n");
             }
-            args[usedArgs] = kriterium.getDatumOd();
+            args[usedArgs] = filter.getDatumOd();
             usedArgs++;
         }
 
-        if (kriterium.getDatumDo() != null) {
+        if (filter.getDatumDo() != null) {
             if (!where) {
                 sql.append("WHERE Jazda.datum <= ?\n");
                 where = true;
             } else {
                 sql.append("AND Jazda.datum <= ?\n");
             }
-            args[usedArgs] = kriterium.getDatumDo();
+            args[usedArgs] = filter.getDatumDo();
             usedArgs++;
         }
 
-        if (kriterium.getCasOd() != null) {
+        if (filter.getCasOd() != null) {
             if (!where) {
                 sql.append("WHERE Jazda.cas >= ?\n");
                 where = true;
             } else {
                 sql.append("AND Jazda.cas >= ?\n");
             }
-            args[usedArgs] = kriterium.getCasOd();
+            args[usedArgs] = filter.getCasOd();
             usedArgs++;
         }
 
-        if (kriterium.getCasDo() != null) {
+        if (filter.getCasDo() != null) {
             if (!where) {
                 sql.append("WHERE Jazda.cas <= ?\n");
                 where = true;
             } else {
                 sql.append("AND Jazda.cas <= ?\n");
             }
-            args[usedArgs] = kriterium.getCasDo();
+            args[usedArgs] = filter.getCasDo();
             usedArgs++;
         }
 
-        if (kriterium.getKmOd() != null) {
+        if (filter.getKmOd() != null) {
             if (!where) {
                 sql.append("WHERE Jazda.km >= ?\n");
                 where = true;
             } else {
                 sql.append("AND Jazda.km >= ?\n");
             }
-            args[usedArgs] = kriterium.getKmOd();
+            args[usedArgs] = filter.getKmOd();
             usedArgs++;
         }
 
-        if (kriterium.getKmDo() != null) {
+        if (filter.getKmDo() != null) {
             if (!where) {
                 sql.append("WHERE Jazda.km <= ?\n");
                 where = true;
             } else {
                 sql.append("AND Jazda.km <= ?\n");
             }
-            args[usedArgs] = kriterium.getKmDo();
+            args[usedArgs] = filter.getKmDo();
             usedArgs++;
         }
 
-        if (kriterium.getvPremavke() != null) {
+        if (filter.getvPremavke() != null) {
             if (!where) {
-                if (Boolean.TRUE.equals(kriterium.getvPremavke())) {
+                if (Boolean.TRUE.equals(filter.getvPremavke())) {
                     sql.append("WHERE Jazda.vPremavke\n");
                 } else {
                     sql.append("WHERE NOT Jazda.vPremavke\n");
                 }
                 where = true;
             } else {
-                if (Boolean.TRUE.equals(kriterium.getvPremavke())) {
+                if (Boolean.TRUE.equals(filter.getvPremavke())) {
                     sql.append("AND Jazda.vPremavke\n");
                 } else {
                     sql.append("AND NOT Jazda.vPremavke\n");
@@ -219,16 +219,16 @@ public class DatabazoveJazdyDao implements JazdyDao {
             }
         }
 
-        if (kriterium.getNaCvicisku() != null) {
+        if (filter.getNaCvicisku() != null) {
             if (!where) {
-                if (Boolean.TRUE.equals(kriterium.getNaCvicisku())) {
+                if (Boolean.TRUE.equals(filter.getNaCvicisku())) {
                     sql.append("WHERE Jazda.naCvicisku\n");
                 } else {
                     sql.append("WHERE NOT Jazda.naCvicisku\n");
                 }
                 where = true;
             } else {
-                if (Boolean.TRUE.equals(kriterium.getNaCvicisku())) {
+                if (Boolean.TRUE.equals(filter.getNaCvicisku())) {
                     sql.append("AND Jazda.naCvicisku\n");
                 } else {
                     sql.append("AND NOT Jazda.naCvicisku\n");
@@ -236,16 +236,16 @@ public class DatabazoveJazdyDao implements JazdyDao {
             }
         }
 
-        if (kriterium.getsVozikom() != null) {
+        if (filter.getsVozikom() != null) {
             if (!where) {
-                if (Boolean.TRUE.equals(kriterium.getsVozikom())) {
+                if (Boolean.TRUE.equals(filter.getsVozikom())) {
                     sql.append("WHERE Jazda.sVozikom\n");
                 } else {
                     sql.append("WHERE NOT Jazda.sVozikom\n");
                 }
                 where = true;
             } else {
-                if (Boolean.TRUE.equals(kriterium.getsVozikom())) {
+                if (Boolean.TRUE.equals(filter.getsVozikom())) {
                     sql.append("AND Jazda.sVozikom\n");
                 } else {
                     sql.append("AND NOT Jazda.sVozikom\n");
@@ -253,14 +253,14 @@ public class DatabazoveJazdyDao implements JazdyDao {
             }
         }
 
-        if (kriterium.getKategoria() != null) {
+        if (filter.getKategoria() != null) {
             if (!where) {
                 sql.append("WHERE Vozidlo.kategoria = ?\n");
                 where = true;
             } else {
                 sql.append("AND Vozidlo.kategoria = ?\n");
             }
-            args[usedArgs] = kriterium.getKategoria();
+            args[usedArgs] = filter.getKategoria();
             usedArgs++;
         }
 

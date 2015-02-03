@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
 import sk.upjs.ics.paz1c.autoskola.BeanFactory;
-import sk.upjs.ics.paz1c.dao.InstruktoriDao;
 import sk.upjs.ics.paz1c.dao.*;
 import sk.upjs.ics.paz1c.entity.*;
 import sk.upjs.ics.paz1c.gui.ComboBoxModels.*;

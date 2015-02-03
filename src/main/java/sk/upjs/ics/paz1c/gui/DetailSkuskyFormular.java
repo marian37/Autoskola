@@ -1,8 +1,7 @@
 package sk.upjs.ics.paz1c.gui;
 
 import java.util.List;
-import sk.upjs.ics.paz1c.entity.Skuska;
-import sk.upjs.ics.paz1c.entity.Student;
+import sk.upjs.ics.paz1c.entity.*;
 
 public class DetailSkuskyFormular extends javax.swing.JFrame {
 

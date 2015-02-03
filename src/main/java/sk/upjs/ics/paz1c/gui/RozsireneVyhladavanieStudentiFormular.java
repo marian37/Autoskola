@@ -1,13 +1,36 @@
 package sk.upjs.ics.paz1c.gui;
 
+import java.sql.Date;
+import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.TableRowSorter;
+import sk.upjs.ics.paz1c.autoskola.BeanFactory;
+import sk.upjs.ics.paz1c.dao.StudentiDao;
+import sk.upjs.ics.paz1c.entity.Student;
+import sk.upjs.ics.paz1c.filtre.StudentiFilter;
+import sk.upjs.ics.paz1c.gui.tableModels.RozsirenyStudentiTableModel;
+
 public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RozsireneVyhladavanieJazdyFormular
-     */
+    private StudentiDao studentiDao = BeanFactory.INSTANCE.getStudentiDao();
+    private RozsirenyStudentiTableModel studentiTableModel = new RozsirenyStudentiTableModel();
+    private TableRowSorter studentiRowSorter = new TableRowSorter(studentiTableModel);
+
     public RozsireneVyhladavanieStudentiFormular() {
         initComponents();
         nastavTlacidla();
+
+        tblStudenti.setModel(studentiTableModel);
+        tblStudenti.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                tblStudentiSelectionValueChanged(e);
+            }
+        });
+        aktualizujZoznamStudentov();
+
+        lblNespravnyFormat.setVisible(false);
     }
 
     private void nastavTlacidla() {
@@ -15,6 +38,24 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
         rbtnTestAno.setSelected(true);
         rbtnCviciskoAno.setSelected(true);
         rbtnKategoriaA.setSelected(true);
+    }
+
+    private void tblStudentiSelectionValueChanged(ListSelectionEvent e) {
+        if (!e.getValueIsAdjusting()) {
+            if (!tblStudenti.getSelectionModel().isSelectionEmpty()) {
+                btnUprav.setEnabled(true);
+                btnVymaz.setEnabled(true);
+                btnDetail.setEnabled(true);
+            } else {
+                btnUprav.setEnabled(false);
+                btnVymaz.setEnabled(false);
+                btnDetail.setEnabled(false);
+            }
+        }
+    }
+
+    public void aktualizujZoznamStudentov() {
+        studentiTableModel.obnov();
     }
 
     /**
@@ -72,13 +113,14 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
         rbtnKategoriaC = new javax.swing.JRadioButton();
         rbtnKategoriaD = new javax.swing.JRadioButton();
         btnHladaj = new javax.swing.JButton();
-        btnVynuluj = new javax.swing.JToggleButton();
         lblNespravnyFormat = new javax.swing.JLabel();
         scrollPane = new javax.swing.JScrollPane();
         tblStudenti = new javax.swing.JTable();
         btnVymaz = new javax.swing.JButton();
         btnUprav = new javax.swing.JButton();
         btnDetail = new javax.swing.JButton();
+        btnVynuluj = new javax.swing.JButton();
+        btnPridaj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Studenti");
@@ -349,9 +391,14 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
         );
 
         btnHladaj.setText("Hladaj");
+        btnHladaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHladajActionPerformed(evt);
+            }
+        });
 
-        btnVynuluj.setText("Vynuluj");
-
+        lblNespravnyFormat.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblNespravnyFormat.setForeground(new java.awt.Color(255, 0, 0));
         lblNespravnyFormat.setText("NESPRAVNY FORMAT");
 
         tblStudenti.setModel(new javax.swing.table.DefaultTableModel(
@@ -365,16 +412,50 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblStudenti.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblStudentiMouseClicked(evt);
+            }
+        });
         scrollPane.setViewportView(tblStudenti);
 
         btnVymaz.setText("Vymaz");
         btnVymaz.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnVymaz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVymazActionPerformed(evt);
+            }
+        });
 
         btnUprav.setText("Uprav");
         btnUprav.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnUprav.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpravActionPerformed(evt);
+            }
+        });
 
         btnDetail.setText("Detail");
         btnDetail.setPreferredSize(new java.awt.Dimension(70, 25));
+        btnDetail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetailActionPerformed(evt);
+            }
+        });
+
+        btnVynuluj.setText("Vynuluj");
+        btnVynuluj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVynulujActionPerformed(evt);
+            }
+        });
+
+        btnPridaj.setText("Pridaj");
+        btnPridaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPridajActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -395,6 +476,8 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnPridaj, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnUprav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -402,7 +485,7 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
                         .addComponent(btnDetail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(lblNespravnyFormat)
+                        .addComponent(lblNespravnyFormat, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -430,12 +513,152 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDetail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUprav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnVymaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPridaj, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnHladajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHladajActionPerformed
+        StudentiFilter filter = new StudentiFilter();
+
+        try {
+
+            if (chBoxMeno.isSelected()) {
+                filter.setMeno(txtMeno.getText().trim());
+            }
+            if (chBoxPriezvisko.isSelected()) {
+                filter.setPriezvisko(txtPriezvisko.getText().trim());
+            }
+            if (chBoxBydlisko.isSelected()) {
+                filter.setBydlisko(txtBydlisko.getText().trim());
+            }
+
+            if (chBoxDatumNarodenia.isSelected()) {
+                filter.setDatumNarodeniaOd(Date.valueOf(txtDatumNarodeniaOd.getText().trim()));
+                filter.setDatumNarodeniaDo(Date.valueOf(txtDatumNarodeniaDo.getText().trim()));
+            }
+            if (chBoxPocetJazd.isSelected()) {
+                filter.setPocetJazdOd(Integer.valueOf(txtPocetJazdOd.getText().trim()));
+                filter.setPocetJazdDo(Integer.valueOf(txtPocetJazdDo.getText().trim()));
+            }
+            if (chBoxPrejdeneKm.isSelected()) {
+                filter.setPrejdeneKmOd(Integer.valueOf(txtPrejdeneKmOd.getText().trim()));
+                filter.setPrejdeneKmDo(Integer.valueOf(txtPrejdeneKmDo.getText().trim()));
+            }
+
+            if (chBoxPrvaPomoc.isSelected()) {
+                filter.setPrvaPomoc(rbtnPrvaPomocAno.isSelected());
+            }
+            if (chBoxTest.isSelected()) {
+                filter.setTest(rbtnTestAno.isSelected());
+            }
+            if (chBoxCvicisko.isSelected()) {
+                filter.setCvicisko(rbtnCviciskoAno.isSelected());
+            }
+
+            if (chBoxKategoria.isSelected()) {
+                if (rbtnKategoriaA.isSelected()) {
+                    filter.setKategoria("A");
+                }
+                if (rbtnKategoriaB.isSelected()) {
+                    filter.setKategoria("B");
+                }
+                if (rbtnKategoriaC.isSelected()) {
+                    filter.setKategoria("C");
+                }
+                if (rbtnKategoriaD.isSelected()) {
+                    filter.setKategoria("D");
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            lblNespravnyFormat.setVisible(true);
+            return;
+        }
+
+        studentiTableModel.zobrazPodlaFiltra(filter);
+    }//GEN-LAST:event_btnHladajActionPerformed
+
+    private void btnVynulujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVynulujActionPerformed
+        chBoxMeno.setSelected(false);
+        txtMeno.setText("");
+        chBoxPriezvisko.setSelected(false);
+        txtPriezvisko.setText("");
+        chBoxBydlisko.setSelected(false);
+        txtBydlisko.setText("");
+
+        chBoxDatumNarodenia.setSelected(false);
+        txtDatumNarodeniaOd.setText("");
+        txtDatumNarodeniaDo.setText("");
+        chBoxPocetJazd.setSelected(false);
+        txtPocetJazdOd.setText("");
+        txtPocetJazdDo.setText("");
+        chBoxPrejdeneKm.setSelected(false);
+        txtPrejdeneKmOd.setText("");
+        txtPrejdeneKmDo.setText("");
+        
+        chBoxPrvaPomoc.setSelected(false);
+        chBoxTest.setSelected(false);
+        chBoxCvicisko.setSelected(false);
+
+        chBoxKategoria.setSelected(false);
+
+        nastavTlacidla();
+        aktualizujZoznamStudentov();
+        lblNespravnyFormat.setVisible(false);
+    }//GEN-LAST:event_btnVynulujActionPerformed
+
+    private void btnDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailActionPerformed
+        int vybranyRiadok = tblStudenti.getSelectedRow();
+        int vybratyIndexVModeli = tblStudenti.convertRowIndexToModel(vybranyRiadok);
+
+        Student vybranyStudent = studentiTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
+
+        DetailStudentiFormular detailStudentiFormular = new DetailStudentiFormular(vybranyStudent);
+        detailStudentiFormular.setVisible(true);
+    }//GEN-LAST:event_btnDetailActionPerformed
+
+    private void btnUpravActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpravActionPerformed
+        int vybranyRiadok = tblStudenti.getSelectedRow();
+        int vybratyIndexVModeli = tblStudenti.convertRowIndexToModel(vybranyRiadok);
+
+        Student vybranyStudent = studentiTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
+
+        UpravaStudentiFormular upravaStudentiFormular = new UpravaStudentiFormular(vybranyStudent);
+        upravaStudentiFormular.setVisible(true);
+    }//GEN-LAST:event_btnUpravActionPerformed
+
+    private void btnVymazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVymazActionPerformed
+        int vybranyRiadok = tblStudenti.getSelectedRow();
+        int vybratyIndexVModeli = tblStudenti.convertRowIndexToModel(vybranyRiadok);
+
+        Student vybranyStudent = studentiTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
+
+        int tlacidlo = JOptionPane.showConfirmDialog(this,
+                "Naozaj odstranit?",
+                "Odstranit studenta",
+                JOptionPane.YES_NO_OPTION
+        );
+        if (tlacidlo == JOptionPane.YES_OPTION) {
+            studentiDao.vymaz(vybranyStudent);
+            aktualizujZoznamStudentov();
+        }
+    }//GEN-LAST:event_btnVymazActionPerformed
+
+    private void tblStudentiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblStudentiMouseClicked
+        if (evt.getClickCount() == 2) {
+            btnDetail.doClick();
+        }
+    }//GEN-LAST:event_tblStudentiMouseClicked
+
+    private void btnPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPridajActionPerformed
+        UpravaStudentiFormular pridanieStudentiFormular = new UpravaStudentiFormular(new Student());
+        pridanieStudentiFormular.setVisible(true);
+    }//GEN-LAST:event_btnPridajActionPerformed
 
     /**
      * @param args the command line arguments
@@ -476,9 +699,10 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDetail;
     private javax.swing.JButton btnHladaj;
+    private javax.swing.JButton btnPridaj;
     private javax.swing.JButton btnUprav;
     private javax.swing.JButton btnVymaz;
-    private javax.swing.JToggleButton btnVynuluj;
+    private javax.swing.JButton btnVynuluj;
     private javax.swing.ButtonGroup btngCvicisko;
     private javax.swing.ButtonGroup btngKategoria;
     private javax.swing.ButtonGroup btngPrvaPomoc;

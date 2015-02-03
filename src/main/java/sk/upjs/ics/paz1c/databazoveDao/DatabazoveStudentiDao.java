@@ -13,7 +13,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import sk.upjs.ics.paz1c.entity.Student;
 import sk.upjs.ics.paz1c.dao.StudentiDao;
 import sk.upjs.ics.paz1c.entity.Skuska;
-import sk.upjs.ics.paz1c.kriteria.StudentiKriterium;
+import sk.upjs.ics.paz1c.filtre.StudentiFilter;
 
 public class DatabazoveStudentiDao implements StudentiDao {
 
@@ -62,14 +62,14 @@ public class DatabazoveStudentiDao implements StudentiDao {
     }
 
     @Override
-    public List<Student> hladajPodlaKriteria(StudentiKriterium kriterium) {
+    public List<Student> hladajPodlaFiltra(StudentiFilter filter) {
         boolean where = false;
         int usedArgs = 0;
         Object[] args = new Object[10];
         StringBuilder sql = new StringBuilder(SqlQueries.SELECT_STUDENT_BY_KRITERIUM + "\n");
 
-        if (kriterium.getMeno() != null) {
-            String meno = kriterium.getMeno().trim();
+        if (filter.getMeno() != null) {
+            String meno = filter.getMeno().trim();
             meno = "%" + meno + "%";
             if (!where) {
                 sql.append("WHERE StudentMeno LIKE ?\n");
@@ -81,8 +81,8 @@ public class DatabazoveStudentiDao implements StudentiDao {
             usedArgs++;
         }
 
-        if (kriterium.getPriezvisko() != null) {
-            String priezvisko = kriterium.getPriezvisko().trim();
+        if (filter.getPriezvisko() != null) {
+            String priezvisko = filter.getPriezvisko().trim();
             priezvisko = "%" + priezvisko + "%";
             if (!where) {
                 sql.append("WHERE StudentPriezvisko LIKE ?\n");
@@ -94,8 +94,8 @@ public class DatabazoveStudentiDao implements StudentiDao {
             usedArgs++;
         }
 
-        if (kriterium.getBydlisko() != null) {
-            String bydlisko = kriterium.getBydlisko().trim();
+        if (filter.getBydlisko() != null) {
+            String bydlisko = filter.getBydlisko().trim();
             bydlisko = "%" + bydlisko + "%";
             if (!where) {
                 sql.append("WHERE StudentBydlisko LIKE ?\n");
@@ -107,81 +107,81 @@ public class DatabazoveStudentiDao implements StudentiDao {
             usedArgs++;
         }
 
-        if (kriterium.getDatumNarodeniaOd() != null) {
+        if (filter.getDatumNarodeniaOd() != null) {
             if (!where) {
                 sql.append("WHERE StudentDatumNarodenia >=  ?\n");
                 where = true;
             } else {
                 sql.append("AND StudentDatumNarodenia >=  ?\n");
             }
-            args[usedArgs] = kriterium.getDatumNarodeniaOd();
+            args[usedArgs] = filter.getDatumNarodeniaOd();
             usedArgs++;
         }
 
-        if (kriterium.getDatumNarodeniaDo() != null) {
+        if (filter.getDatumNarodeniaDo() != null) {
             if (!where) {
                 sql.append("WHERE StudentDatumNarodenia <=  ?\n");
                 where = true;
             } else {
                 sql.append("AND StudentDatumNarodenia <=  ?\n");
             }
-            args[usedArgs] = kriterium.getDatumNarodeniaDo();
+            args[usedArgs] = filter.getDatumNarodeniaDo();
             usedArgs++;
         }
 
-        if (kriterium.getPocetJazdOd() != null) {
+        if (filter.getPocetJazdOd() != null) {
             if (!where) {
                 sql.append("WHERE PocetJazd >= ?\n");
                 where = true;
             } else {
                 sql.append("AND PocetJazd >= ?\n");
             }
-            args[usedArgs] = kriterium.getPocetJazdOd();
+            args[usedArgs] = filter.getPocetJazdOd();
             usedArgs++;
         }
 
-        if (kriterium.getPocetJazdDo() != null) {
+        if (filter.getPocetJazdDo() != null) {
             if (!where) {
                 sql.append("WHERE PocetJazd <= ?\n");
                 where = true;
             } else {
                 sql.append("AND PocetJazd <= ?\n");
             }
-            args[usedArgs] = kriterium.getPocetJazdDo();
+            args[usedArgs] = filter.getPocetJazdDo();
             usedArgs++;
         }
 
-        if (kriterium.getPrejdeneKmOd() != null) {
+        if (filter.getPrejdeneKmOd() != null) {
             if (!where) {
                 sql.append("WHERE PrejdeneKm >= ?\n");
                 where = true;
             } else {
                 sql.append("AND PrejdeneKm >= ?\n");
             }
-            args[usedArgs] = kriterium.getPrejdeneKmOd();
+            args[usedArgs] = filter.getPrejdeneKmOd();
             usedArgs++;
         }
 
-        if (kriterium.getPrejdeneKmDo() != null) {
+        if (filter.getPrejdeneKmDo() != null) {
             if (!where) {
                 sql.append("WHERE PrejdeneKm <= ?\n");
                 where = true;
             } else {
                 sql.append("AND PrejdeneKm <= ?\n");
             }
-            args[usedArgs] = kriterium.getPrejdeneKmDo();
+            args[usedArgs] = filter.getPrejdeneKmDo();
             usedArgs++;
         }
 
-        if (kriterium.getPrvaPomoc() != null) {
+        if (filter.getPrvaPomoc() != null) {
             if (!where) {
-                if (Boolean.TRUE.equals(kriterium.getPrvaPomoc())) {
+                if (Boolean.TRUE.equals(filter.getPrvaPomoc())) {
                     sql.append("WHERE StudentPrvaPomoc\n");
                 } else {
                     sql.append("WHERE NOT StudentPrvaPomoc\n");
                 }
             } else {
-                if (Boolean.TRUE.equals(kriterium.getPrvaPomoc())) {
+                if (Boolean.TRUE.equals(filter.getPrvaPomoc())) {
                     sql.append("AND StudentPrvaPomoc\n");
                 } else {
                     sql.append("AND NOT StudentPrvaPomoc\n");
@@ -189,15 +189,15 @@ public class DatabazoveStudentiDao implements StudentiDao {
             }
         }
 
-        if (kriterium.getTest() != null) {
+        if (filter.getTest() != null) {
             if (!where) {
-                if (Boolean.TRUE.equals(kriterium.getTest())) {
+                if (Boolean.TRUE.equals(filter.getTest())) {
                     sql.append("WHERE StudentPocetBodov >= 50\n");
                 } else {
                     sql.append("WHERE StudentPocetBodov < 50\n");
                 }
             } else {
-                if (Boolean.TRUE.equals(kriterium.getTest())) {
+                if (Boolean.TRUE.equals(filter.getTest())) {
                     sql.append("AND StudentPocetBodov >= 50\n");
                 } else {
                     sql.append("AND StudentPocetBodov < 50\n");
@@ -205,15 +205,15 @@ public class DatabazoveStudentiDao implements StudentiDao {
             }
         }
 
-        if (kriterium.getCvicisko() != null) {
+        if (filter.getCvicisko() != null) {
             if (!where) {
-                if (Boolean.TRUE.equals(kriterium.getCvicisko())) {
+                if (Boolean.TRUE.equals(filter.getCvicisko())) {
                     sql.append("WHERE StudentCvicisko\n");
                 } else {
                     sql.append("WHERE NOT StudentCvicisko\n");
                 }
             } else {
-                if (Boolean.TRUE.equals(kriterium.getCvicisko())) {
+                if (Boolean.TRUE.equals(filter.getCvicisko())) {
                     sql.append("AND StudentCvicisko\n");
                 } else {
                     sql.append("AND NOT StudentCvicisko\n");
@@ -221,14 +221,14 @@ public class DatabazoveStudentiDao implements StudentiDao {
             }
         }
 
-        if (kriterium.getKategoria() != null) {
+        if (filter.getKategoria() != null) {
             if (!where) {
                 sql.append("WHERE VozidloKategoria = ?\n");
                 where = true;
             } else {
                 sql.append("AND VozidloKategoria = ?\n");
             }
-            args[usedArgs] = kriterium.getKategoria();
+            args[usedArgs] = filter.getKategoria();
             usedArgs++;
         }
 

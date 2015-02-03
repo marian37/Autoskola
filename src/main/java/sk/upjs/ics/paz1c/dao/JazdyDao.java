@@ -2,7 +2,7 @@ package sk.upjs.ics.paz1c.dao;
 
 import sk.upjs.ics.paz1c.entity.Jazda;
 import java.util.List;
-import sk.upjs.ics.paz1c.kriteria.JazdyKriterium;
+import sk.upjs.ics.paz1c.filtre.JazdyFilter;
 
 public interface JazdyDao {
 
@@ -14,7 +14,7 @@ public interface JazdyDao {
 
     public List<Jazda> hladajPodlaInstruktora(String instruktor);
 
-    public List<Jazda> hladajPodlaKriteria(JazdyKriterium kriterium);
+    public List<Jazda> hladajPodlaFiltra(JazdyFilter filter);
 
     public void uloz(Jazda jazda);
 

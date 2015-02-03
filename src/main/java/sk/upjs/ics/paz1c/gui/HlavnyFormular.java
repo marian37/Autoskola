@@ -230,6 +230,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
         btnJazdyUprav = new javax.swing.JButton();
         btnJazdyVymaz = new javax.swing.JButton();
         btnJazdyPridaj = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         paneSkusky = new javax.swing.JPanel();
         txtSkuskyHladaj = new javax.swing.JTextField();
         btnSkuskyHladaj = new javax.swing.JButton();
@@ -244,6 +245,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
         btnSkuskyUprav = new javax.swing.JButton();
         btnSkuskyDetail = new javax.swing.JButton();
         btnSkuskyPridaj = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         paneStudenti = new javax.swing.JPanel();
         txtStudentiHladaj = new javax.swing.JTextField();
         btnStudentiHladaj = new javax.swing.JButton();
@@ -380,6 +382,12 @@ public class HlavnyFormular extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("?");
+        jLabel2.setToolTipText("<html>\nDatum:<br>\nzadavajte v tvare \"RRRR-MM-DD\"<br>\n<br>\nStudent/Instruktor:<br>\nvyhladavanie podla mena, priezviska, mena aj priezviska\n</html>");
+        jLabel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         javax.swing.GroupLayout paneJazdyLayout = new javax.swing.GroupLayout(paneJazdy);
         paneJazdy.setLayout(paneJazdyLayout);
         paneJazdyLayout.setHorizontalGroup(
@@ -397,6 +405,8 @@ public class HlavnyFormular extends javax.swing.JFrame {
                         .addComponent(rbtnJazdyStudent)
                         .addGap(18, 18, 18)
                         .addComponent(rbtnJazdyInstruktor)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnJazdyVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(paneJazdyLayout.createSequentialGroup()
@@ -428,7 +438,8 @@ public class HlavnyFormular extends javax.swing.JFrame {
                     .addComponent(rbtnJazdyDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbtnJazdyStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbtnJazdyInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnJazdyVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnJazdyVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrollPaneJazdy, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -523,6 +534,12 @@ public class HlavnyFormular extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("?");
+        jLabel1.setToolTipText("<html>\nDatum:<br>\nzadavajte v tvare \"RRRR-MM-DD\"<br>\n<br>\nStudent/Instruktor:<br>\nvyhladavanie podla mena, priezviska, mena aj priezviska\n</html>");
+        jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         javax.swing.GroupLayout paneSkuskyLayout = new javax.swing.GroupLayout(paneSkusky);
         paneSkusky.setLayout(paneSkuskyLayout);
         paneSkuskyLayout.setHorizontalGroup(
@@ -539,6 +556,8 @@ public class HlavnyFormular extends javax.swing.JFrame {
                         .addComponent(rbtnSkuskyStudent)
                         .addGap(18, 18, 18)
                         .addComponent(rbtnSkuskyInstruktor)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSkuskyVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(scrollPaneSkusky, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE)
@@ -570,7 +589,8 @@ public class HlavnyFormular extends javax.swing.JFrame {
                     .addComponent(rbtnSkuskyDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbtnSkuskyStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbtnSkuskyInstruktor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSkuskyVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSkuskyVynuluj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrollPaneSkusky, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
                 .addGap(11, 11, 11)
@@ -1442,6 +1462,8 @@ public class HlavnyFormular extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btngSkusky;
     private javax.swing.ButtonGroup btngStudenti;
     private javax.swing.ButtonGroup btngVozidla;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblInstruktoriHladajPodla;
     private javax.swing.JLabel lblJazdyHladajPodla;
     private javax.swing.JLabel lblSkuskyHladajPodla;
