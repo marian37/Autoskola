@@ -11,8 +11,6 @@ public interface InstruktoriDao {
 
     public List<Instruktor> hladajPodlaPriezviska(String priezvisko);
 
-    public List<Instruktor> hladajPodlaMenaPriezviska(String text);
-
     public void uloz(Instruktor instruktor);
 
     public void uprav(Instruktor instruktor);

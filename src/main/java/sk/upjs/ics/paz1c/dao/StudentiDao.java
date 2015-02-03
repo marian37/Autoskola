@@ -15,8 +15,6 @@ public interface StudentiDao {
 
     public List<Student> hladajPodlaPriezviska(String priezvisko);
 
-    public List<Student> hladajPodlaMenaPriezviska(String text);
-
     public List<Student> hladajPodlaFiltra(StudentiFilter filter);
 
     public void uloz(Student student);

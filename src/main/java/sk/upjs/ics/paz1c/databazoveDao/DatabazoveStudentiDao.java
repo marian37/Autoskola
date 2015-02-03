@@ -53,20 +53,11 @@ public class DatabazoveStudentiDao implements StudentiDao {
     }
 
     @Override
-    public List<Student> hladajPodlaMenaPriezviska(String menoPriezvisko) {
-        menoPriezvisko = menoPriezvisko.trim();
-        String poleStudenta[] = menoPriezvisko.split(" ");
-        String meno = poleStudenta[0].trim();
-        String priezvisko = poleStudenta[1].trim();
-        return jdbcTemplate.query(SqlQueries.SELECT_STUDENT_BY_MENO_PRIEZVISKO, studentRowMapper, meno, priezvisko);
-    }
-
-    @Override
     public List<Student> hladajPodlaFiltra(StudentiFilter filter) {
         boolean where = false;
         int usedArgs = 0;
         Object[] args = new Object[10];
-        StringBuilder sql = new StringBuilder(SqlQueries.SELECT_STUDENT_BY_KRITERIUM + "\n");
+        StringBuilder sql = new StringBuilder(SqlQueries.SELECT_STUDENT_BY_FILTER + "\n");
 
         if (filter.getMeno() != null) {
             String meno = filter.getMeno().trim();

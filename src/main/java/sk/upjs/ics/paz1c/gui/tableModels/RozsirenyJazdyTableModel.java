@@ -1,7 +1,5 @@
 package sk.upjs.ics.paz1c.gui.tableModels;
 
-import java.sql.Date;
-import java.sql.Time;
 import java.util.LinkedList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -16,18 +14,6 @@ public class RozsirenyJazdyTableModel extends AbstractTableModel {
 
     private static final String[] NAZVY_STLPCOV = {"Datum", "Cas", "Student",
         "Instruktor", "Vozidlo", "KM", "V premavke", "Na cvicisku", "S vozikom"};
-
-    private static final Class[] TYPY_STLPCOV = {
-        Date.class,
-        Time.class,
-        String.class,
-        String.class,
-        String.class,
-        Integer.class,
-        String.class,
-        String.class,
-        String.class
-    };
 
     private JazdyDao jazdyDao = BeanFactory.INSTANCE.getJazdyDao();
     private List<Jazda> jazdy = new LinkedList<>();
@@ -113,11 +99,6 @@ public class RozsirenyJazdyTableModel extends AbstractTableModel {
     @Override
     public String getColumnName(int column) {
         return NAZVY_STLPCOV[column];
-    }
-
-    @Override
-    public Class<?> getColumnClass(int columnIndex) {
-        return TYPY_STLPCOV[columnIndex];
     }
 
 }

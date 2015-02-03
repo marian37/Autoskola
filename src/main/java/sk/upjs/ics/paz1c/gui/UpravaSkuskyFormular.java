@@ -38,6 +38,8 @@ public class UpravaSkuskyFormular extends javax.swing.JFrame {
 
         if (skuska.getId() != null) {
             pripravFormular();
+        } else {
+            vybraniStudenti = new ArrayList<>();
         }
     }
 
