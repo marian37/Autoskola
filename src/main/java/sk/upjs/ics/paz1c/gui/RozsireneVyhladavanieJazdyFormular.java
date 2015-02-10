@@ -1,5 +1,6 @@
 package sk.upjs.ics.paz1c.gui;
 
+import java.awt.Component;
 import java.sql.Date;
 import java.sql.Time;
 import javax.swing.JOptionPane;
@@ -13,15 +14,17 @@ import sk.upjs.ics.paz1c.filtre.JazdyFilter;
 import sk.upjs.ics.paz1c.gui.tableModels.RozsirenyJazdyTableModel;
 
 public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
-    
+
+    private static final Component CENTER_SCREEN = null;
+
     private JazdyDao jazdyDao = BeanFactory.INSTANCE.getJazdyDao();
     private RozsirenyJazdyTableModel jazdyTableModel = new RozsirenyJazdyTableModel();
     private TableRowSorter jazdyRowSorter = new TableRowSorter(jazdyTableModel);
-    
+
     public RozsireneVyhladavanieJazdyFormular() {
         initComponents();
         nastavTlacidla();
-        
+
         tblJazdy.setModel(jazdyTableModel);
         tblJazdy.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -30,17 +33,17 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
             }
         });
         aktualizujZoznamJazd();
-        
+
         lblNespravnyFormat.setVisible(false);
     }
-    
+
     private void nastavTlacidla() {
         rbtnVpremavkeAno.setSelected(true);
         rbtnNacviciskuAno.setSelected(true);
         rbtnSvozikomAno.setSelected(true);
         rbtnKategoriaA.setSelected(true);
     }
-    
+
     private void tblJazdySelectionValueChanged(ListSelectionEvent e) {
         if (!e.getValueIsAdjusting()) {
             if (!tblJazdy.getSelectionModel().isSelectionEmpty()) {
@@ -54,7 +57,7 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
             }
         }
     }
-    
+
     public void aktualizujZoznamJazd() {
         jazdyTableModel.obnov();
     }
@@ -528,11 +531,11 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
 
     private void btnHladajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHladajActionPerformed
         JazdyFilter filter = new JazdyFilter();
-        
+
         lblNespravnyFormat.setVisible(false);
-        
+
         try {
-            
+
             if (chBoxStudent.isSelected()) {
                 filter.setStudent(txtStudent.getText().trim());
             }
@@ -542,7 +545,7 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
             if (chBoxVozidlo.isSelected()) {
                 filter.setVozidlo(txtVozidlo.getText().trim());
             }
-            
+
             if (chBoxDatum.isSelected()) {
                 filter.setDatumOd(Date.valueOf(txtDatumOd.getText().trim()));
                 filter.setDatumDo(Date.valueOf(txtDatumDo.getText().trim()));
@@ -555,7 +558,7 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
                 filter.setKmOd(Integer.valueOf(txtKmOd.getText().trim()));
                 filter.setKmDo(Integer.valueOf(txtKmDo.getText().trim()));
             }
-            
+
             if (chBoxVpremavke.isSelected()) {
                 filter.setvPremavke(rbtnVpremavkeAno.isSelected());
             }
@@ -565,7 +568,7 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
             if (chBoxSvozikom.isSelected()) {
                 filter.setsVozikom(rbtnSvozikomAno.isSelected());
             }
-            
+
             if (chBoxKategoria.isSelected()) {
                 if (rbtnKategoriaA.isSelected()) {
                     filter.setKategoria("A");
@@ -580,13 +583,13 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
                     filter.setKategoria("D");
                 }
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             lblNespravnyFormat.setVisible(true);
             return;
         }
-        
+
         jazdyTableModel.zobrazPodlaFiltra(filter);
     }//GEN-LAST:event_btnHladajActionPerformed
 
@@ -597,7 +600,7 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
         txtInstruktor.setText("");
         chBoxVozidlo.setSelected(false);
         txtVozidlo.setText("");
-        
+
         chBoxCas.setSelected(false);
         txtCasOd.setText("");
         txtCasDo.setText("");
@@ -607,13 +610,13 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
         chBoxKm.setSelected(false);
         txtKmOd.setText("");
         txtKmDo.setText("");
-        
+
         chBoxVpremavke.setSelected(false);
         chBoxNacvicisku.setSelected(false);
         chBoxSvozikom.setSelected(false);
-        
+
         chBoxKategoria.setSelected(false);
-        
+
         nastavTlacidla();
         aktualizujZoznamJazd();
         lblNespravnyFormat.setVisible(false);
@@ -628,33 +631,40 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
     private void btnDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailActionPerformed
         int vybranyRiadok = tblJazdy.getSelectedRow();
         int vybratyIndexVModeli = tblJazdy.convertRowIndexToModel(vybranyRiadok);
-        
+
         Jazda vybranaJazda = jazdyTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
-        
+
         DetailJazdyFormular detailJazdyFormular = new DetailJazdyFormular(vybranaJazda);
+        detailJazdyFormular.setLocationRelativeTo(CENTER_SCREEN);
         detailJazdyFormular.setVisible(true);
     }//GEN-LAST:event_btnDetailActionPerformed
 
     private void btnUpravActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpravActionPerformed
         int vybranyRiadok = tblJazdy.getSelectedRow();
         int vybratyIndexVModeli = tblJazdy.convertRowIndexToModel(vybranyRiadok);
-        
+
         Jazda vybranaJazda = jazdyTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
-        
+
         UpravaJazdyFormular upravaJazdyFormular = new UpravaJazdyFormular(vybranaJazda);
+        upravaJazdyFormular.setLocationRelativeTo(CENTER_SCREEN);
         upravaJazdyFormular.setVisible(true);
     }//GEN-LAST:event_btnUpravActionPerformed
 
     private void btnVymazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVymazActionPerformed
         int vybranyRiadok = tblJazdy.getSelectedRow();
         int vybratyIndexVModeli = tblJazdy.convertRowIndexToModel(vybranyRiadok);
-        
+
         Jazda vybranaJazda = jazdyTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
-        
-        int tlacidlo = JOptionPane.showConfirmDialog(this,
+
+        Object[] moznosti = {"Ano", "Nie"};
+        int tlacidlo = JOptionPane.showOptionDialog(this,
                 "Naozaj odstranit?",
                 "Odstranit jazdu",
-                JOptionPane.YES_NO_OPTION
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                moznosti,
+                moznosti[0]
         );
         if (tlacidlo == JOptionPane.YES_OPTION) {
             jazdyDao.vymaz(vybranaJazda);
@@ -664,6 +674,7 @@ public class RozsireneVyhladavanieJazdyFormular extends javax.swing.JFrame {
 
     private void btnPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPridajActionPerformed
         UpravaJazdyFormular pridanieJazdyFormular = new UpravaJazdyFormular(new Jazda());
+        pridanieJazdyFormular.setLocationRelativeTo(CENTER_SCREEN);
         pridanieJazdyFormular.setVisible(true);
     }//GEN-LAST:event_btnPridajActionPerformed
 

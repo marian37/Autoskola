@@ -1,5 +1,6 @@
 package sk.upjs.ics.paz1c.gui;
 
+import java.awt.Component;
 import sk.upjs.ics.paz1c.gui.tableModels.*;
 import javax.swing.JOptionPane;
 import sk.upjs.ics.paz1c.dao.*;
@@ -10,6 +11,8 @@ import javax.swing.table.TableRowSorter;
 import sk.upjs.ics.paz1c.autoskola.BeanFactory;
 
 public class HlavnyFormular extends javax.swing.JFrame {
+
+    private static final Component CENTER_SCREEN = null;
 
     private JazdyDao jazdyDao = BeanFactory.INSTANCE.getJazdyDao();
     private JazdyTableModel jazdyTableModel = new JazdyTableModel();
@@ -1041,11 +1044,13 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
     private void btnJazdyRozsireneVyhladavanieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJazdyRozsireneVyhladavanieActionPerformed
         RozsireneVyhladavanieJazdyFormular rozsireneVyhladavanieJazdyFormular = new RozsireneVyhladavanieJazdyFormular();
+        rozsireneVyhladavanieJazdyFormular.setLocationRelativeTo(CENTER_SCREEN);
         rozsireneVyhladavanieJazdyFormular.setVisible(true);
     }//GEN-LAST:event_btnJazdyRozsireneVyhladavanieActionPerformed
 
     private void btnStudentiRozsireneVyhladavanieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentiRozsireneVyhladavanieActionPerformed
         RozsireneVyhladavanieStudentiFormular rozsireneVyhladavanieStudentiFormular = new RozsireneVyhladavanieStudentiFormular();
+        rozsireneVyhladavanieStudentiFormular.setLocationRelativeTo(CENTER_SCREEN);
         rozsireneVyhladavanieStudentiFormular.setVisible(true);
     }//GEN-LAST:event_btnStudentiRozsireneVyhladavanieActionPerformed
 
@@ -1086,6 +1091,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
         Jazda vybranaJazda = jazdyTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
 
         DetailJazdyFormular detailJazdyFormular = new DetailJazdyFormular(vybranaJazda);
+        detailJazdyFormular.setLocationRelativeTo(CENTER_SCREEN);
         detailJazdyFormular.setVisible(true);
     }//GEN-LAST:event_btnJazdyDetailActionPerformed
 
@@ -1096,6 +1102,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
         Skuska vybranaSkuska = skuskyTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
 
         DetailSkuskyFormular detailSkuskyFormular = new DetailSkuskyFormular(vybranaSkuska);
+        detailSkuskyFormular.setLocationRelativeTo(CENTER_SCREEN);
         detailSkuskyFormular.setVisible(true);
     }//GEN-LAST:event_btnSkuskyDetailActionPerformed
 
@@ -1106,6 +1113,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
         Student vybranyStudent = studentiTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
 
         DetailStudentiFormular detailStudentiFormular = new DetailStudentiFormular(vybranyStudent);
+        detailStudentiFormular.setLocationRelativeTo(CENTER_SCREEN);
         detailStudentiFormular.setVisible(true);
     }//GEN-LAST:event_btnStudentiDetailActionPerformed
 
@@ -1116,6 +1124,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
         Instruktor vybratyInstruktor = instruktoriTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
 
         DetailInstruktoriFormular detailInstruktoriFormular = new DetailInstruktoriFormular(vybratyInstruktor);
+        detailInstruktoriFormular.setLocationRelativeTo(CENTER_SCREEN);
         detailInstruktoriFormular.setVisible(true);
     }//GEN-LAST:event_btnInstruktoriDetailActionPerformed
 
@@ -1126,6 +1135,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
         Vozidlo vybraneVozidlo = vozidlaTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
 
         DetailVozidlaFormular detailVozidlaFormular = new DetailVozidlaFormular(vybraneVozidlo);
+        detailVozidlaFormular.setLocationRelativeTo(CENTER_SCREEN);
         detailVozidlaFormular.setVisible(true);
     }//GEN-LAST:event_btnVozidlaDetailActionPerformed
 
@@ -1137,6 +1147,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
         Jazda vybranaJazda = jazdyTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
 
         UpravaJazdyFormular upravaJazdyFormular = new UpravaJazdyFormular(this, vybranaJazda);
+        upravaJazdyFormular.setLocationRelativeTo(CENTER_SCREEN);
         upravaJazdyFormular.setVisible(true);
     }//GEN-LAST:event_btnJazdyUpravActionPerformed
 
@@ -1147,6 +1158,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
         Skuska vybranaSkuska = skuskyTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
 
         UpravaSkuskyFormular upravaSkuskyFormular = new UpravaSkuskyFormular(this, vybranaSkuska);
+        upravaSkuskyFormular.setLocationRelativeTo(CENTER_SCREEN);
         upravaSkuskyFormular.setVisible(true);
     }//GEN-LAST:event_btnSkuskyUpravActionPerformed
 
@@ -1157,6 +1169,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
         Student vybranyStudent = studentiTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
 
         UpravaStudentiFormular upravaStudentiFormular = new UpravaStudentiFormular(this, vybranyStudent);
+        upravaStudentiFormular.setLocationRelativeTo(CENTER_SCREEN);
         upravaStudentiFormular.setVisible(true);
     }//GEN-LAST:event_btnStudentiUpravActionPerformed
 
@@ -1167,6 +1180,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
         Instruktor vybratyInstruktor = instruktoriTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
 
         UpravaInstruktoriFormular upravaInstruktoriFormular = new UpravaInstruktoriFormular(this, vybratyInstruktor);
+        upravaInstruktoriFormular.setLocationRelativeTo(CENTER_SCREEN);
         upravaInstruktoriFormular.setVisible(true);
     }//GEN-LAST:event_btnInstruktoriUpravActionPerformed
 
@@ -1177,6 +1191,7 @@ public class HlavnyFormular extends javax.swing.JFrame {
         Vozidlo vybraneVozidlo = vozidlaTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
 
         UpravaVozidlaFormular upravaVozidlaFormular = new UpravaVozidlaFormular(this, vybraneVozidlo);
+        upravaVozidlaFormular.setLocationRelativeTo(CENTER_SCREEN);
         upravaVozidlaFormular.setVisible(true);
     }//GEN-LAST:event_btnVozidlaUpravActionPerformed
 
@@ -1186,10 +1201,15 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         Jazda vybranaJazda = jazdyTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
 
-        int tlacidlo = JOptionPane.showConfirmDialog(this,
+        Object[] moznosti = {"Ano", "Nie"};
+        int tlacidlo = JOptionPane.showOptionDialog(this,
                 "Naozaj odstranit?",
                 "Odstranit jazdu",
-                JOptionPane.YES_NO_OPTION
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                moznosti,
+                moznosti[0]
         );
         if (tlacidlo == JOptionPane.YES_OPTION) {
             jazdyDao.vymaz(vybranaJazda);
@@ -1203,10 +1223,15 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         Skuska vybranaSkuska = skuskyTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
 
-        int tlacidlo = JOptionPane.showConfirmDialog(this,
+        Object[] moznosti = {"Ano", "Nie"};
+        int tlacidlo = JOptionPane.showOptionDialog(this,
                 "Naozaj odstranit?",
                 "Odstranit skusku",
-                JOptionPane.YES_NO_OPTION
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                moznosti,
+                moznosti[0]
         );
         if (tlacidlo == JOptionPane.YES_OPTION) {
             skuskyDao.vymaz(vybranaSkuska);
@@ -1220,10 +1245,15 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         Student vybranyStudent = studentiTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
 
-        int tlacidlo = JOptionPane.showConfirmDialog(this,
+        Object[] moznosti = {"Ano", "Nie"};
+        int tlacidlo = JOptionPane.showOptionDialog(this,
                 "Naozaj odstranit?",
                 "Odstranit studenta",
-                JOptionPane.YES_NO_OPTION
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                moznosti,
+                moznosti[0]
         );
         if (tlacidlo == JOptionPane.YES_OPTION) {
             studentiDao.vymaz(vybranyStudent);
@@ -1237,10 +1267,15 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         Instruktor vybratyInstruktor = instruktoriTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
 
-        int tlacidlo = JOptionPane.showConfirmDialog(this,
+        Object[] moznosti = {"Ano", "Nie"};
+        int tlacidlo = JOptionPane.showOptionDialog(this,
                 "Naozaj odstranit?",
                 "Odstranit instruktora",
-                JOptionPane.YES_NO_OPTION
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                moznosti,
+                moznosti[0]
         );
         if (tlacidlo == JOptionPane.YES_OPTION) {
             instruktoriDao.vymaz(vybratyInstruktor);
@@ -1254,10 +1289,15 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
         Vozidlo vybraneVozidlo = vozidlaTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
 
-        int tlacidlo = JOptionPane.showConfirmDialog(this,
+        Object[] moznosti = {"Ano", "Nie"};
+        int tlacidlo = JOptionPane.showOptionDialog(this,
                 "Naozaj odstranit?",
                 "Odstranit vozidlo",
-                JOptionPane.YES_NO_OPTION
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                moznosti,
+                moznosti[0]
         );
         if (tlacidlo == JOptionPane.YES_OPTION) {
             vozidlaDao.vymaz(vybraneVozidlo);
@@ -1267,26 +1307,31 @@ public class HlavnyFormular extends javax.swing.JFrame {
 
     private void btnJazdyPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJazdyPridajActionPerformed
         UpravaJazdyFormular pridanieJazdyFormular = new UpravaJazdyFormular(this, new Jazda());
+        pridanieJazdyFormular.setLocationRelativeTo(CENTER_SCREEN);
         pridanieJazdyFormular.setVisible(true);
     }//GEN-LAST:event_btnJazdyPridajActionPerformed
 
     private void btnSkuskyPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkuskyPridajActionPerformed
         UpravaSkuskyFormular pridanieSkuskyFormular = new UpravaSkuskyFormular(this, new Skuska());
+        pridanieSkuskyFormular.setLocationRelativeTo(CENTER_SCREEN);
         pridanieSkuskyFormular.setVisible(true);
     }//GEN-LAST:event_btnSkuskyPridajActionPerformed
 
     private void btnStudentiPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentiPridajActionPerformed
         UpravaStudentiFormular pridanieStudentiFormular = new UpravaStudentiFormular(this, new Student());
+        pridanieStudentiFormular.setLocationRelativeTo(CENTER_SCREEN);
         pridanieStudentiFormular.setVisible(true);
     }//GEN-LAST:event_btnStudentiPridajActionPerformed
 
     private void btnInstruktoriPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInstruktoriPridajActionPerformed
         UpravaInstruktoriFormular pridanieInstruktoriFormular = new UpravaInstruktoriFormular(this, new Instruktor());
+        pridanieInstruktoriFormular.setLocationRelativeTo(CENTER_SCREEN);
         pridanieInstruktoriFormular.setVisible(true);
     }//GEN-LAST:event_btnInstruktoriPridajActionPerformed
 
     private void btnVozidlaPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVozidlaPridajActionPerformed
         UpravaVozidlaFormular pridanieVozidlaFormular = new UpravaVozidlaFormular(this, new Vozidlo());
+        pridanieVozidlaFormular.setLocationRelativeTo(CENTER_SCREEN);
         pridanieVozidlaFormular.setVisible(true);
     }//GEN-LAST:event_btnVozidlaPridajActionPerformed
 
@@ -1419,7 +1464,9 @@ public class HlavnyFormular extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HlavnyFormular().setVisible(true);
+                HlavnyFormular hlavnyFormular = new HlavnyFormular();
+                hlavnyFormular.setLocationRelativeTo(CENTER_SCREEN);
+                hlavnyFormular.setVisible(true);
             }
         });
     }

@@ -1,5 +1,6 @@
 package sk.upjs.ics.paz1c.gui;
 
+import java.awt.Component;
 import java.sql.Date;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
@@ -12,15 +13,17 @@ import sk.upjs.ics.paz1c.filtre.StudentiFilter;
 import sk.upjs.ics.paz1c.gui.tableModels.RozsirenyStudentiTableModel;
 
 public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
-    
+
+    private static final Component CENTER_SCREEN = null;
+
     private StudentiDao studentiDao = BeanFactory.INSTANCE.getStudentiDao();
     private RozsirenyStudentiTableModel studentiTableModel = new RozsirenyStudentiTableModel();
     private TableRowSorter studentiRowSorter = new TableRowSorter(studentiTableModel);
-    
+
     public RozsireneVyhladavanieStudentiFormular() {
         initComponents();
         nastavTlacidla();
-        
+
         tblStudenti.setModel(studentiTableModel);
         tblStudenti.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -29,17 +32,17 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
             }
         });
         aktualizujZoznamStudentov();
-        
+
         lblNespravnyFormat.setVisible(false);
     }
-    
+
     private void nastavTlacidla() {
         rbtnPrvaPomocAno.setSelected(true);
         rbtnTestAno.setSelected(true);
         rbtnCviciskoAno.setSelected(true);
         rbtnKategoriaA.setSelected(true);
     }
-    
+
     private void tblStudentiSelectionValueChanged(ListSelectionEvent e) {
         if (!e.getValueIsAdjusting()) {
             if (!tblStudenti.getSelectionModel().isSelectionEmpty()) {
@@ -53,7 +56,7 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
             }
         }
     }
-    
+
     public void aktualizujZoznamStudentov() {
         studentiTableModel.obnov();
     }
@@ -524,11 +527,11 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
 
     private void btnHladajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHladajActionPerformed
         StudentiFilter filter = new StudentiFilter();
-        
+
         lblNespravnyFormat.setVisible(false);
-        
+
         try {
-            
+
             if (chBoxMeno.isSelected()) {
                 filter.setMeno(txtMeno.getText().trim());
             }
@@ -538,7 +541,7 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
             if (chBoxBydlisko.isSelected()) {
                 filter.setBydlisko(txtBydlisko.getText().trim());
             }
-            
+
             if (chBoxDatumNarodenia.isSelected()) {
                 filter.setDatumNarodeniaOd(Date.valueOf(txtDatumNarodeniaOd.getText().trim()));
                 filter.setDatumNarodeniaDo(Date.valueOf(txtDatumNarodeniaDo.getText().trim()));
@@ -551,7 +554,7 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
                 filter.setPrejdeneKmOd(Integer.valueOf(txtPrejdeneKmOd.getText().trim()));
                 filter.setPrejdeneKmDo(Integer.valueOf(txtPrejdeneKmDo.getText().trim()));
             }
-            
+
             if (chBoxPrvaPomoc.isSelected()) {
                 filter.setPrvaPomoc(rbtnPrvaPomocAno.isSelected());
             }
@@ -561,7 +564,7 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
             if (chBoxCvicisko.isSelected()) {
                 filter.setCvicisko(rbtnCviciskoAno.isSelected());
             }
-            
+
             if (chBoxKategoria.isSelected()) {
                 if (rbtnKategoriaA.isSelected()) {
                     filter.setKategoria("A");
@@ -576,13 +579,13 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
                     filter.setKategoria("D");
                 }
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             lblNespravnyFormat.setVisible(true);
             return;
         }
-        
+
         studentiTableModel.zobrazPodlaFiltra(filter);
     }//GEN-LAST:event_btnHladajActionPerformed
 
@@ -593,7 +596,7 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
         txtPriezvisko.setText("");
         chBoxBydlisko.setSelected(false);
         txtBydlisko.setText("");
-        
+
         chBoxDatumNarodenia.setSelected(false);
         txtDatumNarodeniaOd.setText("");
         txtDatumNarodeniaDo.setText("");
@@ -603,13 +606,13 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
         chBoxPrejdeneKm.setSelected(false);
         txtPrejdeneKmOd.setText("");
         txtPrejdeneKmDo.setText("");
-        
+
         chBoxPrvaPomoc.setSelected(false);
         chBoxTest.setSelected(false);
         chBoxCvicisko.setSelected(false);
-        
+
         chBoxKategoria.setSelected(false);
-        
+
         nastavTlacidla();
         aktualizujZoznamStudentov();
         lblNespravnyFormat.setVisible(false);
@@ -618,33 +621,40 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
     private void btnDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailActionPerformed
         int vybranyRiadok = tblStudenti.getSelectedRow();
         int vybratyIndexVModeli = tblStudenti.convertRowIndexToModel(vybranyRiadok);
-        
+
         Student vybranyStudent = studentiTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
-        
+
         DetailStudentiFormular detailStudentiFormular = new DetailStudentiFormular(vybranyStudent);
+        detailStudentiFormular.setLocationRelativeTo(CENTER_SCREEN);
         detailStudentiFormular.setVisible(true);
     }//GEN-LAST:event_btnDetailActionPerformed
 
     private void btnUpravActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpravActionPerformed
         int vybranyRiadok = tblStudenti.getSelectedRow();
         int vybratyIndexVModeli = tblStudenti.convertRowIndexToModel(vybranyRiadok);
-        
+
         Student vybranyStudent = studentiTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
-        
+
         UpravaStudentiFormular upravaStudentiFormular = new UpravaStudentiFormular(vybranyStudent);
+        upravaStudentiFormular.setLocationRelativeTo(CENTER_SCREEN);
         upravaStudentiFormular.setVisible(true);
     }//GEN-LAST:event_btnUpravActionPerformed
 
     private void btnVymazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVymazActionPerformed
         int vybranyRiadok = tblStudenti.getSelectedRow();
         int vybratyIndexVModeli = tblStudenti.convertRowIndexToModel(vybranyRiadok);
-        
+
         Student vybranyStudent = studentiTableModel.dajPodlaCislaRiadku(vybratyIndexVModeli);
-        
-        int tlacidlo = JOptionPane.showConfirmDialog(this,
+
+        Object[] moznosti = {"Ano", "Nie"};
+        int tlacidlo = JOptionPane.showOptionDialog(this,
                 "Naozaj odstranit?",
                 "Odstranit studenta",
-                JOptionPane.YES_NO_OPTION
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                moznosti,
+                moznosti[0]
         );
         if (tlacidlo == JOptionPane.YES_OPTION) {
             studentiDao.vymaz(vybranyStudent);
@@ -660,6 +670,7 @@ public class RozsireneVyhladavanieStudentiFormular extends javax.swing.JFrame {
 
     private void btnPridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPridajActionPerformed
         UpravaStudentiFormular pridanieStudentiFormular = new UpravaStudentiFormular(new Student());
+        pridanieStudentiFormular.setLocationRelativeTo(CENTER_SCREEN);
         pridanieStudentiFormular.setVisible(true);
     }//GEN-LAST:event_btnPridajActionPerformed
 
